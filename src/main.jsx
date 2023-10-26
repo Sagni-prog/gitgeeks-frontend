@@ -9,7 +9,6 @@ import App from './App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 
 
-
 const router = createBrowserRouter([
   {
     path: "/",
