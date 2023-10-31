@@ -32,7 +32,7 @@ useEffect(() => {
      <img class="w-24 h-24 rounded-full mx-auto" src="../me.jpg" alt="" width="384" height="512" />
   <div class="pt-6 space-y-4">
     <blockquote>
-      <p class="text-lg font-medium">
+      <p class="text-slate-300 font-sans Roboto text-lg ont-medium">
         “Tailwind CSS is the only framework that I've seen scale
         on large teams. It’s easy to customize, adapts to any design,
         and the build size is tiny.”
@@ -42,7 +42,7 @@ useEffect(() => {
       <div class="text-sky-500 dark:text-sky-400">
         Sarah Dayan
       </div>
-      <div>
+      <div class = "text-slate-50">
         Staff Engineer, Algolia
       </div>
     </figcaption>

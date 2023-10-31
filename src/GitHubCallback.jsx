@@ -12,14 +12,14 @@ const GitHubCallback = () => {
 
       const sentData = {"code": code}
       
-        const data = await axios.post('http://127.0.0.1:8000/api/login/github',sentData,{
-            headers: {
-               'Content-Type': 'application/json',
-               'Accept': 'application/json',
-            }
-         });
+        // const data = await axios.post('http://127.0.0.1:8000/api/login/github',sentData,{
+        //     headers: {
+        //        'Content-Type': 'application/json',
+        //        'Accept': 'application/json',
+        //     }
+        //  });
         
-        console.log("from backend", data);
+        // console.log("from backend", data);
         // setPhoto(data.data. avatar_url)
     }
 
