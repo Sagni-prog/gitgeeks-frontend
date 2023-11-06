@@ -7,8 +7,9 @@ import {
 } from "react-router-dom";
 import App from './App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import GitHubCallback from './GitHubCallback';
-import GitHubLogin from './GitHubLogin';
+import GitHubLogin from '../.store/GitHubLogin';
+import GitHubCallback from '../.store/GitHubCallback';
+import GoogleLogin from '../.store/GoogleLogin';
 
 
 const router = createBrowserRouter([
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/github-callback',
     element: <GitHubCallback />
+  },
+  {
+    path: '/auth/google',
+    element: <GoogleLogin />
   }
 ]);
 
