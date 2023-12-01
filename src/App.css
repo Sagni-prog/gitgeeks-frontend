@@ -34,6 +34,9 @@ body{
   border-right: #adbac7 solid 2px;
   margin-left: 1px;
 }
+.border{
+  border: #adbac7 solid 2px;
+}
 
 .bg-primary{
   background-color: #22272e;
@@ -46,6 +49,10 @@ body{
 }
 .btn-bg{
   background-color: #373e47;
+}
+.bottom-profile{
+  width: 40px;
+  height: 40px;
 }
 .canve{
   background-color: #2d333b;
