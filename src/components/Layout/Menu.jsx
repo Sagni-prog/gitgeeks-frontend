@@ -1,6 +1,15 @@
 import React from 'react'
-import { BsChatFill } from "react-icons/bs";
+// import { MdDeviceHub } from "react-icons/md";
+import { IoIosChatbubbles } from "react-icons/io";
 import { BiSolidHomeAlt2 } from "react-icons/bi";
+import { IoMdFolder } from "react-icons/io";
+import { HiSpeakerphone } from "react-icons/hi";
+import { RiSettings5Fill } from "react-icons/ri";
+
+
+
+
+
 
 
 
@@ -10,15 +19,27 @@ const Menu = () => {
       <div className='flex flex-col	justify-center content-center items-center gap-[18px] mt-16'>
         <div className='flex flex-col justify-center items-center'>
             <BiSolidHomeAlt2 className = "color-primary text-3xl mb-1" />
-            <p className='color-secondary text-sm text-center'>Home</p>
+            <p className='color-secondary text-xs text-center'>Home</p>
         </div>
+
         <div className='flex flex-col justify-center items-center'>
-            <BsChatFill className = "color-primary text-2xl	mb-1" />
-            <p className='color-secondary text-sm'>DM</p>
+            <IoIosChatbubbles className = "color-primary text-3xl	mb-1" />
+            <p className='color-secondary text-xs'>DM</p>
         </div>
+
         <div className='flex flex-col justify-center items-center'>
-            <BsChatFill className = "color-primary text-2xl	mb-1" />
-            <p className='color-secondary text-sm'>DM</p>
+            <HiSpeakerphone className = "color-primary text-3xl	mb-1" />
+            <p className='color-secondary text-xs'>Channel</p>
+        </div>
+
+        <div className='flex flex-col justify-center items-center'>
+            <IoMdFolder className = "color-primary text-3xl	mb-1" />
+            <p className='color-secondary text-xs'>Workspace</p>
+        </div>
+
+        <div className='flex flex-col justify-center items-center'>
+            <RiSettings5Fill className = "color-primary text-3xl	mb-1" />
+            <p className='color-secondary text-xs'>Settings</p>
         </div>
       </div>    
       
