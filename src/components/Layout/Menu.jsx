@@ -9,12 +9,13 @@ import { RiSettings5Fill } from "react-icons/ri";
 
 const Menu = () => {
   return (
-    <div className='h-screen w-[6%]  fixed'>
-    <div>
-        <MdDeviceHub />
+    <div className='flex flex-col justify-center items-center content-center h-screen w-[6%]  fixed'>
+    <div className='flex justify-center content-center items-center mt-6 mb-12 cursor-pointer'>
+        <MdDeviceHub className='text-3xl' />
     </div>
-    <div className='flex flex-col items-center justify-between border-r'>
-      <div className='flex flex-col	justify-center content-center items-center gap-[18px] mt-16 w-[100%]'>
+
+    <div className='flex flex-col items-center justify-between h-[100%] w-[100%] border-r'>
+      <div className='flex flex-col	justify-center content-center items-center gap-[18px]  w-[100%]'>
         <div className='flex flex-col justify-center items-center border-active-r w-[100%]'>
             <BiSolidHomeAlt2 className = "color-primary text-3xl mb-1" />
             <p className='color-secondary text-xs text-center'>Home</p>
