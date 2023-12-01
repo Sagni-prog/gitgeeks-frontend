@@ -70,7 +70,7 @@ const Chat = () => {
      console.log(message)
     if (message.trim() !== '') {
       try {
-        const response = await axios.post(`http://127.0.0.1:8000/api/chat/${3}`,{
+        const response = await axios.post(`http://127.0.0.1:8000/api/send/${11}`,{
           message: message
          },
         {
@@ -94,20 +94,34 @@ const Chat = () => {
     var pusher = new Pusher('52b2018288eee427f38d', {
       authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
       cluster: 'sa1',
-      encrypted: false,
+      encrypted: true,
       auth: {
         headers: {
           Authorization: `Bearer ${token}`,
+          Accept: 'application/json'
+         
         }
       }
     });
 
     var channel = pusher.subscribe(`private-conversation.${user.id}`);
 
-    channel.bind('message.posted', function (data) {
+  //   channel.bind('chat', (data) => {
+  //     console.log('Message Received:', data);
+  // });
+  
+   
+    pusher.connection.bind('connected', () => {
+      console.log('Pusher connected');
+   });
+
+
+
+
+    channel.bind('chat', function (data) {
       console.log(data);
     });
-  }, []);
+  });
 
   return (
     <CenteredContainer>

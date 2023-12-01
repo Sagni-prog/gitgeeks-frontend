@@ -10,25 +10,16 @@ import { GoogleOAuthProvider } from '@react-oauth/google';
 import GitHubLogin from '../.store/GitHubLogin';
 import GitHubCallback from '../.store/GitHubCallback';
 import GoogleLogin from '../.store/GoogleLogin';
-
+import Chat from '../.store/Chat';
+import LoginPage from '../.store/LoginpPage';
+import OpenChat from '../.store/OpenChat';
+// import Home from './components/Home';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
   },
-  {
-    path: '/auth/github',
-    element: <GitHubLogin />
-  },
-  {
-    path: '/github-callback',
-    element: <GitHubCallback />
-  },
-  {
-    path: '/auth/google',
-    element: <GoogleLogin />
-  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

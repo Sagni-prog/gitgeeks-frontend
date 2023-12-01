@@ -23,9 +23,9 @@ const LoginPage = () => {
          }
       });
 
-      console.log(data)
-      if(data.data.status === 'success'){
-         localStorage.setItem('user',JSON.stringify(data.data.data));
+      console.log(data.data.user)
+      if(data.data.statusCode === 200){
+         localStorage.setItem('user',JSON.stringify(data.data.user));
          localStorage.setItem('token',data.data.token);
          <Navigate to="/chat" replace={true} />
       }
