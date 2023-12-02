@@ -4,8 +4,8 @@ const DM = () => {
   return (
     <div className='flex flex-col justify-start items-start content-center w-[85%] mt-6'>
       <h1>DIRECT MESSAGES</h1>
-      <div className='flex flex-col mt-4 ml-2 gap-3 color-secondary'>
-            <div className='flex gap-5 cursor-pointer'>
+      <div className='flex flex-col mt-4 pl-2 gap-3 w-[100%] h-[100%] color-secondary'>
+            <div className='flex gap-5 cursor-pointer w-[100%] h-[100%] channel'>
                 <div className='bg-secondary  profile cursor-pointer'>
                     <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border' />
                 </div> 
@@ -15,7 +15,7 @@ const DM = () => {
                 </div> 
             </div>
 
-            <div className='flex gap-5 cursor-pointer'>
+            <div className='flex gap-5 cursor-pointer channel'>
                 <div className='bg-secondary profile cursor-pointer'>
                     <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border' />
                 </div> 
@@ -25,7 +25,7 @@ const DM = () => {
                 </div> 
             </div>
 
-            <div className='flex gap-5 cursor-pointer'>
+            <div className='flex gap-5 cursor-pointer channel'>
                 <div className='bg-secondary profile cursor-pointer'>
                     <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border' />
                 </div> 
