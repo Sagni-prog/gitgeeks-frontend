@@ -37,6 +37,12 @@ body{
 .border{
   border: #adbac7 solid 2px;
 }
+.border-t{
+  border: #adbac7 solid 1px !important;
+}
+.border-none{
+  border: none !important
+}
 
 .bg-primary{
   background-color: #22272e;
@@ -71,4 +77,50 @@ body{
 .channel:hover{
   background-color: #373e47;
 }
+
+.ql-container.ql-snow {
+  border: none !important;
+  /* border: #adbac7 solid 1px !important; */
+  /* border-radius: 5px !important; */
+}
+.quill {
+  /* border: none; */
+  border: #414c57 solid 1px !important;
+  border-radius: 5px !important;
+}
+
+.ql-toolbar.ql-snow{
+  border: none !important;
+  border-bottom: #414c57 solid 1px !important;
+  background-color: #2d333b;
+  display: flex !important;
+  justify-content: flex-end;
+  gap: 2px;
+  align-items: center;
+  align-content: center;
+}
+
+.ql-snow .ql-stroke {
+  stroke: #768390 !important;
+}
+.ql-snow .ql-fill, .ql-snow .ql-stroke.ql-fill {
+  fill: #768390 !important;
+}
+.ql-snow * {
+  color: #768390 !important;
+}
+
+.ql-snow::placeholder {
+  color: #adbac7 !important;
+  }
+.ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button{
+   width: 20px !important;
+   height: 20px !important;
+}
+
+.ql-toolbar.ql-snow .ql-formats {
+  /* margin-right: 15px; */
+  margin: 0 !important;
+}
+
 
