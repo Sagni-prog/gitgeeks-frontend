@@ -33,7 +33,7 @@ const TextEditor = () => {
   };
 
   return (
-    <div style = {{ border: "none"}} className="color-primary p-0 m-0">
+    <div style = {{ border: "none",overflow: "hidden",}} className="truncate color-primary p-0 m-0">
       <div style={{ width: "47%", display: "flex", justifyContent: "center", border: "none", position: "fixed", bottom: "10px", left: "0", marginLeft: "27%"}} >
         <ReactQuill
           theme="snow"
@@ -41,8 +41,8 @@ const TextEditor = () => {
           formats={formats}
           placeholder=""
           onChange={handleProcedureContentChange}
-          style={{ height: "220px", width: '95%', color: "#adbac7" }}
-          className="color-primary"
+          style={{ height: "220px", width: '95%', color: "#adbac7", overflow: 'hidden', }}
+          className="color-primary truncate"
         >
         </ReactQuill>
       </div>

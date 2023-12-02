@@ -14,6 +14,7 @@
 
 body{
   background-color: #22272e;
+  overflow-x: hidden;
 }
 
 .color-primary{
@@ -87,6 +88,7 @@ body{
   /* border: none; */
   border: #414c57 solid 1px !important;
   border-radius: 5px !important;
+  overflow: "hidden" !important;
 }
 
 .ql-toolbar.ql-snow{
@@ -121,6 +123,30 @@ body{
 .ql-toolbar.ql-snow .ql-formats {
   /* margin-right: 15px; */
   margin: 0 !important;
+}
+
+.scrollable{
+  overflow-y: auto;
+}
+
+
+::-webkit-scrollbar {
+  width: 6px;
+
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #adbac7;
+  border-radius: 6px;
+  height: 30px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #adbac7;
 }
 
 
