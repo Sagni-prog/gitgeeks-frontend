@@ -149,4 +149,11 @@ body{
   background: #adbac7;
 }
 
+.bubble{
+  min-height: 20%;
+  max-height: 74%;
+
+  overflow: auto; 
+}
+
 
