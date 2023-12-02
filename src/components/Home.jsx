@@ -6,7 +6,7 @@ import Chat from './Layout/Chat'
 
 const Home = () => {
   return (
-    <div className='flex justify-start content-center	color-primary w-screen	h-screen'>
+    <div className='flex justify-start content-center	color-primary w-screen	h-screen gap-0'>
          <Menu />
          <LeftSideBar />
          <Chat />
