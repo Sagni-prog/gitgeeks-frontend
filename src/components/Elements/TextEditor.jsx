@@ -1,6 +1,8 @@
 import React from "react";
 import 'quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
+import { IoSend } from "react-icons/io5";
+
 
 const TextEditor = () => {
   
@@ -30,18 +32,39 @@ const TextEditor = () => {
 
   return (
     <div style = {{ border: "none",   backgroundColor: "#2d333b"}} className="color-primary p-0 m-0">
-      <div style={{ width: "48%", height: "20%",  display: "flex", justifyContent: "center", border: "none", position: "fixed", bottom: "10px", left: "0", marginLeft: "27%",}} >
+      <div style={{
+           width: "48%",
+           height: "20%", 
+           display: "flex", 
+           justifyContent: "center", 
+           border: "none",
+           position: "fixed",
+           bottom: "10px", 
+           left: "0",
+           marginLeft: "27%",
+           }} >
         <ReactQuill
           theme="snow"
           modules={modules}
           formats={formats}
           placeholder=""
           onChange={handleProcedureContentChange}
-          style={{ width: '95%',color: "#adbac7",overflowY: "auto", overflow: "hidden" }}
+          style={{ width: '95%',color: "#adbac7",overflowY: "auto", overflow: "hidden", position: "relative" }}
           className="color-primary"
         >
+        
         </ReactQuill>
+        <IoSend
+          size={25}
+        style={{
+          position: "absolute",
+          top: "76%",
+          left: "90%",
+          color: "green",
+          cursor: "pointer"
+        }}/>
       </div>
+      
     </div>
   );
 

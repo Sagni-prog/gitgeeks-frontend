@@ -1,5 +1,7 @@
 import React from 'react'
 import TextEditor from '../Elements/TextEditor'
+import { IoSend } from "react-icons/io5";
+
 
 const Chat = () => {
   return (
@@ -9,22 +11,12 @@ const Chat = () => {
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum incidunt rerum, ex ullam, quidem excepturi officia at dolore corporis ab.
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non voluptas, amet veniam esse officia quis ducimus repellendus? Tenetur ipsum officia quis ducimus repellendus? Tenetur ipsum 
         </p>
       </div>
       <div className='relative w-[100%]'> 
         <TextEditor />
+        {/* <IoSend /> */}
       </div>
     </div>
   )
