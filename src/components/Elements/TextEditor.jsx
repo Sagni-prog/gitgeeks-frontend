@@ -36,7 +36,7 @@ const TextEditor = () => {
     <div style = {{ border: "none",   backgroundColor: "#2d333b"}} className="color-primary p-0 m-0 ">
       <div style={{
            width: is ? "73%" : "48%",
-           height: "25%", 
+           height: "23%", 
            display: "flex", 
            justifyContent: "center", 
            border: "none",

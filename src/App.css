@@ -128,7 +128,6 @@ body{
 }
 
 .ql-toolbar.ql-snow .ql-formats {
-  /* margin-right: 15px; */
   margin: 0 !important;
 }
 
@@ -159,14 +158,12 @@ body{
 .bubble{
   min-height: 20%;
   max-height: 74%;
-
   overflow: auto; 
 }
 
+.bubbles:hover{
+  background-color: #373e4734;
+}
 
-
-/* test */
-  .chat-content{}
-/* test */
 
 
