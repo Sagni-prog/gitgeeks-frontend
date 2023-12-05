@@ -63,7 +63,7 @@ const TextEditor = () => {
           position: "absolute",
           top: "76%",
           left: "90%",
-          color: "green",
+          color: "rgb(20 184 166)",
           cursor: "pointer"
         }}/>
       </div>

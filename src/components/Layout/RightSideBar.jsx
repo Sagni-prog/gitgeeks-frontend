@@ -25,12 +25,12 @@ const RightSideBar = () => {
           </div> 
         </div>
 
-        <div className=''>
+        <div className='mb-2'>
           <p className='text-2xl font-medium'>Sagni Alemayehu</p>
         </div>
 
         <div className='flex items-center justify-center gap-2'>
-          <LuClock3 />
+          <LuClock3 className= "text-lg" />
           <p>11:34</p>
           <p>PM</p>
           <p>(yesterday)</p>
