@@ -7,7 +7,7 @@ import ChatBuble from './ChatBuble';
 
 const Chat = () => {
 
-  const is = true;
+  const is = false;
   return (
     <div
        style={{

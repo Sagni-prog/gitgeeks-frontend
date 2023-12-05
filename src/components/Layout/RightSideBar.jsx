@@ -1,9 +1,47 @@
 import React from 'react'
+import { FaTimes } from "react-icons/fa";
+import Button from '../Elements/Buttons/Button';
+import { LuClock3 } from "react-icons/lu";
+
+
 
 const RightSideBar = () => {
   return (
-    <div className='right-side-bar flex fixed justify-end h-screen w-[25%] ml-[75%] bg-secondry'>
+    <div className='right-side-bar fixed h-screen w-[25%] ml-[75%] bg-secondry'>
+        <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'>
+          <div className='flex justify-between items-center content-center h-[100%] w-[90%] my-0 mx-auto'>
+            <div className='cursor-pointer'>
+              <p>Profile</p>
+            </div>
+            <div className='cursor-pointer'>
+              <FaTimes />
+            </div>
+          </div>
+        </div>
 
+        <div className='mt-[20%] flex justify-center'>
+          <div className='w-[80%] h-[80%] bg-secondary mb-6  cursor-pointer'>
+            <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border img' />
+          </div> 
+        </div>
+
+        <div className=''>
+          <p className='text-2xl font-medium'>Sagni Alemayehu</p>
+        </div>
+
+        <div className='flex items-center justify-center gap-2'>
+          <LuClock3 />
+          <p>11:34</p>
+          <p>PM</p>
+          <p>(yesterday)</p>
+          <p>local time</p>
+        </div>
+
+        <div className='flex justify-center gap-3 mt-5'>
+          <Button title = "Message" />
+          <Button  title = "Request DM"/>
+        </div>
+        
     </div>
   )
 }

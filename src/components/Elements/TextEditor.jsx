@@ -6,7 +6,7 @@ import { IoSend } from "react-icons/io5";
 
 const TextEditor = () => {
 
-  const is = true;
+  const is = false;
   
   var modules = {
     toolbar: [

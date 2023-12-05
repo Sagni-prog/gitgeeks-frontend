@@ -17,6 +17,18 @@ body{
   overflow-x: hidden;
 }
 
+.btn{
+  padding: 6px 36px;
+  background-color: #373e47;
+  border: #414c57 solid 1px;
+  color: #adbac7;
+  border-radius: 4px;
+  font-weight: 500;
+}
+.btn:hover{
+  border: #adbac7 solid 1px;
+}
+
 .color-primary{
   color: #adbac7;
 }
