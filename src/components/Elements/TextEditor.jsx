@@ -31,10 +31,10 @@ const TextEditor = () => {
   };
 
   return (
-    <div style = {{ border: "none",   backgroundColor: "#2d333b"}} className="color-primary p-0 m-0">
+    <div style = {{ border: "none",   backgroundColor: "#2d333b"}} className="color-primary p-0 m-0 ">
       <div style={{
            width: "48%",
-           height: "20%", 
+           height: "25%", 
            display: "flex", 
            justifyContent: "center", 
            border: "none",
@@ -42,6 +42,7 @@ const TextEditor = () => {
            bottom: "10px", 
            left: "0",
            marginLeft: "27%",
+
            }} >
         <ReactQuill
           theme="snow"
@@ -49,7 +50,7 @@ const TextEditor = () => {
           formats={formats}
           placeholder=""
           onChange={handleProcedureContentChange}
-          style={{ width: '95%',color: "#adbac7",overflowY: "auto", overflow: "hidden", position: "relative" }}
+          style={{ width: '95%', height: "100%",color: "#adbac7", position: "relative" , overflow: "auto"}}
           className="color-primary"
         >
         

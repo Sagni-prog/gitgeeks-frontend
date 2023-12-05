@@ -9,7 +9,7 @@ import { RiSettings5Fill } from "react-icons/ri";
 
 const Menu = () => {
   return (
-    <div className='flex flex-col justify-center items-center content-center h-screen w-[6%]  fixed'>
+    <div className='menu-bar flex flex-col justify-center items-center content-center h-screen w-[6%]  fixed'>
     <div className='flex justify-center content-center items-center mt-6 mb-12 cursor-pointer'>
         <MdDeviceHub className='text-3xl' />
     </div>
