@@ -10,7 +10,7 @@ const Home = () => {
          <Menu />
          <LeftSideBar />
          <Chat />
-         <RightSideBar />
+         {/* <RightSideBar /> */}
     </div>
   )
 }

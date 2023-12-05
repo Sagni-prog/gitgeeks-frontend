@@ -81,14 +81,12 @@ body{
 
 .ql-container.ql-snow {
   border: none !important;
-  /* border: #adbac7 solid 1px !important; */
-  /* border-radius: 5px !important; */
 }
 .quill {
   /* border: none; */
   border: #414c57 solid 1px !important;
   border-radius: 5px !important;
-  overflow: "hidden" !important;
+  /* overflow: "hidden" !important; */
 }
 
 .ql-toolbar.ql-snow{

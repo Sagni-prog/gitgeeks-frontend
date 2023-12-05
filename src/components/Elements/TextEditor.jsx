@@ -5,6 +5,8 @@ import { IoSend } from "react-icons/io5";
 
 
 const TextEditor = () => {
+
+  const is = true;
   
   var modules = {
     toolbar: [
@@ -33,7 +35,7 @@ const TextEditor = () => {
   return (
     <div style = {{ border: "none",   backgroundColor: "#2d333b"}} className="color-primary p-0 m-0 ">
       <div style={{
-           width: "48%",
+           width: is ? "73%" : "48%",
            height: "25%", 
            display: "flex", 
            justifyContent: "center", 
@@ -50,7 +52,7 @@ const TextEditor = () => {
           formats={formats}
           placeholder=""
           onChange={handleProcedureContentChange}
-          style={{ width: '95%', height: "100%",color: "#adbac7", position: "relative" , overflow: "auto"}}
+          style={{ width: '95%', height: "100%",color: "#adbac7", position: "relative" , overflow: "hidden"}}
           className="color-primary"
         >
         
