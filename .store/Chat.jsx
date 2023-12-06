@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Pusher from 'pusher-js';
 import axios from "axios";
+import Echo from 'laravel-echo';
+// import window.Pusher from 'pusher-js';
 
 
 const CenteredContainer = styled.div`
@@ -91,9 +93,9 @@ const Chat = () => {
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
-    var pusher = new Pusher('52b2018288eee427f38d', {
+    var pusher = new Pusher('9abe623e2b4f6c0136c4', {
       authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
-      cluster: 'sa1',
+      cluster: 'us2',
       encrypted: true,
       auth: {
         headers: {
@@ -106,22 +108,17 @@ const Chat = () => {
 
     var channel = pusher.subscribe(`private-conversation.${user.id}`);
 
-  //   channel.bind('chat', (data) => {
-  //     console.log('Message Received:', data);
-  // });
-  
    
     pusher.connection.bind('connected', () => {
       console.log('Pusher connected');
    });
 
-
-
-
     channel.bind('chat', function (data) {
-      console.log(data);
+      console.log(JSON.stringify(data));
     });
-  });
+  },[]);
+
+  
 
   return (
     <CenteredContainer>
