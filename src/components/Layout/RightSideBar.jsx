@@ -2,6 +2,7 @@ import React from 'react'
 import { FaTimes } from "react-icons/fa";
 import Button from '../Elements/Buttons/Button';
 import { LuClock3 } from "react-icons/lu";
+import minions from  '../../assets/minion.jpg'
 
 
 
@@ -20,8 +21,8 @@ const RightSideBar = () => {
         </div>
 
         <div className='mt-[20%] flex justify-center'>
-          <div className='w-[80%] h-[80%] bg-secondary mb-6  cursor-pointer'>
-            <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border img' />
+          <div className='bg-secondary mb-6 img-container cursor-pointer'>
+            <img src = {minions} className='rounded-full border img' />
           </div> 
         </div>
 
