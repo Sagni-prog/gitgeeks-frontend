@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import { Navigate } from "react-router-dom";
+import { login } from '../src/api/auth/login';
+import storage from '../src/utils/storage';
 
 
 const LoginPage = () => {
@@ -16,17 +18,12 @@ const LoginPage = () => {
   };
 
   const sendLogin = async(loginData) => {
-      const data = await axios.post('http://localhost:8000/api/login',loginData,{
-         headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-         }
-      });
+      const data = await login(loginData);
 
       console.log(data.data.user)
       if(data.data.statusCode === 200){
-         localStorage.setItem('user',JSON.stringify(data.data.user));
-         localStorage.setItem('token',data.data.token);
+         storage.setUser(data.data.user);
+         storage.setToken(data.data.token);
          <Navigate to="/chat" replace={true} />
       }
   }
