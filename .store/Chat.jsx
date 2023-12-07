@@ -118,6 +118,7 @@ const Chat = () => {
   //   });
   // },[]);
 
+  // channel subscription
   useEffect(() => {
     const channelId = 1;
     const user = JSON.parse(localStorage.getItem('user'));
@@ -139,10 +140,40 @@ const Chat = () => {
 
    
     pusher.connection.bind('connected', () => {
-      console.log('Pusher connected');
+      console.log('suscribed to the channel');
    });
 
     channel.bind('channel.message', function (data) {
+      console.log(JSON.stringify(data));
+    });
+  },[]);
+
+  // dm subscription
+  useEffect(() => {
+    const channelId = 1;
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
+    var pusher = new Pusher('9abe623e2b4f6c0136c4', {
+      authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
+      cluster: 'us2',
+      encrypted: true,
+      auth: {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json'
+         
+        }
+      }
+    });
+
+    var channel = pusher.subscribe(`private-dmChannel.${user.id}`);
+
+   
+    pusher.connection.bind('connected', () => {
+      console.log('Pusher connected dmMessage');
+   });
+
+    channel.bind('dm.message', function (data) {
       console.log(JSON.stringify(data));
     });
   },[]);
