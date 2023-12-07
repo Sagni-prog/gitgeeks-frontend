@@ -90,7 +90,36 @@ const Chat = () => {
     }
   };
 
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   const token = localStorage.getItem('token');
+  //   var pusher = new Pusher('9abe623e2b4f6c0136c4', {
+  //     authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
+  //     cluster: 'us2',
+  //     encrypted: true,
+  //     auth: {
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //         Accept: 'application/json'
+         
+  //       }
+  //     }
+  //   });
+
+  //   var channel = pusher.subscribe(`private-conversation.${user.id}`);
+
+   
+  //   pusher.connection.bind('connected', () => {
+  //     console.log('Pusher connected');
+  //  });
+
+  //   channel.bind('chat', function (data) {
+  //     console.log(JSON.stringify(data));
+  //   });
+  // },[]);
+
   useEffect(() => {
+    const channelId = 1;
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
     var pusher = new Pusher('9abe623e2b4f6c0136c4', {
@@ -106,14 +135,14 @@ const Chat = () => {
       }
     });
 
-    var channel = pusher.subscribe(`private-conversation.${user.id}`);
+    var channel = pusher.subscribe(`private-channel.${channelId}`);
 
    
     pusher.connection.bind('connected', () => {
       console.log('Pusher connected');
    });
 
-    channel.bind('chat', function (data) {
+    channel.bind('channel.message', function (data) {
       console.log(JSON.stringify(data));
     });
   },[]);
