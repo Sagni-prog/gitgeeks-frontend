@@ -207,7 +207,6 @@ body{
 .orLabel{
    position: relative;
    width: 100%;
-   /* margin-bottom: 20px; */
 }
 
 .orLabel::before{

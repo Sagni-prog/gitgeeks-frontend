@@ -22,7 +22,7 @@ const Login = () => {
                   width: "100%",
                   height: "45px"
                 }}
-                title = "Sign up with GitHub" 
+                title = "Continue with GitHub" 
                 icons = {<FaGithub size= '25px' className='ml-3' />}
            />
            <Button
@@ -31,7 +31,7 @@ const Login = () => {
                   height: "45px",
                   marginBottom: "20px"
                 }}
-                title = "Sign up with Google" 
+                title = "Continue with Google" 
                 icons = {<FcGoogle size= '25px' className='ml-3' />}
            />
 
@@ -95,7 +95,7 @@ const Login = () => {
           />
           <div className='line w-[100%]'></div>
           <div>
-             <p className='color-primary font-medium'>New to GeekHub Community ? <a  href = '#' className='login text-cyan-400'>Create Account</a>.</p>
+             <p className='color-primary font-medium'>New to GeekHub Community ? <a  href = '/auth/register' className='login text-cyan-400'>Create Account</a>.</p>
           </div>
        </div>  
     </div>
