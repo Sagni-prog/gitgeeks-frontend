@@ -14,7 +14,8 @@ import Chat from '../.store/Chat';
 import LoginPage from '../.store/LoginpPage';
 import OpenChat from '../.store/OpenChat';
 // import Home from './components/Home';
-
+import Login from './components/Layout/auth/Login';
+import Register from './components/Layout/auth/Register';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <LoginPage />,
+  },
+  {
+    path: "/auth/login",
+    element: <Login />,
+  },
+  {
+    path: "/auth/register",
+    element: <Register />,
   },
 ]);
 

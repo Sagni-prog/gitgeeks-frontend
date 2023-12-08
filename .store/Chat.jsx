@@ -144,7 +144,7 @@ const Chat = () => {
    });
 
     channel.bind('channel.message', function (data) {
-      console.log(JSON.stringify(data));
+      console.log(JSON.stringify(data.message.message_body));
     });
   },[]);
 

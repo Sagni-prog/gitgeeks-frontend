@@ -18,7 +18,8 @@ body{
 }
 
 .btn{
-  padding: 6px 36px;
+  
+  /* padding: 6px 36px; */
   background-color: #373e47;
   border: #414c57 solid 1px;
   color: #adbac7;

@@ -3,6 +3,8 @@ import { FaTimes } from "react-icons/fa";
 import Button from '../Elements/Buttons/Button';
 import { LuClock3 } from "react-icons/lu";
 import minions from  '../../assets/minion.jpg'
+import { FiMessageCircle } from "react-icons/fi";
+
 
 
 
@@ -39,8 +41,25 @@ const RightSideBar = () => {
         </div>
 
         <div className='flex justify-center gap-3 mt-5'>
-          <Button title = "Message" />
-          <Button  title = "Request DM"/>
+          <Button
+            buttStyle = {{
+              paddingTop: "6px",
+              paddingBottom: "6px",
+              paddingLeft: "36px",
+              paddingRight: '36px'
+            }}
+            title = "Message" 
+            icons = {<FiMessageCircle />}
+          />
+          <Button 
+            buttStyle = {{
+              paddingTop: "6px",
+              paddingBottom: "6px",
+              paddingLeft: "36px",
+              paddingRight: '36px'
+            }}
+            title = "Request DM"
+          />
         </div>
         
     </div>
