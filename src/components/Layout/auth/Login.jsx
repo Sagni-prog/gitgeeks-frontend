@@ -5,6 +5,8 @@ import Label from '../../Elements/Labels/Label';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
+import { MdEmail } from "react-icons/md";
+
 
 
 const Login = () => {
@@ -71,9 +73,29 @@ const Login = () => {
                 paddingLeft: "20px",
               }} 
           />
+
+          <div className='flex justify-between items-center content-center w-[100%]'> 
+            <div className='flex justify-between items-center'>
+             <label class="cyberpunk-checkbox-label">
+                <input type="checkbox" class="cyberpunk-checkbox" />
+                Remember me
+              </label>
+             </div>
+             <a  href = '#' className='login text-cyan-400'>Forgot Password ?</a>
+          </div>
+
+          <Button
+              buttStyle = {{
+                  width: "100%",
+                  height: "55px",
+                  // backgroundColor: "rgb(34 211 238)",
+                  color: "#fff"
+              }}
+              title = "Log in" 
+          />
           <div className='line w-[100%]'></div>
           <div>
-             <p className='color-primary font-medium'>Already have an account? <a  href = '#' className='login text-cyan-400'>Log in</a>.</p>
+             <p className='color-primary font-medium'>New to GeekHub Community ? <a  href = '#' className='login text-cyan-400'>Create Account</a>.</p>
           </div>
        </div>  
     </div>
