@@ -9,14 +9,14 @@ const GoogleLogin = () => {
   const googleAuth = async(accessToken) => {
 
     console.log("google access token: ",accessToken)
-  //   const sentData = {"accessToken": accessToken}
-  //   const response = await axios.post('http://localhost:8000/api/auth/google',sentData,{
-  //     headers: {
-  //        'Content-Type': 'application/json',
-  //        'Accept': 'application/json',
-  //     }
-  //  });
-  //  console.log("form google auth: ",response)
+    const sentData = {"accessToken": accessToken}
+    const response = await axios.post('http://localhost:8000/api/auth/google',sentData,{
+      headers: {
+         'Content-Type': 'application/json',
+         'Accept': 'application/json',
+      }
+   });
+   console.log("form google auth: ",response)
   }
 
     const login = useGoogleLogin({

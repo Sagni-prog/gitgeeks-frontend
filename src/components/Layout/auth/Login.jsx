@@ -9,6 +9,9 @@ import { login } from '../../../api/auth/login';
 import storage from '../../../utils/storage';
 import { Navigate } from "react-router-dom";
 import { redirectToGithub } from '../../../api/auth/github/githubRedirect';
+import { useGoogleLogin } from '@react-oauth/google';
+import { googleLogin } from '../../../api/auth/google/googleLogin';
+
 
 
 const Login = () => {
@@ -26,14 +29,30 @@ const Login = () => {
   }
 
   const sendLogin = async(loginData) => {
-    const respone = await login(loginData);
-    console.log("api data:", respone)
-    if(respone.data.statusCode == 200){
-      storage.setUser(respone.data.user);
-      storage.setToken(respone.data.token);
-      <Navigate to = '/' replace = {true}/>
+    const response = await login(loginData);
+    console.log("api data:", response)
+    if(response.data.statusCode == 200){
+      storage.setUser(response.data.user);
+      storage.setToken(response.data.token);
+      <Navigate to="/" replace={true} />
     }
   }
+
+  const googleAuth = async(accessToken) => {
+    console.log("google access token: ",accessToken)
+    const sentData = {"accessToken": accessToken}
+    const response = await googleLogin(sentData);
+    if(response.data.status === "success"){
+      console.log("loggedin with google:",response)
+      storage.setUser(response.data.data);
+      storage.setToken(response.data.token);
+      <Navigate to="/" replace={true} />
+    }
+  } 
+
+  const login = useGoogleLogin({
+    onSuccess: tokenResponse => googleAuth(tokenResponse.access_token),
+  });
 
   return (
     <div className='flex justify-center items-center content-center h-screen'>
@@ -59,6 +78,7 @@ const Login = () => {
                 }}
                 title = "Continue with Google" 
                 icons = {<FcGoogle size= '25px' className='ml-3' />}
+                onClick = {login}
            />
 
            <div className='orLabel color-primary'>
@@ -106,8 +126,8 @@ const Login = () => {
 
           <div className='flex justify-between items-center content-center w-[100%]'> 
             <div className='flex justify-between items-center'>
-             <label class="cyberpunk-checkbox-label">
-                <input type="checkbox" class="cyberpunk-checkbox" />
+             <label className="cyberpunk-checkbox-label">
+                <input type="checkbox" className="cyberpunk-checkbox" />
                 Remember me
               </label>
              </div>

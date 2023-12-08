@@ -7,30 +7,16 @@ import {
 } from "react-router-dom";
 import App from './App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-import GitHubLogin from '../.store/GitHubLogin';
-// import GitHubCallback from '../.store/GitHubCallback';
-// import GoogleLogin from '../.store/GoogleLogin';
-import Chat from '../.store/Chat';
-import LoginPage from '../.store/LoginpPage';
-import OpenChat from '../.store/OpenChat';
-// import Home from './components/Home';
 import Login from './components/Layout/auth/Login';
 import Register from './components/Layout/auth/Register';
 import Signup from './components/Layout/auth/Signup';
 import  GitHubCallback  from './api/auth/github/GitHubCallBack';
+import GoogleLogin from '../.store/GoogleLogin';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-  },
-  {
-    path: "/chat",
-    element: <Chat />,
-  },
-  {
-    path: "/login",
-    element: <LoginPage />,
   },
   {
     path: "/auth/login",
@@ -44,14 +30,14 @@ const router = createBrowserRouter([
     path: "/auth/sign-up",
     element: <Signup />,
   },
-  // {
-  //   path: "/auth/github",
-  //   element: <GitHubLogin />,
-  // },
   {
     path: "/auth/github/callback",
     element: <GitHubCallback />,
   },
+  // {
+  //   path: "/auth/google",
+  //   element: <GoogleLogin />,
+  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
