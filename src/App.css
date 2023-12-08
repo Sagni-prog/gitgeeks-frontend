@@ -25,6 +25,7 @@ body{
   color: #adbac7;
   border-radius: 4px;
   font-weight: 500;
+  transition: all 0.5s;
 }
 .input-field{
   background-color: #373e47;
@@ -33,6 +34,11 @@ body{
   border-radius: 4px;
   font-weight: 500;
   outline: none;
+  transition: all 0.5s;
+}
+
+.input-field:focus{
+  border: #adbac7 solid 1px;
 }
 .btn:hover{
   border: #adbac7 solid 1px;
@@ -200,7 +206,6 @@ body{
 
 .orLabel{
    position: relative;
-   /* background-color: red; */
    width: 100%;
    margin-bottom: 20px;
 }
@@ -224,5 +229,13 @@ body{
   background-color: #414c57;
 }
 
+.line{
+  margin-top: 20px;
+  background-color: #414c57;
+  height: 1px; 
+}
 
+.login{
+  color: rgb(34 211 238);
+}
 
