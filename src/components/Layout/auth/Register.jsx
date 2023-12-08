@@ -1,7 +1,5 @@
 import React from 'react'
 import Button from '../../Elements/Buttons/Button'
-import Input from '../../Elements/InputFields/Input';
-import Label from '../../Elements/Labels/Label';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
@@ -44,7 +42,12 @@ const Register = () => {
            />
           <div className='line w-[100%]'></div>
           <div>
-             <p className='color-primary font-medium'>Already have an account ? <a  href = '/auth/login' className='login text-cyan-400'>Log in</a>.</p>
+             <p className='color-primary font-medium'>
+              Already have an account ? 
+              <a  href = '/auth/login' className='login text-cyan-400'>
+                Log in
+              </a>.
+            </p>
           </div>
        </div>  
     </div>

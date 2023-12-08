@@ -5,9 +5,6 @@ import Label from '../../Elements/Labels/Label';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
-import { MdEmail } from "react-icons/md";
-
-
 
 const Login = () => {
   return (
@@ -88,15 +85,19 @@ const Login = () => {
               buttStyle = {{
                   width: "100%",
                   height: "55px",
-                  // backgroundColor: "rgb(34 211 238)",
                   color: "#fff"
               }}
               title = "Log in" 
           />
           <div className='line w-[100%]'></div>
           <div>
-             <p className='color-primary font-medium'>New to GeekHub Community ? <a  href = '/auth/register' className='login text-cyan-400'>Create Account</a>.</p>
-          </div>
+             <p className='color-primary font-medium'>
+                New to GeekHub Community ?
+                <a  href = '/auth/register' className='login text-cyan-400'>
+                  Create Account
+                </a>.
+              </p>
+           </div>
        </div>  
     </div>
   )

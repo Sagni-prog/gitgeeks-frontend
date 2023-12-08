@@ -16,6 +16,7 @@ import OpenChat from '../.store/OpenChat';
 // import Home from './components/Home';
 import Login from './components/Layout/auth/Login';
 import Register from './components/Layout/auth/Register';
+import Signup from './components/Layout/auth/Signup';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/auth/register",
     element: <Register />,
+  },
+  {
+    path: "/auth/sign-up",
+    element: <Signup />,
   },
 ]);
 
