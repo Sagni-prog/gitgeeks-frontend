@@ -1,7 +1,9 @@
 import React from 'react'
 import Button from '../../Elements/Buttons/Button'
+import Input from '../../Elements/InputFields/Input';
+import Label from '../../Elements/Labels/Label';
 import { FaGithub } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 
 
@@ -20,11 +22,51 @@ const Login = () => {
            <Button
                 buttStyle = {{
                   width: "100%",
-                  height: "45px"
+                  height: "45px",
+                  marginBottom: "20px"
                 }}
                 title = "Sign up with Google" 
-                icons = {<FaGoogle size= '25px' className='ml-3' />}
+                icons = {<FcGoogle size= '25px' className='ml-3' />}
            />
+
+           <div className='orLabel color-primary'>
+              OR
+           </div>
+
+          <Label 
+              labelStyle = {{
+                color: "#adbac7",
+                fontSize: "16px",
+                fontWeight: "500",
+                alignSelf: "flex-start",
+              }}
+              title = "Email"
+          />
+
+          <Input 
+              inputStyle = {{
+                width: "100%",
+                height: "40px",
+                paddingLeft: "20px",
+              }} 
+          />
+          <Label 
+              labelStyle = {{
+                color: "#adbac7",
+                fontSize: "16px",
+                fontWeight: "500",
+                alignSelf: "flex-start",
+              }}
+              title = "Password"
+          />
+
+          <Input 
+              inputStyle = {{
+                width: "100%",
+                height: "40px",
+                paddingLeft: "20px",
+              }} 
+          />
        </div>  
     </div>
   )
