@@ -7,6 +7,8 @@ import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
 import { login } from '../../../api/auth/login';
 import storage from '../../../utils/storage';
+import { Navigate } from "react-router-dom";
+
 
 const Login = () => {
 
@@ -28,6 +30,7 @@ const Login = () => {
     if(respone.data.statusCode == 200){
       storage.setUser(respone.data.user);
       storage.setToken(respone.data.token);
+      <Navigate to = '/' replace = {true}/>
     }
   }
 
