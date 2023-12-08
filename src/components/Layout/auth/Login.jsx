@@ -8,6 +8,7 @@ import { MdDeviceHub } from "react-icons/md";
 import { login } from '../../../api/auth/login';
 import storage from '../../../utils/storage';
 import { Navigate } from "react-router-dom";
+import { redirectToGithub } from '../../../api/auth/github/githubRedirect';
 
 
 const Login = () => {
@@ -48,6 +49,7 @@ const Login = () => {
                 }}
                 title = "Continue with GitHub" 
                 icons = {<FaGithub size= '25px' className='ml-3' />}
+                onClick = {redirectToGithub}
            />
            <Button
                 buttStyle = {{

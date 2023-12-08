@@ -8,8 +8,8 @@ import {
 import App from './App';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import GitHubLogin from '../.store/GitHubLogin';
-import GitHubCallback from '../.store/GitHubCallback';
-import GoogleLogin from '../.store/GoogleLogin';
+// import GitHubCallback from '../.store/GitHubCallback';
+// import GoogleLogin from '../.store/GoogleLogin';
 import Chat from '../.store/Chat';
 import LoginPage from '../.store/LoginpPage';
 import OpenChat from '../.store/OpenChat';
@@ -17,6 +17,8 @@ import OpenChat from '../.store/OpenChat';
 import Login from './components/Layout/auth/Login';
 import Register from './components/Layout/auth/Register';
 import Signup from './components/Layout/auth/Signup';
+import  GitHubCallback  from './api/auth/github/GitHubCallBack';
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -41,6 +43,14 @@ const router = createBrowserRouter([
   {
     path: "/auth/sign-up",
     element: <Signup />,
+  },
+  // {
+  //   path: "/auth/github",
+  //   element: <GitHubLogin />,
+  // },
+  {
+    path: "/auth/github/callback",
+    element: <GitHubCallback />,
   },
 ]);
 

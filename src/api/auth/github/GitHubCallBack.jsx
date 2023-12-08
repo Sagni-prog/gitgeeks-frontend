@@ -1,6 +1,6 @@
 // GitHubCallback.js
 import React, { useEffect,useState } from 'react';
-import axios from 'axios';
+import { githubLogin } from './githubLogin';
 
 const GitHubCallback = () => {
 
@@ -12,12 +12,7 @@ const GitHubCallback = () => {
 
       const sentData = {"code": code}
       
-        const data = await axios.post('http://127.0.0.1:8000/api/login/github',sentData,{
-            headers: {
-               'Content-Type': 'application/json',
-               'Accept': 'application/json',
-            }
-         });
+        const data = await githubLogin(sentData);
         
         console.log("from backend", data);
         setPhoto(data.data. avatar_url)
@@ -25,7 +20,6 @@ const GitHubCallback = () => {
 
   useEffect(() => {
    
-  
     const code = new URLSearchParams(window.location.search).get('code');
 
     if (code) {
