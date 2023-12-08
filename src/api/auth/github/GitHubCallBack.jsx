@@ -1,5 +1,5 @@
 // GitHubCallback.js
-import React, { useEffect,useState } from 'react';
+import React, { useEffect } from 'react';
 import { githubLogin } from './githubLogin';
 import Spinner from '../../../components/Elements/Loaders/Spinner';
 import { useNavigate } from 'react-router-dom';

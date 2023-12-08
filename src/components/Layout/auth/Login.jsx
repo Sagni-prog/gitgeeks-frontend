@@ -1,11 +1,10 @@
-import {React, useState} from 'react'
+import { React, useState } from 'react'
 import Button from '../../Elements/Buttons/Button'
 import Input from '../../Elements/InputFields/Input';
 import Label from '../../Elements/Labels/Label';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
-import { login } from '../../../api/auth/login';
 import storage from '../../../utils/storage';
 import { useNavigate } from 'react-router-dom';
 import { redirectToGithub } from '../../../api/auth/github/githubRedirect';
