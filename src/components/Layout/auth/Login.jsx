@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
 import { login } from '../../../api/auth/login';
 import storage from '../../../utils/storage';
-import { Navigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { redirectToGithub } from '../../../api/auth/github/githubRedirect';
 import { useGoogleLogin } from '@react-oauth/google';
 import { googleLogin } from '../../../api/auth/google/googleLogin';
@@ -15,6 +15,8 @@ import { googleLogin } from '../../../api/auth/google/googleLogin';
 
 
 const Login = () => {
+
+  const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,7 +36,7 @@ const Login = () => {
     if(response.data.statusCode == 200){
       storage.setUser(response.data.user);
       storage.setToken(response.data.token);
-      <Navigate to="/" replace={true} />
+      navigate('/');  
     }
   }
 
@@ -46,7 +48,7 @@ const Login = () => {
       console.log("loggedin with google:",response)
       storage.setUser(response.data.data);
       storage.setToken(response.data.token);
-      <Navigate to="/" replace={true} />
+      navigate('/');  
     }
   } 
 

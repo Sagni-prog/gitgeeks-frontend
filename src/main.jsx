@@ -11,12 +11,21 @@ import Login from './components/Layout/auth/Login';
 import Register from './components/Layout/auth/Register';
 import Signup from './components/Layout/auth/Signup';
 import  GitHubCallback  from './api/auth/github/GitHubCallBack';
-import GoogleLogin from '../.store/GoogleLogin';
+import LoginPage from '../.store/LoginpPage';
+import Chat from './components/Layout/Chat';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/login",
+    element: <LoginPage />,
+  },
+  {
+    path: "/chat",
+    element: <Chat />,
   },
   {
     path: "/auth/login",
@@ -34,10 +43,6 @@ const router = createBrowserRouter([
     path: "/auth/github/callback",
     element: <GitHubCallback />,
   },
-  // {
-  //   path: "/auth/google",
-  //   element: <GoogleLogin />,
-  // },
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

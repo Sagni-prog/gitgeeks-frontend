@@ -1,37 +1,29 @@
 // GitHubCallback.js
 import React, { useEffect,useState } from 'react';
 import { githubLogin } from './githubLogin';
+import Spinner from '../../../components/Elements/Loaders/Spinner';
+import { useNavigate } from 'react-router-dom';
 
 const GitHubCallback = () => {
-
-  const [photo, setPhoto] = useState("");
-
+    const navigate = useNavigate();
     const getAuth = async(code) => {
-
-      console.log("before sending the code",code)
-
-      const sentData = {"code": code}
-      
-        const data = await githubLogin(sentData);
-        
-        console.log("from backend", data);
-        setPhoto(data.data. avatar_url)
-    }
+      const sentData = {"code": code}  
+      const response = await githubLogin(sentData);
+      console.log("from backend", response);
+      navigate('/');      
+   }
 
   useEffect(() => {
    
     const code = new URLSearchParams(window.location.search).get('code');
-
     if (code) {
-
         getAuth(code);
-      
     }
   }, []);
 
   return (
-    <div>
-        {/* <img src= {photo} /> */}
+    <div className='w-sceen h-screen flex justify-center items-center'>
+        <Spinner />
     </div>
   );
 
