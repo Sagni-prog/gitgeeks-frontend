@@ -1,12 +1,36 @@
-import React from 'react'
+import {React, useState} from 'react'
 import Button from '../../Elements/Buttons/Button'
 import Input from '../../Elements/InputFields/Input';
 import Label from '../../Elements/Labels/Label';
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
+import { login } from '../../../api/auth/login';
+import storage from '../../../utils/storage';
 
 const Login = () => {
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = () => {
+    try {
+      const loginData = {"email": email, "password": password}
+      sendLogin(loginData)
+    } catch (error) {
+      
+    }
+  }
+
+  const sendLogin = async(loginData) => {
+    const respone = await login(loginData);
+    console.log("api data:", respone)
+    if(respone.data.statusCode == 200){
+      storage.setUser(respone.data.user);
+      storage.setToken(respone.data.token);
+    }
+  }
+
   return (
     <div className='flex justify-center items-center content-center h-screen'>
        <div className='w-[40%] h-[100%] flex flex-col justify-center content-center items-center gap-3'>
@@ -52,6 +76,8 @@ const Login = () => {
                 height: "40px",
                 paddingLeft: "20px",
               }} 
+              value={email} 
+              setValue={setEmail}
           />
           <Label 
               labelStyle = {{
@@ -69,6 +95,8 @@ const Login = () => {
                 height: "40px",
                 paddingLeft: "20px",
               }} 
+              value = {password}
+              setValue = {setPassword}
           />
 
           <div className='flex justify-between items-center content-center w-[100%]'> 
@@ -88,6 +116,7 @@ const Login = () => {
                   color: "#fff"
               }}
               title = "Log in" 
+              onClick = {handleLogin}
           />
           <div className='line w-[100%]'></div>
           <div>

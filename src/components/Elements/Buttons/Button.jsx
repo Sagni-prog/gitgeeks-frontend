@@ -3,7 +3,11 @@ import React from 'react'
 const Button = (props) => {
   return (
     <>
-        <button style={props.buttStyle} className='btn flex items-center'>
+        <button
+          style={props.buttStyle}
+          className='btn flex items-center'
+          onClick={props.onClick}
+          >
              {props.icons}
              <span className='flex justify-center items-center content-center w-[100%] h-[100%] '>
                 {props.title}
