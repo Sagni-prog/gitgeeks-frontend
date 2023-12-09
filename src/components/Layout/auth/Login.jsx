@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import Button from '../../Elements/Buttons/Button'
 import Input from '../../Elements/InputFields/Input';
 import Label from '../../Elements/Labels/Label';
-import { FaGithub, FaLeaf } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
 import storage from '../../../utils/storage';
@@ -11,7 +11,7 @@ import { redirectToGithub } from '../../../api/auth/github/githubRedirect';
 import { useGoogleLogin } from '@react-oauth/google';
 import { googleLogin } from '../../../api/auth/google/googleLogin';
 import Preloader from '../../Elements/Loaders/Preloader';
-
+import { login } from '../../../api/auth/login';
 
 
 const Login = () => {
@@ -56,7 +56,7 @@ const Login = () => {
     }
   } 
 
-  const login = useGoogleLogin({
+  const processGoogleLogin = useGoogleLogin({
     onSuccess: tokenResponse => googleAuth(tokenResponse.access_token),
   });
 
@@ -89,7 +89,7 @@ const Login = () => {
                 icons = {<FcGoogle size= '25px' className='ml-3' />}
                 onClick = {() => {
                   setIsLoading(true)
-                  login()
+                  processGoogleLogin()
                 }}
            />
 

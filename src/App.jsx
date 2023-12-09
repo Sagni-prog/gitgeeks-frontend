@@ -14,7 +14,7 @@ function App() {
     }
 
 
-    console.log(response.data);
+    console.log(response.data.data[0]);
   }
  
   useEffect(() => {
