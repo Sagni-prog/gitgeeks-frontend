@@ -179,10 +179,9 @@ body{
 }
 
 
-::-webkit-scrollbar {
+ ::-webkit-scrollbar {
   width: 6px;
-
-}
+} 
 
 ::-webkit-scrollbar-track {
   background: transparent;
@@ -190,13 +189,15 @@ body{
 
 ::-webkit-scrollbar-thumb {
   background: #adbac7;
-  border-radius: 6px;
-  height: 30px;
+  border-radius: 6px; 
 }
+
 
 ::-webkit-scrollbar-thumb:hover {
   background: #adbac7;
-}
+} 
+
+
 
 .bubble{
   min-height: 20%;

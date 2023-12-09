@@ -1,9 +1,14 @@
 import React from 'react'
+import { FaAngleDown } from "react-icons/fa6";
+
 
 const Channels = () => {
   return (
     <div className='flex flex-col justify-start items-start content-center w-[100%] mt-6 '>
-      <h1 className='pl-[6%]'>CHANNELS</h1>
+      <div className='flex items-center gap-1 content-center px-[6%]'>
+        <FaAngleDown className='text-sm' />
+        <h1 className=''>CHANNELS</h1>
+      </div>
       <div className='flex flex-col mt-1 w-[100%] h-[100%] color-secondary'>
 
             <div className='cursor-pointer channel'>

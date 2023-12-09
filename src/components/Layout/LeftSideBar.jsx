@@ -5,7 +5,7 @@ import Channels from '../Elements/Channels'
 
 const LeftSideBar = () => {
   return (
-    <div className='left-side-bar flex fixed flex-col h-screen w-[21%] ml-[6%] bg-secondry border-r'>
+    <div className='left-side-bar flex fixed flex-col h-screen w-[21%] ml-[6%] bg-secondry border-r scrollable'>
         <div className='relative search-bar w-[100%] mt-4'>
             <SearchBar />
 

@@ -1,7 +1,7 @@
 // GitHubCallback.js
 import React, { useEffect } from 'react';
 import { githubLogin } from './githubLogin';
-import Spinner from '../../../components/Elements/Loaders/Spinner';
+import Preloader from '../../../components/Elements/Loaders/Preloader';
 import { useNavigate } from 'react-router-dom';
 
 const GitHubCallback = () => {
@@ -22,9 +22,9 @@ const GitHubCallback = () => {
   }, []);
 
   return (
-    <div className='w-sceen h-screen flex justify-center items-center'>
-        <Spinner />
-    </div>
+    <>
+       <Preloader />
+    </>
   );
 
 };
