@@ -2,7 +2,7 @@ import { React, useState } from 'react'
 import Button from '../../Elements/Buttons/Button'
 import Input from '../../Elements/InputFields/Input';
 import Label from '../../Elements/Labels/Label';
-import { FaGithub } from "react-icons/fa";
+import { FaGithub, FaLeaf } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
 import storage from '../../../utils/storage';
@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router-dom';
 import { redirectToGithub } from '../../../api/auth/github/githubRedirect';
 import { useGoogleLogin } from '@react-oauth/google';
 import { googleLogin } from '../../../api/auth/google/googleLogin';
+import Preloader from '../../Elements/Loaders/Preloader';
 
 
 
@@ -19,6 +20,8 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const handleLogin = () => {
     try {
@@ -40,6 +43,7 @@ const Login = () => {
   }
 
   const googleAuth = async(accessToken) => {
+   
     console.log("google access token: ",accessToken)
     const sentData = {"accessToken": accessToken}
     const response = await googleLogin(sentData);
@@ -47,7 +51,8 @@ const Login = () => {
       console.log("loggedin with google:",response)
       storage.setUser(response.data.data);
       storage.setToken(response.data.token);
-      navigate('/');  
+      navigate('/');
+      setIsLoading(false)  
     }
   } 
 
@@ -56,6 +61,9 @@ const Login = () => {
   });
 
   return (
+    <>
+    {
+      !isLoading ? (
     <div className='flex justify-center items-center content-center h-screen'>
        <div className='w-[40%] h-[100%] flex flex-col justify-center content-center items-center gap-3'>
           <div className='flex flex-col justify-center items-center text-4xl color-primary mb-4'>
@@ -79,7 +87,10 @@ const Login = () => {
                 }}
                 title = "Continue with Google" 
                 icons = {<FcGoogle size= '25px' className='ml-3' />}
-                onClick = {login}
+                onClick = {() => {
+                  setIsLoading(true)
+                  login()
+                }}
            />
 
            <div className='orLabel color-primary'>
@@ -155,6 +166,11 @@ const Login = () => {
            </div>
        </div>  
     </div>
+      ): (
+      <Preloader />
+      )
+        }
+      </>
   )
 }
 
