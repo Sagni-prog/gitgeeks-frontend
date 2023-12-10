@@ -36,7 +36,7 @@ const DM = () => {
       <div className='flex flex-col mt-1 w-[100%] h-[100%] color-secondary'>
       {
            channels.map((data, index) => (
-            <div className='cursor-pointer channel'>
+            <div className='cursor-pointer channel' key={index}>
             <div className='ml-2 flex items-center gap-2 pl-[8%] py-2'>
              
                 {

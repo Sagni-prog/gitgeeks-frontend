@@ -1,31 +1,13 @@
 import {React, useState, useEffect} from 'react'
 import { FaAngleDown } from "react-icons/fa6";
-import storage from '../../utils/storage';
-import getAllChannels from '../../api/channels/getAllChannels';
 import { FaHashtag } from "react-icons/fa6";
-
-
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAllChannels } from '../../features/channel/channelSlice';
 
 const Channels = () => {
-
-  const [channels, setChannels] = useState([]);
-
-  const getChannel = async() => {
-    const id = storage.getUser().id;
-    const response = await getAllChannels(id);
-    if(response.status != 200){
-      console.log("something went wrong");
-    }
-
-
    
-    setChannels(response.data.data)
-  }
- 
-  useEffect(() => {
-    getChannel();
-    console.log(channels);
-  },[])
+  const channels = useSelector(selectAllChannels);
+  
   return (
     <div className='flex flex-col justify-start items-start content-center w-[100%] mt-6 '>
       <div className='flex items-center gap-1 content-center px-[6%]'>
@@ -35,7 +17,7 @@ const Channels = () => {
       <div className='flex flex-col mt-1 w-[100%] h-[100%] color-secondary'>
          {
            channels.map((data, index) => (
-            <div className='cursor-pointer channel'>
+            <div className='cursor-pointer channel' key={index}>
             <div className='ml-2 flex items-center gap-2 pl-[8%] py-2'>
              
                 {
