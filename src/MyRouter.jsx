@@ -12,13 +12,13 @@ import Signup from './components/Layout/auth/Signup';
 import  GitHubCallback  from './api/auth/github/GitHubCallBack';
 import LoginPage from '../.store/LoginpPage';
 import Chat from './components/Layout/Chat';
-import Channel from './Channel';
-import Dm from './Dm';
+import Channel from './components/Channel';
+import Dm from './components/Dm';
 import getAllChannels from './api/channels/getAllChannels'
 import storage from './utils/storage'
 import {  selectChannelState, setChannelState , selectSingleChannel } from './features/channel/channelSlice';
 import { useSelector, useDispatch } from 'react-redux';
-
+import './App.css'
 
 
 const MyRouter = () => {

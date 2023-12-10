@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
-import './App.css'
-import Menu from './components/Layout/Menu';
-import LeftSideBar from './components/Layout/LeftSideBar';
-import RightSideBar from './components/Layout/RightSideBar';
-import Chat from './components/Layout/Chat';
+import Menu from './Layout/Menu';
+import LeftSideBar from './Layout/LeftSideBar';
+import RightSideBar from './Layout/RightSideBar';
+import Chat from './Layout/Chat';
 
 function Dm() {
 

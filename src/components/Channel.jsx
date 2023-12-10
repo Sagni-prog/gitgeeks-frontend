@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import './App.css'
 import Menu from './Layout/Menu';
 import LeftSideBar from './Layout/LeftSideBar';
 import RightSideBar from './Layout/RightSideBar';
