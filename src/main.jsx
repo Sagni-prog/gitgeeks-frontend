@@ -13,6 +13,8 @@ import Signup from './components/Layout/auth/Signup';
 import  GitHubCallback  from './api/auth/github/GitHubCallBack';
 import LoginPage from '../.store/LoginpPage';
 import Chat from './components/Layout/Chat';
+import { Provider } from 'react-redux';
+import store from './app/store';
 
 const router = createBrowserRouter([
   {
@@ -47,6 +49,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <GoogleOAuthProvider clientId="6535988043-u61lvrqa021ufi01vq8lgo2d6pocuj21.apps.googleusercontent.com">
-     <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </GoogleOAuthProvider>
 )
