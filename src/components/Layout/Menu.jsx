@@ -5,9 +5,20 @@ import { BiSolidHomeAlt2 } from "react-icons/bi";
 import { IoMdFolder } from "react-icons/io";
 import { HiSpeakerphone } from "react-icons/hi";
 import { RiSettings5Fill } from "react-icons/ri";
+import { useNavigate } from 'react-router-dom';
 
 
 const Menu = () => {
+
+  const navigate = useNavigate();
+
+  const navigateChannel = () => {
+     navigate('/channels')
+  }
+  const navigateDM = () => {
+     navigate('/dm')
+  }
+
   return (
     <div className='menu-bar rounded-t-md	 flex flex-col justify-center items-center content-center h-screen w-[6%]  fixed'>
     <div className='flex justify-center content-center items-center mt-6 mb-12 cursor-pointer'>
@@ -21,12 +32,12 @@ const Menu = () => {
             <p className='color-secondary text-xs text-center'>Home</p>
         </div>
 
-        <div className='flex flex-col justify-center items-center  w-[100%] cursor-pointer'>
+        <div className='flex flex-col justify-center items-center  w-[100%] cursor-pointer' onClick={navigateDM}>
             <IoIosChatbubbles className = "color-primary text-3xl	mb-1" />
             <p className='color-secondary text-xs'>DM</p>
         </div>
 
-        <div className='flex flex-col justify-center items-center  w-[100%] cursor-pointer'>
+        <div className='flex flex-col justify-center items-center  w-[100%] cursor-pointer' onClick={navigateChannel}>
             <HiSpeakerphone className = "color-primary text-3xl	mb-1" />
             <p className='color-secondary text-xs'>Channel</p>
         </div>
