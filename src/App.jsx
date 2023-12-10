@@ -24,18 +24,13 @@ function App() {
         isLoaded: true
       }));
 
-    console.log(response.data.data[0]);
+    // console.log(response.data.data[0]);
   }
  
   useEffect(() => {
     getChannel();
 
   },[]);
-
-  useEffect(() => {
-    console.log("this is from the glabal state: ", channelState);
-    console.log("this is single channel from the glabal state: ", singleChannel);
-  },[channelState])
 
   return (
     <>

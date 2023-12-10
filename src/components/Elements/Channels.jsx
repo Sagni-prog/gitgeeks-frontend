@@ -2,12 +2,27 @@ import {React, useState, useEffect} from 'react'
 import { FaAngleDown } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllChannels } from '../../features/channel/channelSlice';
+import { selectAllChannels, selectSingleChannel, updateChannel } from '../../features/channel/channelSlice';
 
 const Channels = () => {
    
+  const dispatch = useDispatch();
   const channels = useSelector(selectAllChannels);
+  const singleChannel = useSelector((state) => selectSingleChannel(state,4))
+
+  const changeName = () => {
+     const newChannel = {...singleChannel, channel_name: "this is new name"}
+     dispatch(
+      updateChannel({id: singleChannel.id, channels, newChannel})
+     )
+  }
+
+  useEffect(() => {
+      console.log("this is new global state: ",channels)
+  },[channels])
+
   
+
   return (
     <div className='flex flex-col justify-start items-start content-center w-[100%] mt-6 '>
       <div className='flex items-center gap-1 content-center px-[6%]'>
@@ -33,7 +48,7 @@ const Channels = () => {
                 }
                
               <div>
-                <p>{data.channel_name.substr(0, 19)}</p>
+                <p onClick={changeName}>{data.channel_name.substr(0, 19)}</p>
               </div> 
             </div>  
           </div>
