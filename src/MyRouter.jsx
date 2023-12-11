@@ -19,6 +19,8 @@ import storage from './utils/storage'
 import {  selectChannelState, setChannelState , selectSingleChannel } from './features/channel/channelSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
+import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
+
 
 
 const MyRouter = () => {
@@ -53,6 +55,10 @@ const MyRouter = () => {
     {
       path: 'channels',
       element: <Channel />,
+    },
+    {
+      path: 'load',
+      element: <SkeletonLoader />,
     },
     {
       path: 'dm',
