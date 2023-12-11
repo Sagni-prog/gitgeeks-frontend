@@ -348,6 +348,15 @@ body{
   position: relative;
   overflow: hidden;
 }
+
+.header .channel-img{
+  height: 30px;
+  width: 30px;
+  background: #373e47;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
 .header .details{
   margin-left: 20px;
 }

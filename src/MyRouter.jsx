@@ -35,6 +35,8 @@ const MyRouter = () => {
     if(response.status != 200){
       console.log("something went wrong");
     }
+
+   
     dispatch(
       setChannelState({
         data: response.data.data,
@@ -44,6 +46,7 @@ const MyRouter = () => {
  
   useEffect(() => {
     getChannel();
+    console.log("data:", channelState)
 
   },[]);
 

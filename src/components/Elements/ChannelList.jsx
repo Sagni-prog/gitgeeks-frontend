@@ -2,10 +2,8 @@ import {React, useState, useEffect} from 'react'
 import { FaAngleDown } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllChannels, selectSingleChannel, updateChannel } from '../../features/channel/channelSlice';
-import Skeleton from 'react-loading-skeleton'
-import 'react-loading-skeleton/dist/skeleton.css'
-
+import { selectAllChannels, selectSingleChannel,selectChannelState, updateChannel } from '../../features/channel/channelSlice';
+import ChannelLoader from './Loaders/ChannelLoader';
 
 const ChannelList = (props) => {
 
@@ -13,6 +11,7 @@ const ChannelList = (props) => {
    
   const dispatch = useDispatch();
   const channels = useSelector(selectAllChannels);
+  const channelState = useSelector(selectChannelState)
   // const singleChannel = useSelector((state) => selectSingleChannel(state,selectedId))
 
   const changeName = (channel) => {
@@ -26,6 +25,10 @@ const ChannelList = (props) => {
     console.log("this is the selected channel: ",channel)
   }
 
+  useEffect(() => {
+     console.log("from the channel list:",channelState)
+  },[])
+
 
   return (
     <div className='flex flex-col justify-start items-start content-center w-[100%] mt-6 '>
@@ -33,13 +36,14 @@ const ChannelList = (props) => {
         <FaAngleDown className='text-sm' />
         <h1 className=''>CHANNELS</h1>
       </div>
+     
       <div className='flex flex-col mt-1 w-[100%] h-[100%] color-secondary'>
-         {
+        {
+          channelState.isLoaded == true ? (
+         
            channels.map((data, index) => (
             <div className='cursor-pointer channel' key={index} >
                <div className='ml-2 flex items-center gap-2 pl-[8%] py-2'>
-
-               <Skeleton /> 
              
                 {
                   data.photo !== null ?  (
@@ -54,12 +58,16 @@ const ChannelList = (props) => {
                 }
                
               <div>
-                <p onClick={() => changeName(data)}>{ data.channel_name }</p>
+                <p onClick={() => changeName(data)}>{data.channel_name.substr(0, 19)}</p>
               </div> 
             </div>  
           </div>
            ))
-         }
+         ):
+         (
+          <ChannelLoader />
+         )
+        }
         </div>
     </div>
   )

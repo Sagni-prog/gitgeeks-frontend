@@ -16,10 +16,6 @@ const SkeletonLoader = () => {
       <div className="line line-2"></div>
       <div className="line line-3"></div>
     </div>
-    {/* <div className="btns">
-      <div className="btn btn-1"></div>
-      <div className="btn btn-2"></div>
-    </div>  */}
   </div>
  </div>
   )
