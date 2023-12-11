@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useReducer } from 'react'
 import './index.css'
 import {
   createBrowserRouter,
@@ -20,15 +20,21 @@ import {  selectChannelState, setChannelState , selectSingleChannel } from './fe
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
+import { setCookie, getCookie } from './utils/cookieStorage';
+import toggleReducer from './app/reducers/toggleReducer';
+import toggleContext from './contexts/toggleContext';
 
 
 
 const MyRouter = () => {
 
+
+  
+  const [state,toggleDispatch] = useReducer(toggleReducer,{toggle: getCookie("isOpen")});
+
   const dispatch = useDispatch();
   const channelState = useSelector(selectChannelState);
   const singleChannel = useSelector((state) => selectSingleChannel(state,1))
-
   const getChannel = async() => {
     const id = storage.getUser().id;
     const response = await getAllChannels(id);
@@ -43,12 +49,22 @@ const MyRouter = () => {
         isLoaded: true
       }));
   }
+
+
  
   useEffect(() => {
+    // dispatch(
+    //   setToggle({
+    //     isOpen: getCookie("isOpen")
+    //   }))
+
     getChannel();
     console.log("data:", channelState)
+    const currentState =  getCookie("isOpen");
+    toggleDispatch({type: 'GET_TOGGLE',currentState})
 
   },[]);
+
 
   const router = createBrowserRouter([
     {
@@ -95,7 +111,9 @@ const MyRouter = () => {
 
   return (
     <GoogleOAuthProvider clientId="6535988043-u61lvrqa021ufi01vq8lgo2d6pocuj21.apps.googleusercontent.com">
+      <toggleContext.Provider  value={{state,toggleDispatch}}>
         <RouterProvider router={router} />
+      </toggleContext.Provider>  
     </GoogleOAuthProvider>
   );
 };

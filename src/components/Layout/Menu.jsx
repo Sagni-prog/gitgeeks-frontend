@@ -1,4 +1,4 @@
-import React from 'react'
+import{ React, useEffect, useState,useContext  }from 'react'
 import { MdDeviceHub } from "react-icons/md";
 import { IoIosChatbubbles } from "react-icons/io";
 import { BiSolidHomeAlt2 } from "react-icons/bi";
@@ -6,9 +6,31 @@ import { IoMdFolder } from "react-icons/io";
 import { HiSpeakerphone } from "react-icons/hi";
 import { RiSettings5Fill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
+import { setCookie, getCookie } from '../../utils/cookieStorage';
+import { useSelector, useDispatch } from 'react-redux';
+import { setToggle, selectToggle } from '../../features/toggle/toggleSlice';
+import toggleContext from '../../contexts/toggleContext';
 
 
 const Menu = () => {
+
+  const {state,toggleDispatch} = useContext(toggleContext)
+
+  
+
+  const dispatch = useDispatch();
+  const toggleState = useSelector(selectToggle);
+
+  const handleToggle = () => {
+
+    toggleDispatch({type: 'OPEN_TOGGLE',state})
+     setCookie("isOpen",state.toggle, 12)
+  }
+
+  useEffect(() => {
+    console.log("this is from state context:", state)
+  },[state])
+
 
   const navigate = useNavigate();
 
@@ -52,8 +74,8 @@ const Menu = () => {
             <p className='color-secondary text-xs'>Settings</p>
         </div>
       </div>  
-
-      <div className='bg-secondary mb-6  bottom-profile cursor-pointer'>
+ 
+      <div className='bg-secondary mb-6  bottom-profile cursor-pointer' onClick={handleToggle}>
         <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border' />
       </div>  
     </div>

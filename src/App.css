@@ -37,6 +37,13 @@ body{
   transition: all 0.5s;
 }
 
+.close{
+  padding: 5px;
+}
+.close:hover{
+  background-color: #414c57;
+  border-radius: 4px;
+}
 .input-field:focus{
   border: #adbac7 solid 1px;
 }

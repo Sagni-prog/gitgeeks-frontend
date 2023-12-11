@@ -1,14 +1,35 @@
-import React from 'react'
+import {React , useEffect, useState} from 'react'
 import { FaTimes } from "react-icons/fa";
 import Button from '../Elements/Buttons/Button';
 import { LuClock3 } from "react-icons/lu";
 import minions from  '../../assets/minion.jpg'
 import { FiMessageCircle } from "react-icons/fi";
+import { setCookie, getCookie } from '../../utils/cookieStorage';
+import { useSelector, useDispatch } from 'react-redux';
+import { setToggle, selectToggle } from '../../features/toggle/toggleSlice';
 
 
 
 
 const RightSideBar = () => {
+ 
+  const toggleState = useSelector(selectToggle);
+  const dispatch = useDispatch()
+
+
+  const handleToggle = () => {
+   
+    dispatch(
+      setToggle({
+       isOpen: false
+    }))
+    setCookie("isOpen", false, 12);
+  }
+
+  useEffect(() => {
+    console.log("from the right side bar:", toggleState)
+  },[toggleState])
+  
   return (
     <div className='right-side-bar fixed h-screen w-[25%] ml-[75%] bg-secondry'>
         <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'>
@@ -16,7 +37,7 @@ const RightSideBar = () => {
             <div className='cursor-pointer'>
               <p>Profile</p>
             </div>
-            <div className='cursor-pointer'>
+            <div className='cursor-pointer close' onClick={handleToggle}>
               <FaTimes />
             </div>
           </div>
