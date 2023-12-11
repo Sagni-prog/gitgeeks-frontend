@@ -2,7 +2,6 @@ import React from 'react'
 import SearchBar from '../Elements/SearchBar'
 import ChannelList from '../Elements/ChannelList'
 import DMList from '../Elements/DMList';
-import ChannelLoader from '../Elements/Loaders/ChannelLoader';
 
 const LeftSideBar = (props) => {
   return (
@@ -20,7 +19,6 @@ const LeftSideBar = (props) => {
        ): (
         <div className='flex flex-col items-center w-[100%] gap-6'>
         <ChannelList />
-        {/* <ChannelLoader /> */}
         <DMList />
       </div>
        )

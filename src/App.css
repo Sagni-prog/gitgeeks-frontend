@@ -106,6 +106,30 @@ body{
   height: 25px;
 }
 
+.timeline{
+  position: relative;
+  /* margin: 20px 0; */
+}
+.timeline::before{
+  position: absolute;
+  content: "";
+  top: 50%;
+  left: -1%;
+  width: 41%;
+  height: 1px;
+  background-color: #768390;
+}
+.timeline::after{
+  position: absolute;
+  content: "";
+  top: 50%;
+  right: -1%;
+  width: 41%;
+  height: 1%;
+  background-color: #768390;
+
+}
+
 .img-container{
   height: 300px;
   width: 300px; 
@@ -326,8 +350,8 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 30px;
-
+  /* margin-bottom: 30px; */
+   margin-top: 30px;
  }
 
  .card{
@@ -339,10 +363,11 @@ body{
 .card .header{
   display: flex;
   align-items: center;
+ 
 }
 .header .img{
   height: 50px;
-  width: 50px;
+  min-width: 50px;
   background: #373e47;
   border-radius: 50%;
   position: relative;
@@ -361,12 +386,14 @@ body{
   margin-left: 20px;
 }
 .details{
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 .details span{
   display: block;
+  width: 100%;
   background: #373e47;
   border-radius: 10px;
   overflow: hidden;
@@ -374,14 +401,17 @@ body{
 }
 .details .name{
   height: 14px;
-  width: 150px;
+  width: 25%;
 }
 .details .about{
   height: 10px;
-  width: 90px;
+  width: 20%;
 }
 .card .description{
   /* margin: 20px 0; */
+}
+.description{
+ 
 }
 .description .line{
   background: #373e47;

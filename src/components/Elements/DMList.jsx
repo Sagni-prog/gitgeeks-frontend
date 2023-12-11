@@ -2,7 +2,7 @@ import {React, useState, useEffect} from 'react'
 import { FaAngleDown } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllChannels, selectSingleChannel,selectChannelState, updateChannel } from '../../features/channel/channelSlice';
+import { selectAllChannels,selectChannelState, updateChannel } from '../../features/channel/channelSlice';
 import ChannelLoader from './Loaders/ChannelLoader';
   
  

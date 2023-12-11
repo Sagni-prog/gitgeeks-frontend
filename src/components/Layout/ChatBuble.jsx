@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import MessageTimeLine from '../Elements/MessageTimeLine';
 
 
 
 const ChatBuble = () => {
   return (
     <div className='w-[100%] bubble-container flex flex-col  gap-3'>
+         <MessageTimeLine date = "December 10, 2023" />
         <div className='bubbles flex gap-[2%] px-6 py-3 cursor-pointer'>
             <div className='w-[10%] bg-secondary mb-6 bubble-img cursor-pointer'>
                 <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border img' />
@@ -28,6 +30,8 @@ const ChatBuble = () => {
             </div>
 
         </div>
+      
+        <MessageTimeLine date = "December 11, 2023" />
 
         <div className='bubbles flex gap-[2%] px-6 py-3 cursor-pointer'>
             <div className='w-[10%] bg-secondary mb-6 bubble-img cursor-pointer'>
@@ -60,6 +64,7 @@ How does everyone's schedule look like this week or next week? Please list your 
             </div>
 
         </div>
+        <MessageTimeLine date = "December 12, 2023" />
 
         <div className='bubbles flex gap-[2%] px-6 py-3 cursor-pointer '>
             <div className='w-[10%] bg-secondary mb-6 bubble-img cursor-pointer'>
