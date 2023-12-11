@@ -5,8 +5,8 @@ const SkeletonLoader = () => {
     <div className='skeloton'>
       <div className="card">
     <div className="header">
-      <div className="img"></div>details
-      <div className="">
+      <div className="img"></div>
+      <div className="details">
         <span className="name"></span>
         <span className="about"></span>
       </div>
@@ -21,7 +21,7 @@ const SkeletonLoader = () => {
       <div className="btn btn-2"></div>
     </div>  */}
   </div>
-    </div>
+ </div>
   )
 }
 

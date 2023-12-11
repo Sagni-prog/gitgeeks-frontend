@@ -1,6 +1,7 @@
 import React from 'react'
 import TextEditor from '../Elements/TextEditor'
 import ChatBuble from './ChatBuble';
+import ChatSkeleton from '../Elements/Loaders/ChatSkeleton';
 
 
 
@@ -17,7 +18,8 @@ const Chat = () => {
       <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'>
       </div>
       <div className='max-h-[64%] min-h[20%] w-[100%] scrollable mt-[8%] '>
-        <ChatBuble />
+        {/* <ChatBuble /> */}
+        <ChatSkeleton />
       </div>
       {/* <div className=' min-h-[40%] grow shrink w-[100%]'>  */}
         <TextEditor />
