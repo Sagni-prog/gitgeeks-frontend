@@ -58,22 +58,22 @@ const MyRouter = () => {
         isLoaded: true,
       }))
 
-     getNextMessages(response.data.next_page_url)
+    //  getNextMessages(response.data.next_page_url)
     //  setNewUrl(response.data.next_page_url)
   }
 
-  const getNextMessages = async(url) => {
+  // const getNextMessages = async(url) => {
 
-    console.log("url",url)
+  //   console.log("url",url)
 
-    const response = await getNextPageMessages(url);
-    const newMessages = Object.values(response.data.data);
-    dispatch(
-      addMessages({
-        messages: newMessages,
-        nexLink: response.data.next_page_url,
-      }))
-  }
+  //   const response = await getNextPageMessages(url);
+  //   const newMessages = Object.values(response.data.data);
+  //   dispatch(
+  //     addMessages({
+  //       messages: newMessages,
+  //       nexLink: response.data.next_page_url,
+  //     }))
+  // }
  
   useEffect(() => {
     getChannel();
@@ -81,9 +81,9 @@ const MyRouter = () => {
 
   },[]);
 
-  useEffect(() => {
-     console.log("this is messages from global state:", messages.messages)
-  },[messages])
+  // useEffect(() => {
+  //    console.log("this is messages from global state:", messages.messages)
+  // },[messages])
 
 
   const router = createBrowserRouter([

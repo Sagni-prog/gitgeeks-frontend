@@ -20,11 +20,17 @@ const messageSlice = createSlice({
                 nexLink: action.payload.nexLink,
                 isLoaded: true
             }
-        }
+        },
+        setLoading: (state, action) => {
+            return {
+                ...state,
+                isLoaded: action.payload.isLoaded
+            }
+        },
     }
 });
 
-export const { setMessages, addMessages } = messageSlice.actions;
+export const { setMessages, addMessages, setLoading } = messageSlice.actions;
 export const selectMessages = (state) => state.message;
 export const selectLoadingState = (state) => state.message.isLoaded;
 export const selectNextLink = (state) => state.message.nexLink;

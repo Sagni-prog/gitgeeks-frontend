@@ -1,13 +1,17 @@
-import React from 'react';
+import {React, useEffect} from 'react';
 import MessageTimeLine from '../Elements/MessageTimeLine';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectMessages } from '../../features/message/messageSlice';
-
+import { selectMessages, selectLoadingState } from '../../features/message/messageSlice';
+import ChatSkeleton from '../Elements/Loaders/ChatSkeleton';
 
 
 const ChatBuble = () => {
 
     const messages = useSelector(selectMessages);
+    const isLoaded = useSelector(selectLoadingState);
+
+    
+
   return (
     <div className='w-[100%] bubble-container flex flex-col  gap-3'>
          <MessageTimeLine date = "December 10, 2023" />
@@ -37,6 +41,10 @@ const ChatBuble = () => {
         </div>
         </>
             ))
+         }
+
+         {
+            !isLoaded && <ChatSkeleton />
          }
         {/* <div className='bubbles flex gap-[2%] px-6 py-3 cursor-pointer'>
             <div className='w-[10%] bg-secondary mb-6 bubble-img cursor-pointer'>
