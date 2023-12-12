@@ -17,6 +17,10 @@ body{
   overflow-x: hidden;
 }
 
+
+.none{
+  display: none;
+}
 .btn{
   
   /* padding: 6px 36px; */

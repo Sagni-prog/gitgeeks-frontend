@@ -22,12 +22,9 @@ const ChannelList = (props) => {
   }
 
   const handleChannelSelect = (channel) => {
-    console.log("this is the selected channel: ",channel)
+   
   }
 
-  useEffect(() => {
-     console.log("from the channel list:",channelState)
-  },[])
 
 
   return (

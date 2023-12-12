@@ -8,29 +8,14 @@ import { RiSettings5Fill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
 import { setCookie, getCookie } from '../../utils/cookieStorage';
 import { useSelector, useDispatch } from 'react-redux';
-import { setToggle, selectToggle } from '../../features/toggle/toggleSlice';
-import toggleContext from '../../contexts/toggleContext';
 
 
 const Menu = () => {
 
-  const {state,toggleDispatch} = useContext(toggleContext)
-
-  
-
   const dispatch = useDispatch();
-  const toggleState = useSelector(selectToggle);
 
   const handleToggle = () => {
-
-    toggleDispatch({type: 'OPEN_TOGGLE',state})
-     setCookie("isOpen",state.toggle, 12)
   }
-
-  useEffect(() => {
-    console.log("this is from state context:", state)
-  },[state])
-
 
   const navigate = useNavigate();
 
