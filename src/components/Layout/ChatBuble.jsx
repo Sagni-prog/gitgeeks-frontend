@@ -1,13 +1,44 @@
 import React from 'react';
 import MessageTimeLine from '../Elements/MessageTimeLine';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectMessages } from '../../features/message/messageSlice';
 
 
 
 const ChatBuble = () => {
+
+    const messages = useSelector(selectMessages);
   return (
     <div className='w-[100%] bubble-container flex flex-col  gap-3'>
          <MessageTimeLine date = "December 10, 2023" />
-        <div className='bubbles flex gap-[2%] px-6 py-3 cursor-pointer'>
+         {
+            messages.messages.map((data) => (
+                <>
+                <div className='bubbles flex gap-[2%] px-6 py-3 cursor-pointer'>
+            <div className='w-[10%] bg-secondary mb-6 bubble-img cursor-pointer'>
+                <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border img' />
+            </div>  
+            
+            <div className='w-[91%] flex flex-col text-left'>
+               <div className='flex'>
+                <div className='user-name mr-1'>{data.user.name}</div>
+                <div className='date flex items-center color-secondary text-xs gap-1'>
+                    <p>11/23/2023</p>
+                    <p>9:45</p>
+                    <p>PM</p>
+                </div>
+               </div>
+
+               <div className='message-content'>
+                <p>{data.message_body}</p>
+               </div>
+            </div>
+
+        </div>
+        </>
+            ))
+         }
+        {/* <div className='bubbles flex gap-[2%] px-6 py-3 cursor-pointer'>
             <div className='w-[10%] bg-secondary mb-6 bubble-img cursor-pointer'>
                 <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border img' />
             </div>  
@@ -89,7 +120,7 @@ How does everyone's schedule look like this week or next week? Please list your 
                </div>
             </div>
 
-        </div>
+        </div> */}
     </div>
   )
 }

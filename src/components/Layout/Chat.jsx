@@ -2,14 +2,19 @@ import React from 'react'
 import TextEditor from '../Elements/TextEditor'
 import ChatBuble from './ChatBuble';
 import ChatSkeleton from '../Elements/Loaders/ChatSkeleton';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { selectLoadingState } from '../../features/message/messageSlice';
 
 
 
 const Chat = () => {
 
+  const isLoaded = useSelector(selectLoadingState);
+  
   const is = false;
+
   return (
+  
     <div
        style={{
           width: is ? "73%": "48%"
@@ -18,7 +23,10 @@ const Chat = () => {
       <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'>
       </div>
       <div className='max-h-[64%] min-h[20%] w-[100%] scrollable mt-[8%] '>
-        <ChatBuble />
+        {
+          isLoaded ?  <ChatBuble /> : <ChatSkeleton />
+        }
+        {/* <ChatBuble /> */}
         {/* <ChatSkeleton /> */}
       </div>
       {/* <div className=' min-h-[40%] grow shrink w-[100%]'>  */}

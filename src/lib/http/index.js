@@ -19,3 +19,14 @@ export const http = axios.create({
         "Content-Type": 'applcation/json'
     }
 });
+
+
+export const getNextRequst = (url) => {
+   return axios.get(url,{
+    headers: {
+        "Authorization": `Bearer ${token}`,
+        "Accept": 'Applcation/json',
+        "Content-Type": 'applcation/json'
+    }
+   })
+}

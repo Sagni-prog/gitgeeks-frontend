@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './index.css'
 import {
   createBrowserRouter,
@@ -20,13 +20,21 @@ import {  selectChannelState, setChannelState , selectSingleChannel } from './fe
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
+import { getChannelMessages,getNextPageMessages } from './api/messages/getMessages';
+import { setMessages, selectMessages, selectNextLink, addMessages,  } from './features/message/messageSlice';
 
 
 const MyRouter = () => {
 
   const dispatch = useDispatch();
   const channelState = useSelector(selectChannelState);
-  const singleChannel = useSelector((state) => selectSingleChannel(state,1))
+  const singleChannel = useSelector((state) => selectSingleChannel(state,1));
+  const messages = useSelector(selectMessages);
+  const nextLinkState = useSelector(selectNextLink)
+
+  const [newUrl, setNewUrl] = useState('');
+
+
   const getChannel = async() => {
     const id = storage.getUser().id;
     const response = await getAllChannels(id);
@@ -34,17 +42,48 @@ const MyRouter = () => {
       console.log("something went wrong");
     }
 
-   
     dispatch(
       setChannelState({
         data: response.data.data,
         isLoaded: true
       }));
   }
+
+  const getMessage = async() => {
+     const response = await getChannelMessages(9);
+     dispatch(
+      setMessages({
+        messages: response.data.data,
+        nexLink: response.data.next_page_url,
+        isLoaded: true,
+      }))
+
+     getNextMessages(response.data.next_page_url)
+    //  setNewUrl(response.data.next_page_url)
+  }
+
+  const getNextMessages = async(url) => {
+
+    console.log("url",url)
+
+    const response = await getNextPageMessages(url);
+    const newMessages = Object.values(response.data.data);
+    dispatch(
+      addMessages({
+        messages: newMessages,
+        nexLink: response.data.next_page_url,
+      }))
+  }
  
   useEffect(() => {
     getChannel();
+    getMessage();
+
   },[]);
+
+  useEffect(() => {
+     console.log("this is messages from global state:", messages.messages)
+  },[messages])
 
 
   const router = createBrowserRouter([
