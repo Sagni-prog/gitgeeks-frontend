@@ -394,17 +394,17 @@ body{
   overflow: hidden;
 }
 .header .details{
-  margin-left: 20px;
+  margin-left: 10px;
 }
 .details{
-  width: 100%;
+  width: 75%;
   display: flex;
   align-items: center;
   gap: 4px;
 }
 .details span{
   display: block;
-  width: 100%;
+  /* width: 100%; */
   background: #373e47;
   border-radius: 10px;
   overflow: hidden;
@@ -413,6 +413,10 @@ body{
 .details .name{
   height: 14px;
   width: 25%;
+}
+.details .channel-name{
+  height: 14px;
+  width: 80%;
 }
 .details .about{
   height: 10px;

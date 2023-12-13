@@ -53,8 +53,7 @@ const Chat = () => {
       addMessages({
         messages: newMessages,
         nexLink: response.data.next_page_url,
-      }))
-      
+      })) 
   }
   
 
@@ -66,7 +65,7 @@ const Chat = () => {
     if (scrollTop <= scrollHeight / 3 && nextLink && !loadingNextMessage ) {
       setLoadingNextMessage(true);
       getNextMessages(nextLink,scrollableElement,scrollHeight);
-      scrollableElement.scrollTop = scrollableElement.scrollHeight / 2;
+      scrollableElement.scrollTop = scrollableElement.scrollHeight;
       console.log("now is the time to get old messages")
     }
   
@@ -94,11 +93,6 @@ const Chat = () => {
       scrollableElement.removeEventListener('scroll', handleScroll);
     };
   }, [handleScroll]);
-
-
-  useEffect(() => {
-    console.log("from buuble:", messages.messages)
-  },[messages])
 
   return (
   
