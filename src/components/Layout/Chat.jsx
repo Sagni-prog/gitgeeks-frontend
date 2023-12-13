@@ -9,7 +9,8 @@ import {
      selectNextLink, 
      setLoading, 
      selectLoadingState,
-     selectInitialLoad 
+     selectInitialLoad,
+     selectIsAdded
   } from '../../features/message/messageSlice';
 
 const Chat = () => {
@@ -19,10 +20,21 @@ const Chat = () => {
   const messages = useSelector(selectMessages)
   const initialLoad = useSelector(selectInitialLoad);
   const loadingState = useSelector(selectLoadingState)
+  const newAdded = useSelector(selectIsAdded)
   const dispatch = useDispatch();
 
   const [loadingNextMessage, setLoadingNextMessage] = useState(false);
   const chatContainerRef = useRef(null);
+
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return (...args) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func(...args);
+      }, delay);
+    };
+  };
 
   const getNextMessages = async(url) => {
     if(!loadingNextMessage){
@@ -35,28 +47,32 @@ const Chat = () => {
         }))
       }
     const response = await getNextPageMessages(url);
+   
     const newMessages = Object.values(response.data.data);
     dispatch(
       addMessages({
         messages: newMessages,
         nexLink: response.data.next_page_url,
       }))
-      setLoadingNextMessage(false);
+      
   }
   
 
   const handleScroll = () => {
 
-
     const scrollableElement = chatContainerRef.current;
     const { scrollTop, clientHeight, scrollHeight } = scrollableElement;
 
-    if (scrollTop <= 50 && nextLink && !loadingNextMessage ) {
-      getNextMessages(nextLink);
+    if (scrollTop <= scrollHeight / 3 && nextLink && !loadingNextMessage ) {
+      setLoadingNextMessage(true);
+      getNextMessages(nextLink,scrollableElement,scrollHeight);
+      scrollableElement.scrollTop = scrollableElement.scrollHeight / 2;
       console.log("now is the time to get old messages")
     }
   
   };
+
+  const debouncedHandleScroll = debounce(handleScroll, 200);
 
   useEffect(() => {
     const scrollableElement = chatContainerRef.current;
@@ -64,9 +80,15 @@ const Chat = () => {
   }, [initialLoad]);
 
   useEffect(() => {
+    const scrollableElement = chatContainerRef.current;
+    scrollableElement.scrollTop = scrollableElement.scrollHeight/2;
+  }, [newAdded]);
+
+
+  useEffect(() => {
 
     const scrollableElement = chatContainerRef.current;
-    scrollableElement.addEventListener('scroll', handleScroll);
+    scrollableElement.addEventListener('scroll', debouncedHandleScroll);
 
     return () => {
       scrollableElement.removeEventListener('scroll', handleScroll);

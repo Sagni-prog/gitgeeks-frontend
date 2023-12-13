@@ -54,7 +54,7 @@ const MyRouter = () => {
     //  console.log("new message:",response.data.data)
      dispatch(
       setMessages({
-        messages: response.data.data,
+        messages: response.data.data.reverse(),
         nexLink: response.data.next_page_url,
         isLoaded: true,
         initialLoad: true

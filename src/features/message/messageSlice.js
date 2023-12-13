@@ -5,6 +5,7 @@ const initialState = {
   nexLink: '',
   isLoaded: false,
   initialLoad: false,
+  isAdded: false,
 }
 
 const messageSlice = createSlice({
@@ -19,7 +20,8 @@ const messageSlice = createSlice({
                 ...state,
                 messages: [...action.payload.messages.reverse(), ...state.messages],
                 nexLink: action.payload.nexLink,
-                isLoaded: true
+                isLoaded: true,
+                isAdded: true
             }
         },
         setLoading: (state, action) => {
@@ -36,4 +38,5 @@ export const selectMessages = (state) => state.message;
 export const selectLoadingState = (state) => state.message.isLoaded;
 export const selectNextLink = (state) => state.message.nexLink;
 export const selectInitialLoad = (state) => state.message.initialLoad;
+export const selectIsAdded = (state) => state.message.isAdded
 export const messageReducer = messageSlice.reducer;
