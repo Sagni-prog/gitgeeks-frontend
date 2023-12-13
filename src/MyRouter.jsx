@@ -51,6 +51,7 @@ const MyRouter = () => {
 
   const getMessage = async() => {
      const response = await getChannelMessages(9);
+    //  console.log("new message:",response.data.data)
      dispatch(
       setMessages({
         messages: response.data.data,
@@ -81,9 +82,9 @@ const MyRouter = () => {
 
   },[]);
 
-  // useEffect(() => {
-  //    console.log("this is messages from global state:", messages.messages)
-  // },[messages])
+  useEffect(() => {
+     console.log("this is messages from global state:", messages)
+  },[messages])
 
 
   const router = createBrowserRouter([

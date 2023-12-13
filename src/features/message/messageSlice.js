@@ -16,7 +16,7 @@ const messageSlice = createSlice({
         addMessages: (state, action) => {
             return {
                 ...state,
-                messages: [...state.messages, ...action.payload.messages],
+                messages: [...action.payload.messages.reverse(), ...state.messages],
                 nexLink: action.payload.nexLink,
                 isLoaded: true
             }
