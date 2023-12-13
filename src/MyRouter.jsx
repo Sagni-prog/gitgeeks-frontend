@@ -32,9 +32,6 @@ const MyRouter = () => {
   const messages = useSelector(selectMessages);
   const nextLinkState = useSelector(selectNextLink)
 
-  const [newUrl, setNewUrl] = useState('');
-
-
   const getChannel = async() => {
     const id = storage.getUser().id;
     const response = await getAllChannels(id);
@@ -49,9 +46,8 @@ const MyRouter = () => {
       }));
   }
 
-  const getMessage = async() => {
-     const response = await getChannelMessages(9);
-    //  console.log("new message:",response.data.data)
+  const getMessage = async(channelId) => {
+     const response = await getChannelMessages(channelId);
      dispatch(
       setMessages({
         messages: response.data.data.reverse(),
@@ -59,33 +55,19 @@ const MyRouter = () => {
         isLoaded: true,
         initialLoad: true
       }))
-
-    //  getNextMessages(response.data.next_page_url)
-    //  setNewUrl(response.data.next_page_url)
   }
 
-  // const getNextMessages = async(url) => {
 
-  //   console.log("url",url)
-
-  //   const response = await getNextPageMessages(url);
-  //   const newMessages = Object.values(response.data.data);
-  //   dispatch(
-  //     addMessages({
-  //       messages: newMessages,
-  //       nexLink: response.data.next_page_url,
-  //     }))
-  // }
- 
   useEffect(() => {
     getChannel();
-    getMessage();
+    getMessage(singleChannel);
 
   },[]);
 
   useEffect(() => {
-     console.log("this is messages from global state:", messages)
-  },[messages])
+    getMessage(singleChannel);
+     console.log("this is single channel:", singleChannel)
+  },[singleChannel])
 
 
   const router = createBrowserRouter([
@@ -94,7 +76,7 @@ const MyRouter = () => {
       element: <App />,
     },
     {
-      path: 'channels',
+      path: 'channels/:channelId',
       element: <Channel />,
     },
     {

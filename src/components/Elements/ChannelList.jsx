@@ -2,12 +2,20 @@ import {React, useState, useEffect} from 'react'
 import { FaAngleDown } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectAllChannels, selectSingleChannel,selectChannelState, updateChannel } from '../../features/channel/channelSlice';
+import { 
+  selectAllChannels, 
+  selectSingleChannel,
+  selectChannelState,
+   updateChannel,
+   setSingleChannel
+   } from '../../features/channel/channelSlice';
 import ChannelLoader from './Loaders/ChannelLoader';
+import { Link, useNavigate } from 'react-router-dom';
 
 const ChannelList = (props) => {
 
   const [selectedId, setSelectedId] = useState();
+  const navigate = useNavigate();
    
   const dispatch = useDispatch();
   const channels = useSelector(selectAllChannels);
@@ -15,10 +23,17 @@ const ChannelList = (props) => {
   // const singleChannel = useSelector((state) => selectSingleChannel(state,selectedId))
 
   const changeName = (channel) => {
-     const newChannel = {...channel, channel_name: "this is new name"}
-     dispatch(
-      updateChannel({id: channel.id, channels, newChannel})
-     )
+
+    dispatch(
+      setSingleChannel({
+        id: channel.id
+      }))
+
+    navigate(`/channels/${channel.id}`);
+    //  const newChannel = {...channel, channel_name: "this is new name"}
+    //  dispatch(
+    //   updateChannel({id: channel.id, channels, newChannel})
+    //  )
   }
 
   const handleChannelSelect = (channel) => {
@@ -55,7 +70,7 @@ const ChannelList = (props) => {
                 }
                
               <div>
-                <p onClick={() => changeName(data)}>{data.channel_name.substr(0, 19)}</p>
+                <Link onClick={() => changeName(data)}>{data.channel_name.substr(0, 19)}</Link>
               </div> 
             </div>  
           </div>

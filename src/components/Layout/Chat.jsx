@@ -10,7 +10,8 @@ import {
      setLoading, 
      selectLoadingState,
      selectInitialLoad,
-     selectIsAdded
+     selectIsAdded, 
+     setMessages
   } from '../../features/message/messageSlice';
 
 const Chat = () => {
@@ -55,7 +56,6 @@ const Chat = () => {
         nexLink: response.data.next_page_url,
       })) 
   }
-  
 
   const handleScroll = () => {
 
