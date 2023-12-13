@@ -57,6 +57,7 @@ const MyRouter = () => {
         messages: response.data.data,
         nexLink: response.data.next_page_url,
         isLoaded: true,
+        initialLoad: true
       }))
 
     //  getNextMessages(response.data.next_page_url)

@@ -8,7 +8,8 @@ import {
      selectMessages,
      selectNextLink, 
      setLoading, 
-     selectLoadingState 
+     selectLoadingState,
+     selectInitialLoad 
   } from '../../features/message/messageSlice';
 
 const Chat = () => {
@@ -16,6 +17,7 @@ const Chat = () => {
   const is = false;
   const nextLink = useSelector(selectNextLink)
   const messages = useSelector(selectMessages)
+  const initialLoad = useSelector(selectInitialLoad);
   const loadingState = useSelector(selectLoadingState)
   const dispatch = useDispatch();
 
@@ -54,18 +56,12 @@ const Chat = () => {
       console.log("now is the time to get old messages")
     }
   
-    // const scrollableElement = document.getElementById('scrollable');
-    // const { scrollTop, clientHeight, scrollHeight } = scrollableElement;
-
-    // if (scrollTop + clientHeight >= scrollHeight - 100) {
-    //    getNextMessages(nextLink);
-    // }
   };
 
   useEffect(() => {
     const scrollableElement = chatContainerRef.current;
     scrollableElement.scrollTop = scrollableElement.scrollHeight;
-  }, [messages]);
+  }, [initialLoad]);
 
   useEffect(() => {
 
@@ -75,12 +71,6 @@ const Chat = () => {
     return () => {
       scrollableElement.removeEventListener('scroll', handleScroll);
     };
-    // const scrollableElement = document.getElementById('scrollable');
-    // scrollableElement.addEventListener('scroll', handleScroll);
-
-    // return () => {
-    //   scrollableElement.removeEventListener('scroll', handleScroll);
-    // };
   }, [handleScroll]);
 
 
