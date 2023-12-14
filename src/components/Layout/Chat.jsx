@@ -11,7 +11,7 @@ import {
      selectLoadingState,
      selectInitialLoad,
      selectIsAdded, 
-     setMessages
+
   } from '../../features/message/messageSlice';
 
 const Chat = () => {
@@ -64,9 +64,8 @@ const Chat = () => {
 
     if (scrollTop <= scrollHeight / 3 && nextLink && !loadingNextMessage ) {
       setLoadingNextMessage(true);
-      getNextMessages(nextLink,scrollableElement,scrollHeight);
+      getNextMessages(nextLink);
       scrollableElement.scrollTop = scrollableElement.scrollHeight;
-      console.log("now is the time to get old messages")
     }
   
   };

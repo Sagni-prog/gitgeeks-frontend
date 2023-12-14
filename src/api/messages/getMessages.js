@@ -1,7 +1,8 @@
 import { httpWithToken, getNextRequst } from "../../lib/http";
 
-export const getChannelMessages = (channel_id) => {
-    return httpWithToken(`messages/channel/${channel_id}`);
+export const getChannelMessages = (channelId) => {
+
+    return httpWithToken(`messages/channel/${channelId}`);
 }
 
 export const getNextPageMessages = (url) => {

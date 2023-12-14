@@ -46,8 +46,8 @@ const MyRouter = () => {
       }));
   }
 
-  const getMessage = async(channelId) => {
-     const response = await getChannelMessages(channelId);
+  const getMessage = async() => {
+     const response = await getChannelMessages(9);
      dispatch(
       setMessages({
         messages: response.data.data.reverse(),
@@ -60,14 +60,13 @@ const MyRouter = () => {
 
   useEffect(() => {
     getChannel();
-    getMessage(singleChannel);
+    getMessage();
 
   },[]);
 
   useEffect(() => {
-    getMessage(singleChannel);
-     console.log("this is single channel:", singleChannel)
-  },[singleChannel])
+     console.log("this is messages from global state:", messages)
+  },[messages])
 
 
   const router = createBrowserRouter([
@@ -76,7 +75,7 @@ const MyRouter = () => {
       element: <App />,
     },
     {
-      path: 'channels/:channelId',
+      path: 'channels',
       element: <Channel />,
     },
     {

@@ -4,32 +4,20 @@ import { FaHashtag } from "react-icons/fa6";
 import { useSelector, useDispatch } from 'react-redux';
 import { 
   selectAllChannels, 
-  selectSingleChannel,
   selectChannelState,
-   updateChannel,
-   setSingleChannel
    } from '../../features/channel/channelSlice';
 import ChannelLoader from './Loaders/ChannelLoader';
 import { Link, useNavigate } from 'react-router-dom';
 
 const ChannelList = (props) => {
 
-  const [selectedId, setSelectedId] = useState();
-  const navigate = useNavigate();
-   
   const dispatch = useDispatch();
   const channels = useSelector(selectAllChannels);
   const channelState = useSelector(selectChannelState)
-  // const singleChannel = useSelector((state) => selectSingleChannel(state,selectedId))
 
   const changeName = (channel) => {
 
-    dispatch(
-      setSingleChannel({
-        id: channel.id
-      }))
-
-    navigate(`/channels/${channel.id}`);
+  
     //  const newChannel = {...channel, channel_name: "this is new name"}
     //  dispatch(
     //   updateChannel({id: channel.id, channels, newChannel})
