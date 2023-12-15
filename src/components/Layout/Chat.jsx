@@ -55,6 +55,7 @@ const Chat = () => {
         messages: newMessages,
         nexLink: response.data.next_page_url,
       })) 
+      setLoadingNextMessage(false);
   }
 
   const handleScroll = () => {
@@ -67,7 +68,6 @@ const Chat = () => {
       getNextMessages(nextLink);
       scrollableElement.scrollTop = scrollableElement.scrollHeight;
     }
-  
   };
 
   const debouncedHandleScroll = debounce(handleScroll, 200);
@@ -86,7 +86,7 @@ const Chat = () => {
   useEffect(() => {
 
     const scrollableElement = chatContainerRef.current;
-    scrollableElement.addEventListener('scroll', debouncedHandleScroll);
+    scrollableElement.addEventListener('scroll', handleScroll);
 
     return () => {
       scrollableElement.removeEventListener('scroll', handleScroll);
