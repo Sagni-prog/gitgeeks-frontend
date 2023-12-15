@@ -22,15 +22,17 @@ import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
 import { getChannelMessages,getNextPageMessages } from './api/messages/getMessages';
 import { setMessages, selectMessages, selectNextLink, addMessages,  } from './features/message/messageSlice';
+import Check from '../Check';
 
 
 const MyRouter = () => {
 
   const dispatch = useDispatch();
   const channelState = useSelector(selectChannelState);
-  const singleChannel = useSelector((state) => selectSingleChannel(state,1));
+  // const singleChannel = useSelector((state) => selectSingleChannel(state,1));
   const messages = useSelector(selectMessages);
   const nextLinkState = useSelector(selectNextLink)
+  const channelId = useSelector(selectSingleChannel);
 
   const getChannel = async() => {
     const id = storage.getUser().id;
@@ -46,8 +48,8 @@ const MyRouter = () => {
       }));
   }
 
-  const getMessage = async() => {
-     const response = await getChannelMessages(9);
+  const getMessage = async(id) => {
+     const response = await getChannelMessages(id);
      dispatch(
       setMessages({
         messages: response.data.data.reverse(),
@@ -60,22 +62,35 @@ const MyRouter = () => {
 
   useEffect(() => {
     getChannel();
-    getMessage();
+    // getMessage(channelId);
 
   },[]);
+  useEffect(() => {
+    getChannel();
+    getMessage(channelId);
+
+  },[channelId]);
 
   useEffect(() => {
-     console.log("this is messages from global state:", messages)
+    //  console.log("this is messages from global state:", messages)
   },[messages])
 
 
   const router = createBrowserRouter([
+    // {
+    //   path: '/',
+    //   element: <App />,
+    // },
     {
-      path: '/',
-      element: <App />,
+      path: '/check',
+      element: <Check />,
     },
+    // {
+    //   path: 'channels',
+    //   element: <Channel />,
+    // },
     {
-      path: 'channels',
+      path: 'channels/:id',
       element: <Channel />,
     },
     {

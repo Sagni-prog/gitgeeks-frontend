@@ -8,14 +8,33 @@ import {
    } from '../../features/channel/channelSlice';
 import ChannelLoader from './Loaders/ChannelLoader';
 import { Link, useNavigate } from 'react-router-dom';
+import { setMessages, selectMessages } from '../../features/message/messageSlice';
+import { getChannelMessages } from '../../api/messages/getMessages';
 
 const ChannelList = (props) => {
 
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const channels = useSelector(selectAllChannels);
   const channelState = useSelector(selectChannelState)
 
+  const messages = useSelector(selectMessages)
+    const dispatch = useDispatch()
+
+    const getMessage = async(id) => {
+        const response = await getChannelMessages(id);
+        dispatch(
+         setMessages({
+           messages: response.data.data.reverse(),
+           nexLink: response.data.next_page_url,
+           isLoaded: true,
+           initialLoad: true
+         }))
+     }
+
   const changeName = (channel) => {
+    
+     getMessage(channel.id)
+     navigate(`/channels/${channel.id}`)
 
   
     //  const newChannel = {...channel, channel_name: "this is new name"}
