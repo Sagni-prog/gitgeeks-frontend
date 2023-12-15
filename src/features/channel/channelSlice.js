@@ -3,7 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
    data: [],
    isLoaded: false,   
-   singleChannelId: ''
+   singleChannelId: '',
+   load: false,
 }
 
 const channelSlice = createSlice({
@@ -21,7 +22,8 @@ const channelSlice = createSlice({
       setSingleChannel: (state, action) => {
          return {
             ...state,
-            singleChannelId: action.payload.id
+            singleChannelId: action.payload.id,
+            load: true
          }
       }
     }
@@ -31,5 +33,6 @@ export const selectChannelState = (state) => state.channel;
 export const selectAllChannels = (state) => state.channel.data;
 export const selectChannelStatus = (state) => state.isLoaded;
 export const selectSingleChannel = (state) => state.channel.singleChannelId;
+export const selectLoad = (state) => state.channel.load;
 export const { setChannelState, updateChannel, setSingleChannel } = channelSlice.actions;
 export const channelReducer = channelSlice.reducer;

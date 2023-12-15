@@ -22,7 +22,6 @@ import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
 import { getChannelMessages,getNextPageMessages } from './api/messages/getMessages';
 import { setMessages, selectMessages, selectNextLink, addMessages,  } from './features/message/messageSlice';
-import Check from '../Check';
 
 
 const MyRouter = () => {
@@ -66,10 +65,10 @@ const MyRouter = () => {
 
   },[]);
   useEffect(() => {
-    getChannel();
+    // getChannel();
     getMessage(channelId);
-
   },[channelId]);
+
 
   useEffect(() => {
     //  console.log("this is messages from global state:", messages)
@@ -81,10 +80,6 @@ const MyRouter = () => {
     //   path: '/',
     //   element: <App />,
     // },
-    {
-      path: '/check',
-      element: <Check />,
-    },
     // {
     //   path: 'channels',
     //   element: <Channel />,

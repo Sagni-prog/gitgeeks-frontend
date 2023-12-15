@@ -8,7 +8,7 @@ import {
    } from '../../features/channel/channelSlice';
 import ChannelLoader from './Loaders/ChannelLoader';
 import { Link, useNavigate } from 'react-router-dom';
-import { setMessages, selectMessages } from '../../features/message/messageSlice';
+import { setMessages, selectMessages, setInitialLoad } from '../../features/message/messageSlice';
 import { getChannelMessages } from '../../api/messages/getMessages';
 
 const ChannelList = (props) => {
@@ -35,6 +35,9 @@ const ChannelList = (props) => {
     
      getMessage(channel.id)
      navigate(`/channels/${channel.id}`)
+     dispatch(
+      setInitialLoad({initialLoad: true})
+     )
 
   
     //  const newChannel = {...channel, channel_name: "this is new name"}

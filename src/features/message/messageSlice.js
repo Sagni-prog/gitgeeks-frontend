@@ -13,7 +13,11 @@ const messageSlice = createSlice({
     initialState,
     reducers: {
         setMessages: (state,action) => {
-            return {...state, ...action.payload}
+            return {
+                ...state,
+                 ...action.payload,
+                 initialLoad: false,
+                }
         },
         addMessages: (state, action) => {
             return {
@@ -30,10 +34,16 @@ const messageSlice = createSlice({
                 isLoaded: action.payload.isLoaded
             }
         },
+        setInitialLoad: (state, action) => {
+            return {
+                ...state,
+                initialLoad: action.payload.initialLoad
+            }
+        },
     }
 });
 
-export const { setMessages, addMessages, setLoading } = messageSlice.actions;
+export const { setMessages, addMessages, setLoading, setInitialLoad } = messageSlice.actions;
 export const selectMessages = (state) => state.message;
 export const selectLoadingState = (state) => state.message.isLoaded;
 export const selectNextLink = (state) => state.message.nexLink;

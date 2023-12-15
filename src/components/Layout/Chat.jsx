@@ -13,6 +13,7 @@ import {
      selectIsAdded, 
 
   } from '../../features/message/messageSlice';
+import { selectSingleChannel, selectLoad } from '../../features/channel/channelSlice';
 
 const Chat = () => {
 
@@ -22,6 +23,8 @@ const Chat = () => {
   const initialLoad = useSelector(selectInitialLoad);
   const loadingState = useSelector(selectLoadingState)
   const newAdded = useSelector(selectIsAdded)
+  const channelId = useSelector(selectSingleChannel)
+  const load = useSelector(selectLoad)
   const dispatch = useDispatch();
 
   const [loadingNextMessage, setLoadingNextMessage] = useState(false);
@@ -72,10 +75,13 @@ const Chat = () => {
 
   const debouncedHandleScroll = debounce(handleScroll, 200);
 
+
   useEffect(() => {
     const scrollableElement = chatContainerRef.current;
     scrollableElement.scrollTop = scrollableElement.scrollHeight;
+    console.log("hello")
   }, [initialLoad]);
+
 
   useEffect(() => {
     const scrollableElement = chatContainerRef.current;

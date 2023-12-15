@@ -22,8 +22,9 @@ const Channel = () => {
   },[])
 
   useEffect(() => {
-    console.log("id:", channelId)
+    console.log("id:", channelId);
   },[channelId])
+  
   return (
     <>
        <>
