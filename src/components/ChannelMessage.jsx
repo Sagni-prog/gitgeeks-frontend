@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSingleChannel, setSingleChannel } from '../features/channel/channelSlice';
 
-const Channel = () => {
+const ChannelMessage = () => {
 
   const dispatch = useDispatch();
   const channelId = useSelector(selectSingleChannel);
@@ -30,12 +30,12 @@ const Channel = () => {
          <div className='flex justify-start content-center	color-primary w-screen	h-screen gap-0'>
             <Menu />
             <LeftSideBar type = "channel" />
-            {/* <Chat /> */}
-            {/* <RightSideBar /> */}
+            <Chat />
+            <RightSideBar />
           </div>
        </>
     </>
   )
 }
 
-export default Channel;
+export default ChannelMessage;

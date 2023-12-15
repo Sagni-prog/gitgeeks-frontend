@@ -22,7 +22,7 @@ import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
 import { getChannelMessages,getNextPageMessages } from './api/messages/getMessages';
 import { setMessages, selectMessages, selectNextLink, addMessages,  } from './features/message/messageSlice';
-
+import ChannelMessage from './components/ChannelMessage';
 
 const MyRouter = () => {
 
@@ -80,13 +80,13 @@ const MyRouter = () => {
     //   path: '/',
     //   element: <App />,
     // },
-    // {
-    //   path: 'channels',
-    //   element: <Channel />,
-    // },
+    {
+      path: 'channels',
+      element: <Channel />,
+    },
     {
       path: 'channels/:id',
-      element: <Channel />,
+      element: <ChannelMessage />,
     },
     {
       path: 'load',
