@@ -4,6 +4,7 @@ import store from './app/store';
 import MyRouter from './MyRouter';
 import { createRoot } from 'react-dom/client';
 
+
 const container = document.getElementById('root');
 const root = createRoot(container);
 
