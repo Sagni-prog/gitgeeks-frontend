@@ -3,12 +3,14 @@ import MessageTimeLine from '../Elements/MessageTimeLine';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectMessages, selectLoadingState } from '../../features/message/messageSlice';
 import ChatSkeleton from '../Elements/Loaders/ChatSkeleton';
+import { Parser } from "html-to-react";
 
 
 const ChatBuble = () => {
 
     const messages = useSelector(selectMessages);
     const isLoaded = useSelector(selectLoadingState);
+    const htmlParser = new Parser();
 
     
 
@@ -27,12 +29,10 @@ const ChatBuble = () => {
                             <div className='user-name mr-1'>{data.user.name}</div>
                             <div className='date flex items-center color-secondary text-xs gap-1'>
                                 <p>{data.sent_at}</p>
-                                {/* <p>9:45</p>
-                                <p>PM</p> */}
                             </div>
                         </div>
                      <div className='message-content'>
-                    <p>{data.message_body}</p>
+                    <p>{htmlParser.parse(data.message_body)}</p>
                   </div>
             </div>
         </div>

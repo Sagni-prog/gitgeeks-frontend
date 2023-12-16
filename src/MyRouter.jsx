@@ -25,7 +25,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
-import { getChannelMessages,getNextPageMessages } from './api/messages/getMessages';
+import { getChannelMessages } from './api/messages/getMessages';
 import { 
   setMessages, 
   selectMessages, 
@@ -36,6 +36,7 @@ import {
 import ChannelMessage from './components/ChannelMessage';
 import Pusher from 'pusher-js';
 
+
 const MyRouter = () => {
 
 
@@ -43,13 +44,12 @@ const MyRouter = () => {
 
   const dispatch = useDispatch();
   const channelState = useSelector(selectChannelState);
-  // const singleChannel = useSelector((state) => selectSingleChannel(state,1));
   const messages = useSelector(selectMessages);
   const nextLinkState = useSelector(selectNextLink)
   const channelId = useSelector(selectSingleChannel);
   const channels = useSelector(selectAllChannels);
-  // channel subscription
 
+  // channel subscription
   const subscribeToChannel = (id) => {
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
@@ -131,7 +131,6 @@ const MyRouter = () => {
     })  
   },[channelState]);
   useEffect(() => {
-    // getChannel();
     getMessage(channelId);
   },[channelId]);
 
@@ -142,10 +141,10 @@ const MyRouter = () => {
 
 
   const router = createBrowserRouter([
-    // {
-    //   path: '/',
-    //   element: <App />,
-    // },
+    {
+      path: '/',
+      element: <App />,
+    },
     {
       path: 'channels',
       element: <Channel />,

@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import 'quill/dist/quill.snow.css'
 import ReactQuill from 'react-quill'
 import { IoSend } from "react-icons/io5";
-
+import { sendChannelMessage } from "../../api/messages/sendMessage";
 
 const TextEditor = () => {
 
   const is = false;
+  const [textContent, setTextCoontent] = useState()
   
   var modules = {
     toolbar: [
@@ -29,8 +30,16 @@ const TextEditor = () => {
   ];
 
   const handleProcedureContentChange = (content) => {
-    console.log("content---->", content);
+    setTextCoontent(content)
   };
+
+  const handleSendChannelMessage = async() => {
+    const sentData = {
+      message_body: textContent
+    }
+     const respons = await sendChannelMessage(9,sentData)
+     console.log("message sent:", respons);
+  }
 
   return (
     <div style = {{ border: "none",   backgroundColor: "#2d333b"}} className="color-primary p-0 m-0 ">
@@ -58,14 +67,16 @@ const TextEditor = () => {
         
         </ReactQuill>
         <IoSend
+          onClick={handleSendChannelMessage}
           size={25}
-        style={{
-          position: "absolute",
-          top: "76%",
-          left: "90%",
-          color: "rgb(20 184 166)",
-          cursor: "pointer"
-        }}/>
+          style={{
+            position: "absolute",
+            top: "76%",
+            left: "90%",
+            color: "rgb(20 184 166)",
+            cursor: "pointer"
+           }}
+        />
       </div>
       
     </div>
