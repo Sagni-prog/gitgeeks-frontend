@@ -26,12 +26,20 @@ import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
 import { getChannelMessages,getNextPageMessages } from './api/messages/getMessages';
-import { setMessages, selectMessages, selectNextLink, addMessages,  } from './features/message/messageSlice';
+import { 
+  setMessages, 
+  selectMessages, 
+  selectNextLink, 
+  addMessages, 
+  addNewMessages  
+} from './features/message/messageSlice';
 import ChannelMessage from './components/ChannelMessage';
 import Pusher from 'pusher-js';
 
 const MyRouter = () => {
 
+
+  const [newIncoming, setNewIncoming] = useState([])
 
   const dispatch = useDispatch();
   const channelState = useSelector(selectChannelState);
@@ -66,7 +74,9 @@ const MyRouter = () => {
    });
 
     channel.bind('channel.message', function (data) {
-      console.log(JSON.stringify(data));
+
+      const newMessages = [data.message];
+      setNewIncoming(newMessages)
     });
   }
 
@@ -96,6 +106,13 @@ const MyRouter = () => {
       }))
   }
 
+  useEffect(() => {
+    dispatch(
+        addNewMessages({
+          messages: newIncoming
+        })) 
+  },[newIncoming])
+
 
   useEffect(() => {
     getChannel();
@@ -113,7 +130,7 @@ const MyRouter = () => {
 
 
   useEffect(() => {
-    //  console.log("this is messages from global state:", messages)
+     console.log("this is messages from global state:", messages.messages)
   },[messages])
 
 

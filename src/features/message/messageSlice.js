@@ -28,6 +28,14 @@ const messageSlice = createSlice({
                 isAdded: true
             }
         },
+        addNewMessages: (state, action) => {
+            return {
+                ...state,
+                messages: [...state.messages, ...action.payload.messages],
+                isLoaded: true,
+                isAdded: true
+            }
+        },
         setLoading: (state, action) => {
             return {
                 ...state,
@@ -43,7 +51,7 @@ const messageSlice = createSlice({
     }
 });
 
-export const { setMessages, addMessages, setLoading, setInitialLoad } = messageSlice.actions;
+export const { setMessages, addMessages, setLoading, setInitialLoad, addNewMessages } = messageSlice.actions;
 export const selectMessages = (state) => state.message;
 export const selectLoadingState = (state) => state.message.isLoaded;
 export const selectNextLink = (state) => state.message.nexLink;
