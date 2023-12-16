@@ -16,15 +16,22 @@ import Channel from './components/Channel';
 import Dm from './components/Dm';
 import getAllChannels from './api/channels/getAllChannels'
 import storage from './utils/storage'
-import {  selectChannelState, setChannelState , selectSingleChannel } from './features/channel/channelSlice';
+import {  
+  selectChannelState,
+  setChannelState, 
+  selectSingleChannel,
+  selectAllChannels 
+} from './features/channel/channelSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
 import SkeletonLoader from './components/Elements/Loaders/SkeletonLoader';
 import { getChannelMessages,getNextPageMessages } from './api/messages/getMessages';
 import { setMessages, selectMessages, selectNextLink, addMessages,  } from './features/message/messageSlice';
 import ChannelMessage from './components/ChannelMessage';
+import Pusher from 'pusher-js';
 
 const MyRouter = () => {
+
 
   const dispatch = useDispatch();
   const channelState = useSelector(selectChannelState);
@@ -32,6 +39,37 @@ const MyRouter = () => {
   const messages = useSelector(selectMessages);
   const nextLinkState = useSelector(selectNextLink)
   const channelId = useSelector(selectSingleChannel);
+  const channels = useSelector(selectAllChannels);
+  // channel subscription
+
+  const subscribeToChannel = (id) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
+    var pusher = new Pusher('9abe623e2b4f6c0136c4', {
+      authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
+      cluster: 'us2',
+      encrypted: true,
+      auth: {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json'
+         
+        }
+      }
+    });
+
+    var channel = pusher.subscribe(`private-channel.${id}`);
+
+   
+    pusher.connection.bind('connected', () => {
+      console.log('suscribed to the channel:',id);
+   });
+
+    channel.bind('channel.message', function (data) {
+      console.log(JSON.stringify(data));
+    });
+  }
+
 
   const getChannel = async() => {
     const id = storage.getUser().id;
@@ -61,9 +99,13 @@ const MyRouter = () => {
 
   useEffect(() => {
     getChannel();
-    // getMessage(channelId);
-
   },[]);
+
+  useEffect(() => {
+    channels.map((data) => {
+      subscribeToChannel(data.id)
+    })  
+  },[channelState]);
   useEffect(() => {
     // getChannel();
     getMessage(channelId);

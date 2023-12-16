@@ -20,9 +20,7 @@ const ChannelMessage = () => {
       })
     )
    
-  },[])
-
-
+  },[]);
 
   return (
     <>
