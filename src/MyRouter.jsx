@@ -106,11 +106,18 @@ const MyRouter = () => {
       }))
   }
 
-  useEffect(() => {
-    dispatch(
+  const inboundMessage = () => {
+    if(newIncoming[0]?.receiverable_id == channelId){
+      dispatch(
         addNewMessages({
           messages: newIncoming
         })) 
+        return 0;
+    }  
+  }
+
+  useEffect(() => {
+     inboundMessage();  
   },[newIncoming])
 
 
