@@ -168,7 +168,7 @@ body{
 }
 
 .ql-editor{
- cursor: text;
+ width: 100%;
 }
 
 
@@ -176,6 +176,7 @@ body{
   height: 80% !important;
   display: flex;
   flex-grow: 0;
+  width: 100%;
 }
 .ql-container.ql-snow {
   border: none !important;
