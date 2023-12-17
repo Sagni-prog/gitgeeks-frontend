@@ -16,7 +16,7 @@ const ChatBuble = () => {
 
   return (
     <div className='w-[100%] bubble-container flex flex-col  gap-3'>
-        <MessageTimeLine date = "December 10, 2023" />
+        {/* <MessageTimeLine date = "December 10, 2023" /> */}
          {
             messages.messages.map((data, index) => (
                 <div key = {index}>

@@ -4,10 +4,18 @@ import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { MdDeviceHub } from "react-icons/md";
 import { MdEmail } from "react-icons/md";
+import { useNavigate } from 'react-router-dom';
 
 
 
 const Register = () => {
+
+  const navigate = useNavigate();
+
+  const navigateSignUp = () => {
+    navigate('/auth/sign-up')
+  }
+
   return (
     <div className='flex justify-center items-center content-center h-screen'>
        <div className='w-[40%] h-[100%] flex flex-col justify-center content-center items-center gap-3'>
@@ -37,6 +45,7 @@ const Register = () => {
                   height: "45px",
                   marginBottom: "20px"
                 }}
+                onClick = { navigateSignUp}
                 title = "Sign up with Email" 
                 icons = {<MdEmail size= '25px' className='ml-3' />}
            />

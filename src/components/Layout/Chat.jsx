@@ -2,7 +2,6 @@ import {React, useEffect, useState, useRef } from 'react'
 import TextEditor from '../Elements/TextEditor'
 import ChatBuble from './ChatBuble';
 import { getNextPageMessages } from '../../api/messages/getMessages';
-import { sendChannelMessage } from '../../api/messages/sendMessage';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
      addMessages,
@@ -15,14 +14,13 @@ import {
 
   } from '../../features/message/messageSlice';
 import { selectSingleChannel, selectLoad } from '../../features/channel/channelSlice';
-// import { IoSend } from "react-icons/io5";
+import { debounce } from '../../utils/helper';
 
 
 
 const Chat = () => {
 
   const is = false;
-  const [textContent, setTextCoontent] = useState()
 
   const nextLink = useSelector(selectNextLink)
   const messages = useSelector(selectMessages)
@@ -35,26 +33,6 @@ const Chat = () => {
 
   const [loadingNextMessage, setLoadingNextMessage] = useState(false);
   const chatContainerRef = useRef(null);
-
-  const debounce = (func, delay) => {
-    let timeoutId;
-    return (...args) => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(() => {
-        func(...args);
-      }, delay);
-    };
-  };
-
-
-  
-  // const handleSendChannelMessage = async() => {
-  //   const sentData = {
-  //     message_body: textContent
-  //   }
-  //    const respons = await sendChannelMessage(9,sentData)
-  //    console.log("message sent:", respons);
-  // }
 
   const getNextMessages = async(url) => {
     if(!loadingNextMessage){
@@ -85,35 +63,28 @@ const Chat = () => {
     if (scrollTop <= scrollHeight / 3 && nextLink && !loadingNextMessage ) {
       setLoadingNextMessage(true);
       getNextMessages(nextLink);
-      scrollableElement.scrollTop = scrollableElement.scrollHeight;
+      scrollableElement.scrollTop = scrollableElement.scrollHeight/2;
     }
   };
 
   const debouncedHandleScroll = debounce(handleScroll, 200);
 
-
   useEffect(() => {
-    const scrollableElement = chatContainerRef.current;
-    scrollableElement.scrollTop = scrollableElement.scrollHeight;
-    console.log("hello")
+      const scrollableElement = chatContainerRef.current;
+      scrollableElement.scrollTop = scrollableElement.scrollHeight;
+      console.log("hello initial load")
   }, [initialLoad]);
 
 
   useEffect(() => {
-    const scrollableElement = chatContainerRef.current;
-    scrollableElement.scrollTop = scrollableElement.scrollHeight/2;
-  }, [newAdded]);
-
-
-  useEffect(() => {
 
     const scrollableElement = chatContainerRef.current;
-    scrollableElement.addEventListener('scroll', handleScroll);
-
+    scrollableElement.addEventListener('scroll', debouncedHandleScroll);
+    
     return () => {
-      scrollableElement.removeEventListener('scroll', handleScroll);
+      scrollableElement.removeEventListener('scroll', debouncedHandleScroll);
     };
-  }, [handleScroll]);
+  }, [debouncedHandleScroll]);
 
   return (
   
@@ -134,20 +105,6 @@ const Chat = () => {
           <ChatBuble />
         </div>
         <TextEditor />
-        {/* <div className='flex justify-center items-center mb-2 relative' style={{ maxHeight: '30%', }}>
-           <TextEditor />
-           <IoSend
-          onClick={handleSendChannelMessage}
-          size={25}
-          style={{
-            position: "absolute",
-            top: "70%",
-            left: "90%",
-            color: "rgb(20 184 166)",
-            cursor: "pointer"
-           }}
-        />
-        </div> */}
     </div>
   )
 }

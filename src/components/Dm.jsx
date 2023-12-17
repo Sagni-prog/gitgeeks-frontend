@@ -8,14 +8,12 @@ function Dm() {
 
   return (
     <>
-       < >
-       <div className='flex justify-start content-center	color-primary w-screen	h-screen gap-0'>
-         <Menu />
-         <LeftSideBar type = "dm" />
-         <Chat />
-         <RightSideBar />
-          </div>
-       </>
+      <div className='flex justify-start content-center	color-primary w-screen	h-screen gap-0'>
+        <Menu />
+        <LeftSideBar type = "dm" />
+        <Chat />
+        <RightSideBar />
+      </div>
     </>
   )
 }

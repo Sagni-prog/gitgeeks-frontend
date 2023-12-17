@@ -42,7 +42,7 @@ const Signup = () => {
 
   return (
     <div className='flex justify-center items-center content-center h-screen'>
-       <div className='w-[40%] h-[90%] flex flex-col justify-center content-center items-center gap-3 border-sm px-2 p-3 pt-0'>
+       <div className='w-[40%] h-[90%] flex flex-col justify-center content-center items-center gap-3  px-2 p-3 pt-0'>
        <div className='flex self-start color-primary'>
           <p className='text-xl mb-2'>Create Account</p>
         </div>
