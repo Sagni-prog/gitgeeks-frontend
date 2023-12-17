@@ -29,6 +29,7 @@ const TextEditor = () => {
     "link", "image", "align", "size",
   ];
 
+
   const handleProcedureContentChange = (content) => {
     setTextCoontent(content)
   };
@@ -42,26 +43,22 @@ const TextEditor = () => {
   }
 
   return (
-    <div style = {{ border: "none",   backgroundColor: "#2d333b"}} className="color-primary p-0 m-0 ">
-      <div style={{
-           width: is ? "73%" : "48%",
-           height: "23%", 
-           display: "flex", 
-           justifyContent: "center", 
-           border: "none",
-           position: "fixed",
-           bottom: "10px", 
-           left: "0",
-           marginLeft: "27%",
 
-           }} >
+    <div className='flex justify-center items-center mb-2 relative' style={{ maxHeight: '30%', }}>
         <ReactQuill
           theme="snow"
           modules={modules}
           formats={formats}
           placeholder=""
           onChange={handleProcedureContentChange}
-          style={{ width: '95%', height: "100%",color: "#adbac7", position: "relative" , overflow: "hidden"}}
+          style={{ 
+                width: '95%',
+                maxHeight: '100%',
+                color: "#adbac7",
+                position: "relative",
+                height: "100%",
+                overflow: "hidden",
+              }}
           className="color-primary"
         >
         
@@ -71,14 +68,12 @@ const TextEditor = () => {
           size={25}
           style={{
             position: "absolute",
-            top: "76%",
+            top: "70%",
             left: "90%",
             color: "rgb(20 184 166)",
             cursor: "pointer"
-           }}
-        />
-      </div>
-      
+          }}
+       /> 
     </div>
   );
 

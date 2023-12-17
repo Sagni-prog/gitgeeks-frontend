@@ -2,6 +2,7 @@ import {React, useEffect, useState, useRef } from 'react'
 import TextEditor from '../Elements/TextEditor'
 import ChatBuble from './ChatBuble';
 import { getNextPageMessages } from '../../api/messages/getMessages';
+import { sendChannelMessage } from '../../api/messages/sendMessage';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
      addMessages,
@@ -14,10 +15,15 @@ import {
 
   } from '../../features/message/messageSlice';
 import { selectSingleChannel, selectLoad } from '../../features/channel/channelSlice';
+// import { IoSend } from "react-icons/io5";
+
+
 
 const Chat = () => {
 
   const is = false;
+  const [textContent, setTextCoontent] = useState()
+
   const nextLink = useSelector(selectNextLink)
   const messages = useSelector(selectMessages)
   const initialLoad = useSelector(selectInitialLoad);
@@ -39,6 +45,16 @@ const Chat = () => {
       }, delay);
     };
   };
+
+
+  
+  // const handleSendChannelMessage = async() => {
+  //   const sentData = {
+  //     message_body: textContent
+  //   }
+  //    const respons = await sendChannelMessage(9,sentData)
+  //    console.log("message sent:", respons);
+  // }
 
   const getNextMessages = async(url) => {
     if(!loadingNextMessage){
@@ -103,17 +119,35 @@ const Chat = () => {
   
     <div
        style={{
-          width: is ? "73%": "48%"
+          width: is ? "73%": "48%",
+          height: '100%',
        }}
-        className='chat-content relative flex flex-col justify-start h-screen  ml-[27%] w-[73%]  border-r '>
+        className='chat-content relative flex flex-col justify-start   ml-[27%] w-[73%]  border-r mb-2'>
         <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'></div>
         <div 
           ref={chatContainerRef}
-          style={{ height: '400px', overflowY: 'auto' }}
-          className='max-h-[64%] min-h[20%] w-[100%] scrollable mt-[8%]' id='scrollable'>
+          style={{ 
+            overflowY: 'auto',
+            minHeight: "60%"
+           }}
+          className='w-[100%] scrollable mt-[8%]' id='scrollable'>
           <ChatBuble />
         </div>
         <TextEditor />
+        {/* <div className='flex justify-center items-center mb-2 relative' style={{ maxHeight: '30%', }}>
+           <TextEditor />
+           <IoSend
+          onClick={handleSendChannelMessage}
+          size={25}
+          style={{
+            position: "absolute",
+            top: "70%",
+            left: "90%",
+            color: "rgb(20 184 166)",
+            cursor: "pointer"
+           }}
+        />
+        </div> */}
     </div>
   )
 }

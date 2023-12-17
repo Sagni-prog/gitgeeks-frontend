@@ -15,6 +15,7 @@
 body{
   background-color: #22272e;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 
@@ -166,14 +167,23 @@ body{
   background-color: #373e47;
 }
 
+.ql-editor{
+ 
+}
+
+
+.ql-container {
+  height: 80% !important;
+  display: flex;
+  flex-grow: 0;
+}
 .ql-container.ql-snow {
   border: none !important;
 }
 .quill {
-  /* border: none; */
+
   border: #414c57 solid 1px !important;
   border-radius: 5px !important;
-  /* overflow: "hidden" !important; */
 }
 
 .ql-toolbar.ql-snow{
@@ -187,6 +197,9 @@ body{
   align-content: center;
 }
 
+.ql-snow .ql-stroke {
+  stroke: #768390 !important;
+}
 .ql-snow .ql-stroke {
   stroke: #768390 !important;
 }
