@@ -51,37 +51,6 @@ const MyRouter = () => {
   const channelId = useSelector(selectSingleChannel);
   const channels = useSelector(selectAllChannels);
 
-  // channel subscription
-  const subscribeToChannel = (id) => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = localStorage.getItem('token');
-    var pusher = new Pusher('9abe623e2b4f6c0136c4', {
-      authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
-      cluster: 'us2',
-      encrypted: true,
-      auth: {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          Accept: 'application/json'
-         
-        }
-      }
-    });
-
-    var channel = pusher.subscribe(`private-channel.${id}`);
-
-   
-    pusher.connection.bind('connected', () => {
-      console.log('suscribed to the channel:',id);
-   });
-
-    channel.bind('channel.message', function (data) {
-
-      const newMessages = [data.message];
-      setNewIncoming(newMessages)
-    });
-  }
-
 
   const getChannel = async() => {
     const id = storage.getUser().id;
@@ -110,28 +79,66 @@ const MyRouter = () => {
 
   const inboundMessage = () => {
     if(newIncoming[0]?.receiverable_id == channelId){
-      dispatch(
-        addNewMessages({
-          messages: newIncoming
-        })) 
-        return 0;
+      if(!messages.messages.includes(newIncoming[0].id)){
+        dispatch(
+          addNewMessages({
+            messages: newIncoming
+          })) 
+       }
+       return 0;
     }  
+    return 0;
   }
 
-  useEffect(() => {
-     inboundMessage();  
-  },[newIncoming])
-
-
+ 
   useEffect(() => {
     getChannel();
   },[]);
+
+  useEffect(() => {
+    inboundMessage();  
+ },[newIncoming])
+
+
+
+    // channel subscription
+    const subscribeToChannel = (id) => {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const token = localStorage.getItem('token');
+      var pusher = new Pusher('9abe623e2b4f6c0136c4', {
+        authEndpoint: 'http://127.0.0.1:8000/broadcasting/auth',
+        cluster: 'us2',
+        encrypted: true,
+        auth: {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: 'application/json'
+           
+          }
+        }
+      });
+  
+      var channel = pusher.subscribe(`private-channel.${id}`);
+  
+     
+      pusher.connection.bind('connected', () => {
+        console.log('suscribed to the channel:',id);
+     });
+  
+      channel.bind('channel.message', function (data) {
+  
+        const newMessages = [data.message];
+        setNewIncoming(newMessages)
+        console.log("new inbound message:",newMessages)
+      });
+    }
 
   useEffect(() => {
     channels.map((data) => {
       subscribeToChannel(data.id)
     })  
   },[channelState]);
+
   useEffect(() => {
     getMessage(channelId);
   },[channelId]);
