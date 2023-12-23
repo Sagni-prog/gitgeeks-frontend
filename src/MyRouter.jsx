@@ -35,13 +35,21 @@ import {
 } from './features/message/messageSlice';
 import ChannelMessage from './components/ChannelMessage';
 import Pusher from 'pusher-js';
+import { useReducer } from 'react';
+import toggleContext from './contexts/toggleContext';
+import toggleReducer from './reducers/toggleReducer';
 
 
 
 
 const MyRouter = () => {
+  
 
+  const initialToggle = storage.getToggle();
+  const [toggle, setToggle] = useState(storage.getToggle())
+  console.log("top initial toggle state:",toggle)
 
+  const [toggleState, dispatchToggle] = useReducer(toggleReducer, {isOpen: toggle})
   const [newIncoming, setNewIncoming] = useState([])
 
   const dispatch = useDispatch();
@@ -93,12 +101,12 @@ const MyRouter = () => {
  
   useEffect(() => {
     getChannel();
+    dispatchToggle({type: "SET", payload: initialToggle})
   },[]);
 
   useEffect(() => {
     inboundMessage();  
  },[newIncoming])
-
 
 
     // channel subscription
@@ -120,16 +128,11 @@ const MyRouter = () => {
   
       var channel = pusher.subscribe(`private-channel.${id}`);
   
-     
-      pusher.connection.bind('connected', () => {
-        console.log('suscribed to the channel:',id);
-     });
-  
       channel.bind('channel.message', function (data) {
   
         const newMessages = [data.message];
         setNewIncoming(newMessages)
-        console.log("new inbound message:",newMessages)
+
       });
     }
 
@@ -145,8 +148,36 @@ const MyRouter = () => {
 
 
   useEffect(() => {
-     console.log("this is messages from global state:", messages.messages)
-  },[messages])
+  const rightdside =  document.getElementById('right-side-bar');
+  const chatContent = document.getElementById('chat-content');
+   if(storage.getToggle() === true){
+    console.log("true storage: ",initialToggle)
+    console.log("true storage")
+     rightdside.classList.remove("none");
+     chatContent.classList.add("w-[48%]")
+     chatContent.classList.remove("w-[73%]")
+    }else {
+      console.log("false storage: ",initialToggle)
+      console.log("false storage")
+      rightdside.classList.add("none");
+      chatContent.classList.remove("w-[48%]")
+      chatContent.classList.add("w-[73%]")
+    }
+  },[])
+
+  useEffect(() => {
+  const rightdside =  document.getElementById('right-side-bar');
+  const chatContent = document.getElementById('chat-content');
+   if(toggleState.isOpen){
+     rightdside.classList.add("none");
+     chatContent.classList.remove("w-[48%]")
+     chatContent.classList.add("w-[73%]")
+    }else {
+     rightdside.classList.remove("none");
+     chatContent.classList.add("w-[48%]")
+     chatContent.classList.remove("w-[73%]")
+    }
+  },[toggleState])
 
 
   const router = createBrowserRouter([
@@ -198,7 +229,15 @@ const MyRouter = () => {
 
   return (
     <GoogleOAuthProvider clientId="6535988043-u61lvrqa021ufi01vq8lgo2d6pocuj21.apps.googleusercontent.com">
-        <RouterProvider router={router} /> 
+        <toggleContext.Provider 
+           value={
+                    {
+                      toggleState, dispatchToggle
+                    }
+                  }
+        >
+          <RouterProvider router={router} /> 
+        </toggleContext.Provider>
     </GoogleOAuthProvider>
   );
 };

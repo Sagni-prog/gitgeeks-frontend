@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import Menu from './Layout/Menu';
 import LeftSideBar from './Layout/LeftSideBar';
 import RightSideBar from './Layout/RightSideBar';
@@ -6,8 +6,12 @@ import Chat from './Layout/Chat';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSingleChannel, setSingleChannel } from '../features/channel/channelSlice';
+import storage from '../utils/storage';
+import toggleContext from '../contexts/toggleContext';
 
 const Channel = () => {
+
+  const { toggleState, dispatchToggle } = useContext(toggleContext);
 
   const dispatch = useDispatch();
   const channelId = useSelector(selectSingleChannel);
@@ -31,7 +35,10 @@ const Channel = () => {
             <Menu />
             <LeftSideBar type = "channel" />
             {/* <Chat /> */}
-            {/* <RightSideBar /> */}
+            {
+              toggleState && <RightSideBar />
+            }
+          
           </div>
        </>
     </>

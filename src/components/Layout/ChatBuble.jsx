@@ -32,7 +32,7 @@ const ChatBuble = () => {
                             </div>
                         </div>
                      <div className='message-content'>
-                    <p className='break-all'>{htmlParser.parse(data.message_body)}</p>
+                    <div className='break-all'>{htmlParser.parse(data.message_body)}</div>
                   </div>
             </div>
         </div>

@@ -89,11 +89,8 @@ const Chat = () => {
   return (
   
     <div
-       style={{
-          width: is ? "73%": "48%",
-          height: '100%',
-       }}
-        className='chat-content relative flex flex-col justify-start   ml-[27%] w-[73%]  border-r mb-2'>
+       
+        className='chat-content relative flex flex-col justify-start   ml-[27%] w-[73%]  border-r mb-2' id = "chat-content">
         <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'></div>
         <div 
           ref={chatContainerRef}

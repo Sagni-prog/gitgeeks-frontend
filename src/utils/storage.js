@@ -20,6 +20,12 @@ const storage = {
     revoveToken: () => {
         localStorage.removeItem('token')
     },
+    setToggle: (toggle) => {
+        localStorage.setItem('toggle',toggle)
+    },
+    getToggle: () => {
+        return localStorage.getItem('toggle')
+    } 
 }
 
 export default storage

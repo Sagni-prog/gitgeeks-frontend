@@ -6,12 +6,18 @@ import Chat from './Layout/Chat';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSingleChannel, setSingleChannel } from '../features/channel/channelSlice';
-
+import storage from '../utils/storage';
+import { getCookie } from '../utils/cookieStorage';
 const ChannelMessage = () => {
 
   const dispatch = useDispatch();
   const channelId = useSelector(selectSingleChannel);
   const { id } = useParams();
+  // const isOpen = storage.getToggle();
+  // const isOpen = false;
+  // const isOpen = getCookie("isOpen")
+  const [isOpen, setIdOpen] = useState(getCookie("isOpen"))
+
 
   useEffect(() => {
     dispatch(
@@ -19,7 +25,7 @@ const ChannelMessage = () => {
         id: id
       })
     )
-   
+
   },[]);
 
   return (
@@ -28,7 +34,7 @@ const ChannelMessage = () => {
          <div className='flex justify-start content-center	color-primary w-screen	h-screen gap-0'>
             <Menu />
             <LeftSideBar type = "channel" />
-            <Chat />
+            <Chat />    
             <RightSideBar />
           </div>
        </>

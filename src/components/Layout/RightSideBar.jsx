@@ -4,12 +4,15 @@ import Button from '../Elements/Buttons/Button';
 import { LuClock3 } from "react-icons/lu";
 import minions from  '../../assets/minion.jpg'
 import { FiMessageCircle } from "react-icons/fi";
+import toggleContext from '../../contexts/toggleContext';
 
 const RightSideBar = () => {
 
+  const { toggleState, dispatchToggle } = useContext(toggleContext);  
+
 
   return (
-    <div className='fixed h-screen w-[25%] ml-[75%] bg-secondry'>
+    <div className="fixed h-screen w-[25%] ml-[75%] bg-secondry" id = "right-side-bar">
         <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'>
           <div className='flex justify-between items-center content-center h-[100%] w-[90%] my-0 mx-auto'>
             <div className='cursor-pointer'>

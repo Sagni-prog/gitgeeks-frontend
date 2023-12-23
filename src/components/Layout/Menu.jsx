@@ -6,16 +6,20 @@ import { IoMdFolder } from "react-icons/io";
 import { HiSpeakerphone } from "react-icons/hi";
 import { RiSettings5Fill } from "react-icons/ri";
 import { useNavigate } from 'react-router-dom';
-import { setCookie, getCookie } from '../../utils/cookieStorage';
-import { useSelector, useDispatch } from 'react-redux';
+import toggleContext from '../../contexts/toggleContext';
+import storage from '../../utils/storage';
 
 
 const Menu = () => {
 
-  const dispatch = useDispatch();
+  const { toggleState, dispatchToggle } = useContext(toggleContext);
 
-  const handleToggle = () => {
+  const handleToggle =  () => {
+    dispatchToggle({type: 'TOGGLE'})
+    storage.setToggle(toggleState.isOpen);
   }
+
+
 
   const navigate = useNavigate();
 
