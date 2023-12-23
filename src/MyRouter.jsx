@@ -166,6 +166,7 @@ const MyRouter = () => {
   },[])
 
   useEffect(() => {
+    console.log("open state",toggleState)
   const rightdside =  document.getElementById('right-side-bar');
   const chatContent = document.getElementById('chat-content');
    if(toggleState.isOpen){

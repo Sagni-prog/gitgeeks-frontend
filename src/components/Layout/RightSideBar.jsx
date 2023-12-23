@@ -5,10 +5,17 @@ import { LuClock3 } from "react-icons/lu";
 import minions from  '../../assets/minion.jpg'
 import { FiMessageCircle } from "react-icons/fi";
 import toggleContext from '../../contexts/toggleContext';
+import storage from '../../utils/storage';
 
 const RightSideBar = () => {
 
   const { toggleState, dispatchToggle } = useContext(toggleContext);  
+
+  const close = () => {
+    console.log("close")
+    dispatchToggle({type: "OPEN"});
+    storage.setToggle(toggleState.isOpen);
+  }
 
 
   return (
@@ -19,7 +26,7 @@ const RightSideBar = () => {
               <p>Profile</p>
             </div>
             <div className='cursor-pointer close'>
-              <FaTimes />
+              <FaTimes  onClick={close}/>
             </div>
           </div>
         </div>
