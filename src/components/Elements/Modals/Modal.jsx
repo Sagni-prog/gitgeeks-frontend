@@ -64,38 +64,19 @@ const Modal = ({handleClose, show, children }) => {
              fontWeight: "500",
              alignSelf: "flex-start",
            }}
-           title = "Password"
+           title = "Channel Privacy"
        />
 
-       <Input 
-           inputStyle = {{
-             width: "100%",
-             height: "40px",
-             paddingLeft: "20px",
-           }} 
-           // value = {password}
-           // setValue = {setPassword}
-       />
-       <Label 
-           labelStyle = {{
-             color: "#adbac7",
-             fontSize: "16px",
-             fontWeight: "500",
-             alignSelf: "flex-start",
-           }}
-           title = "Confirm Password"
-       />
-
-       <Input 
-           inputStyle = {{
-             width: "100%",
-             height: "40px",
-             paddingLeft: "20px",
-             marginBottom: "20px"
-           }} 
-           // value = {confirmPassword}
-           // setValue = {setConfirmPassword}
-       />
+     <div
+       style={{
+        backgroundColor: "#373e47",
+        height: "60px",
+        width: '100%',
+        borderRadius: "4px"
+       }}
+      className=''>
+        .
+     </div>
 
          <Button
            buttStyle = {{
