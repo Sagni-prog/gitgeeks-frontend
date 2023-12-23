@@ -39,6 +39,9 @@ import { useReducer } from 'react';
 import toggleContext from './contexts/toggleContext';
 import toggleReducer from './reducers/toggleReducer';
 
+import modalContext from './contexts/modalContext';
+import modalReducer from './reducers/modalReducer';
+
 
 
 
@@ -50,6 +53,9 @@ const MyRouter = () => {
   console.log("top initial toggle state:",toggle)
 
   const [toggleState, dispatchToggle] = useReducer(toggleReducer, {isOpen: toggle})
+
+  const [modalState, dispatchModal] = useReducer(modalReducer,{isOpen: false});
+
   const [newIncoming, setNewIncoming] = useState([])
 
   const dispatch = useDispatch();
@@ -72,6 +78,7 @@ const MyRouter = () => {
         data: response.data.data,
         isLoaded: true
       }));
+      console.log("channels:",response.data.data)
   }
 
   const getMessage = async(id) => {
@@ -101,7 +108,7 @@ const MyRouter = () => {
  
   useEffect(() => {
     getChannel();
-    dispatchToggle({type: "SET", payload: initialToggle})
+   
   },[]);
 
   useEffect(() => {
@@ -145,40 +152,6 @@ const MyRouter = () => {
   useEffect(() => {
     getMessage(channelId);
   },[channelId]);
-
-
-  useEffect(() => {
-  const rightdside =  document.getElementById('right-side-bar');
-  const chatContent = document.getElementById('chat-content');
-   if(storage.getToggle() === true){
-    console.log("true storage: ",initialToggle)
-    console.log("true storage")
-     rightdside.classList.remove("none");
-     chatContent.classList.add("w-[48%]")
-     chatContent.classList.remove("w-[73%]")
-    }else {
-      console.log("false storage: ",initialToggle)
-      console.log("false storage")
-      rightdside.classList.add("none");
-      chatContent.classList.remove("w-[48%]")
-      chatContent.classList.add("w-[73%]")
-    }
-  },[])
-
-  useEffect(() => {
-    console.log("open state",toggleState)
-  const rightdside =  document.getElementById('right-side-bar');
-  const chatContent = document.getElementById('chat-content');
-   if(toggleState.isOpen){
-     rightdside.classList.add("none");
-     chatContent.classList.remove("w-[48%]")
-     chatContent.classList.add("w-[73%]")
-    }else {
-     rightdside.classList.remove("none");
-     chatContent.classList.add("w-[48%]")
-     chatContent.classList.remove("w-[73%]")
-    }
-  },[toggleState])
 
 
   const router = createBrowserRouter([
@@ -237,7 +210,15 @@ const MyRouter = () => {
                     }
                   }
         >
-          <RouterProvider router={router} /> 
+          <modalContext.Provider
+             value={
+              {
+                modalState, dispatchModal
+              }
+             }
+          >
+            <RouterProvider router={router} /> 
+          </modalContext.Provider>
         </toggleContext.Provider>
     </GoogleOAuthProvider>
   );

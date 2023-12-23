@@ -12,6 +12,9 @@ import storage from '../../utils/storage';
 
 const Menu = () => {
 
+  const initialToggle = storage.getToggle();
+  const [toggle, setToggle] = useState(storage.getToggle())
+
   const { toggleState, dispatchToggle } = useContext(toggleContext);
 
   const handleToggle =  () => {
@@ -19,6 +22,38 @@ const Menu = () => {
     storage.setToggle(toggleState.isOpen);
   }
 
+  useEffect(() => {
+    const rightdside =  document.getElementById('right-side-bar');
+    const chatContent = document.getElementById('chat-content');
+     if(storage.getToggle() === true){
+      console.log("true storage: ",initialToggle)
+      console.log("true storage")
+       rightdside.classList.remove("none");
+       chatContent.classList.add("w-[48%]")
+       chatContent.classList.remove("w-[73%]")
+      }else {
+        console.log("false storage: ",initialToggle)
+        console.log("false storage")
+        rightdside.classList.add("none");
+        chatContent.classList.remove("w-[48%]")
+        chatContent.classList.add("w-[73%]")
+      }
+    },[])
+  
+    useEffect(() => {
+      console.log("open state",toggleState)
+    const rightdside =  document.getElementById('right-side-bar');
+    const chatContent = document.getElementById('chat-content');
+     if(toggleState.isOpen){
+       rightdside.classList.add("none");
+       chatContent.classList.remove("w-[48%]")
+       chatContent.classList.add("w-[73%]")
+      }else {
+       rightdside.classList.remove("none");
+       chatContent.classList.add("w-[48%]")
+       chatContent.classList.remove("w-[73%]")
+      }
+    },[toggleState])
 
 
   const navigate = useNavigate();

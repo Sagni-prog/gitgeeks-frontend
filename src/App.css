@@ -41,6 +41,15 @@ body{
   outline: none;
   transition: all 0.5s;
 }
+.text-area{
+  background-color: #373e47;
+  border: #414c57 solid 1px;
+  color: #adbac7;
+  border-radius: 4px;
+  font-weight: 500;
+  outline: none;
+  transition: all 0.5s;
+}
 
 .close{
   padding: 5px;
@@ -496,6 +505,9 @@ body{
 .btns .btn-2::before{
   animation-delay: 0.2s;
 }
+
+
+
 @keyframes shimmer {
   0%{
     background-position: -450px 0;
@@ -503,4 +515,24 @@ body{
   100%{
     background-position: 450px 0;
   }
+}
+
+/* modal */
+.modal{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #373e4777;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.inside-modal{
+  border-radius: 9px;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
