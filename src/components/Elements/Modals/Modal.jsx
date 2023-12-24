@@ -3,8 +3,11 @@ import Label from '../Labels/Label'
 import Input from '../InputFields/Input'
 import Button from '../Buttons/Button'
 import TextArea from '../InputFields/TextArea'
+import { IoIosLock } from "react-icons/io";
+
 
 const Modal = ({handleClose, show, children }) => {
+
 
   return (
 
@@ -74,19 +77,43 @@ const Modal = ({handleClose, show, children }) => {
         width: '100%',
         borderRadius: "4px"
        }}
-      className=''>
-        .
-     </div>
+      className='flex items-center justify-between p-3'>
+        <div className='flex flex-col justify-center gap-1 text-left'>
+          <div className='flex items-center gap-1'>
+            <p>Private Channel</p>
+             <IoIosLock/>
+          </div>
+         <p className='text-xs'>By making a channel private. only invited member can view the channel</p>
+        </div>
 
+         <label className="cyberpunk-checkbox-label">
+            <input type="checkbox" className="cyberpunk-checkbox" />
+               
+            </label>
+     </div>
+       
+       <div className='flex justify-end gap-2 w-[100%]'>
          <Button
            buttStyle = {{
-               width: "100%",
-               height: "55px",
+               width: "40%",
+               height: "52px",
                color: "#fff"
            }}
-           title = "Sign up" 
-           // onClick = {handleSignup}
+           title = "Cancel" 
+           onClick = {handleClose}
        />
+         <Button
+           buttStyle = {{
+               width: "40%",
+               height: "52px",
+               color: "#fff",
+               backgroundColor: "#22d3ee"
+           }}
+           title = "Update" 
+          //  onClick = {handleClose}
+       />
+       </div>
+         
        </div>
       </div>
  </div>

@@ -46,8 +46,6 @@ const ChannelMessage = () => {
                 handleClose = {handleClose}
                 show = {modalState.isOpen}
             />
-            
-            {/* </Modal> */}
             <Menu />
             <LeftSideBar type = "channel" />
             <Chat />    
