@@ -4,12 +4,15 @@ import Input from '../InputFields/Input'
 import Button from '../Buttons/Button'
 import TextArea from '../InputFields/TextArea'
 import { IoIosLock } from "react-icons/io";
-import { selectChannel, selectSingleChannel } from '../../../features/channel/channelSlice';
+import { selectChannel, selectSingleChannel, updateChannel } from '../../../features/channel/channelSlice';
 import { useSelector, useDispatch } from 'react-redux'
+import channelUpdate from '../../../api/channels/upDateChannel'
+
 
 
 const Modal = ({handleClose, show, id }) => {
 
+  const dispatch = useDispatch();
   const channelId = useSelector(selectSingleChannel);
   const channel = useSelector((state) => selectChannel(state, id));
   const [channelName, setChannelName] = useState("")
@@ -26,6 +29,25 @@ const Modal = ({handleClose, show, id }) => {
     }
  },[channel])
 
+
+ const handleUpdate = async() => {
+  const sentData =  {
+        channel_name: channelName,
+        description: channelDescription,
+        is_private: isChecked
+  }
+  const response = await channelUpdate(id, sentData);
+  console.log("update response :",response);
+  if(response.status === 201){
+    if(response.data.status === "success"){
+       dispatch(updateChannel({
+          id: id,
+          newChannel: response.data.data
+       }))
+       handleClose()
+    }
+  }
+ }
  
 
   return (
@@ -133,7 +155,7 @@ const Modal = ({handleClose, show, id }) => {
                backgroundColor: "#22d3ee"
            }}
            title = "Update" 
-          //  onClick = {handleClose}
+           onClick = {handleUpdate}
        />
        </div>
          

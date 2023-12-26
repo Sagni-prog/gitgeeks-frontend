@@ -13,8 +13,9 @@ import { setMessages, selectMessages, setInitialLoad } from '../../features/mess
 import { getChannelMessages } from '../../api/messages/getMessages';
 import { RiSettings5Fill } from "react-icons/ri";
 import { FaUserPlus } from "react-icons/fa";
-import Modal from './Modals/Modal';
 import modalContext from '../../contexts/modalContext';
+import storage from '../../utils/storage';
+
 
 
 const ChannelList = (props) => {
@@ -25,6 +26,7 @@ const ChannelList = (props) => {
   const navigate = useNavigate();
   const channels = useSelector(selectAllChannels);
   const channelState = useSelector(selectChannelState)
+  const user = storage.getUser();
 
   const messages = useSelector(selectMessages)
     const dispatch = useDispatch()
@@ -47,12 +49,6 @@ const ChannelList = (props) => {
      dispatch(
       setInitialLoad({initialLoad: true})
      )
-
-  
-    //  const newChannel = {...channel, channel_name: "this is new name"}
-    //  dispatch(
-    //   updateChannel({id: channel.id, channels, newChannel})
-    //  )
   }
 
   const handleChannelSelect = (channel) => {
@@ -86,7 +82,7 @@ const ChannelList = (props) => {
         {
           channelState.isLoaded == true ? (
          
-           channels.map((data, index) => (
+           channels?.map((data, index) => (
             <div className='cursor-pointer channel' key={index} >
                <div className='ml-2 flex items-center gap-2 pl-[8%] py-2'>
              
@@ -106,7 +102,7 @@ const ChannelList = (props) => {
                 <Link className='flex items-center justify-between' onClick={() => changeName(data)}>
                  <p>{data.channel_name.substr(0, 19)}</p> 
                  {
-                  data.owner_id === 16 ?  
+                  data.owner_id === user.id ?  
                   <div className='flex items-center gap-1'>
                       <FaUserPlus size={18} />
                       <RiSettings5Fill size={18} className='' onClick= {() => handleEditChannel(data)}/>
