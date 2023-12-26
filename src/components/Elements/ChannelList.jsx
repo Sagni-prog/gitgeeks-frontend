@@ -49,6 +49,11 @@ const ChannelList = (props) => {
      dispatch(
       setInitialLoad({initialLoad: true})
      )
+     dispatch(
+      setSingleChannel({
+        id: channel.id
+      })
+    )
   }
 
   const handleChannelSelect = (channel) => {

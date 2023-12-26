@@ -126,6 +126,15 @@ body{
   width: 25px;
   height: 25px;
 }
+.memebers-profile{
+  width: 25px;
+  height: 25px;
+ 
+}
+.overlap{
+  margin-left: -13px;
+  /* transform: translateX(-13px); */
+}
 
 .timeline{
   position: relative;

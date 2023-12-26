@@ -13,14 +13,13 @@ import {
      selectIsAdded, 
 
   } from '../../features/message/messageSlice';
-import { selectSingleChannel, selectLoad } from '../../features/channel/channelSlice';
+import { selectSingleChannel, selectLoad, selectChannel } from '../../features/channel/channelSlice';
 import { debounce } from '../../utils/helper';
+import { FaHashtag } from "react-icons/fa6";
 
 
 
 const Chat = () => {
-
-  const is = false;
 
   const nextLink = useSelector(selectNextLink)
   const messages = useSelector(selectMessages)
@@ -29,6 +28,8 @@ const Chat = () => {
   const newAdded = useSelector(selectIsAdded)
   const channelId = useSelector(selectSingleChannel)
   const load = useSelector(selectLoad)
+  const channel = useSelector((state) => selectChannel(state, channelId));
+  
   const dispatch = useDispatch();
 
   const [loadingNextMessage, setLoadingNextMessage] = useState(false);
@@ -89,9 +90,34 @@ const Chat = () => {
   return (
   
     <div
-       
         className='chat-content relative flex flex-col justify-start   ml-[27%] w-[73%]  border-r mb-2' id = "chat-content">
-        <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'></div>
+        <div className='absolute flex justify-between items-center content-center top-0 left-0 h-[7%] w-[100%] px-[4%] btn-bg'>
+
+       {
+         channel &&
+           <div className='flex items-center content-center gap-5 channel-info'>
+              <div className='flex items-center content-center gap-1 channel-name'>
+                 <FaHashtag />
+                 <p>{channel?.channel_name.substr(0, 10)}</p>
+              </div>
+              <div className='flex items-center channel-description color-secondary '>
+                  <p className='text-sm'>{channel?.description.substr(0, 50)}...</p>
+              </div>
+           </div>
+       }
+
+           <div className='flex channel-memebers'>
+            {
+              channel?.users.map((user,index) => (
+                index <= 3 && (
+                  <div className='memebers-profile cursor-pointer overlap'>  
+                  <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border' />
+                </div> 
+                ) 
+              ))
+            }
+           </div>
+        </div>
         <div 
           ref={chatContainerRef}
           style={{ 
