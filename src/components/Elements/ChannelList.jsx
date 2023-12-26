@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { 
   selectAllChannels, 
   selectChannelState,
+  setSingleChannel
    } from '../../features/channel/channelSlice';
 import ChannelLoader from './Loaders/ChannelLoader';
 import { Link, useNavigate } from 'react-router-dom';
@@ -58,6 +59,16 @@ const ChannelList = (props) => {
    
   }
 
+  const handleEditChannel = (channel) => {
+
+      dispatch(
+      setSingleChannel({
+        id: channel.id
+      })
+    )
+    dispatchModal({type: "OPEN"})
+  }
+
   const handleClose = () => {
     setShow(false)
   }
@@ -98,7 +109,7 @@ const ChannelList = (props) => {
                   data.owner_id === 16 ?  
                   <div className='flex items-center gap-1'>
                       <FaUserPlus size={18} />
-                      <RiSettings5Fill size={18} className='' onClick={() => dispatchModal({type: "OPEN"})}/>
+                      <RiSettings5Fill size={18} className='' onClick= {() => handleEditChannel(data)}/>
                   </div>
                   : ''
                  }

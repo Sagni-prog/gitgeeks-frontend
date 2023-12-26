@@ -20,7 +20,8 @@ import {
   selectChannelState,
   setChannelState, 
   selectSingleChannel,
-  selectAllChannels 
+  selectAllChannels,
+  selectChannel
 } from './features/channel/channelSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
@@ -65,7 +66,6 @@ const MyRouter = () => {
   const channelId = useSelector(selectSingleChannel);
   const channels = useSelector(selectAllChannels);
 
-
   const getChannel = async() => {
     const id = storage.getUser().id;
     const response = await getAllChannels(id);
@@ -108,7 +108,6 @@ const MyRouter = () => {
  
   useEffect(() => {
     getChannel();
-   
   },[]);
 
   useEffect(() => {

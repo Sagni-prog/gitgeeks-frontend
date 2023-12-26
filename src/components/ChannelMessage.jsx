@@ -22,14 +22,14 @@ const ChannelMessage = () => {
   const { modalState, dispatchModal } = useContext(modalContext);
 
 
-  useEffect(() => {
-    dispatch(
-      setSingleChannel({
-        id: id
-      })
-    )
+  // useEffect(() => {
+  //   dispatch(
+  //     setSingleChannel({
+  //       id: id
+  //     })
+  //   )
 
-  },[]);
+  // },[]);
 
   const handleClose = () => {
      dispatchModal({type: "CLOSE"})
@@ -45,6 +45,7 @@ const ChannelMessage = () => {
             <Modal
                 handleClose = {handleClose}
                 show = {modalState.isOpen}
+                id = {channelId}
             />
             <Menu />
             <LeftSideBar type = "channel" />

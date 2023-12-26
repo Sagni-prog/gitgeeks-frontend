@@ -33,6 +33,7 @@ export const selectChannelState = (state) => state.channel;
 export const selectAllChannels = (state) => state.channel.data;
 export const selectChannelStatus = (state) => state.isLoaded;
 export const selectSingleChannel = (state) => state.channel.singleChannelId;
+export const selectChannel = (state, id) => state.channel.data.find((channel) => channel.id === id);
 export const selectLoad = (state) => state.channel.load;
 export const { setChannelState, updateChannel, setSingleChannel } = channelSlice.actions;
 export const channelReducer = channelSlice.reducer;

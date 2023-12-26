@@ -1,13 +1,32 @@
-import React from 'react'
+import React, { useEffect, useState} from 'react'
 import Label from '../Labels/Label'
 import Input from '../InputFields/Input'
 import Button from '../Buttons/Button'
 import TextArea from '../InputFields/TextArea'
 import { IoIosLock } from "react-icons/io";
+import { selectChannel, selectSingleChannel } from '../../../features/channel/channelSlice';
+import { useSelector, useDispatch } from 'react-redux'
 
 
-const Modal = ({handleClose, show, children }) => {
+const Modal = ({handleClose, show, id }) => {
 
+  const channelId = useSelector(selectSingleChannel);
+  const channel = useSelector((state) => selectChannel(state, id));
+  const [channelName, setChannelName] = useState("")
+  const [channelDescription, setChannelDescription] = useState("")
+  const [isChecked, setIsChecked] =useState(false)
+
+ useEffect(() => {
+    setChannelName(channel?.channel_name);
+    setChannelDescription(channel?.description)
+    if(channel?.is_private){
+      setIsChecked(true);
+    }else{
+      setIsChecked(false)
+    }
+ },[channel])
+
+ 
 
   return (
 
@@ -36,8 +55,8 @@ const Modal = ({handleClose, show, children }) => {
              height: "40px",
              paddingLeft: "20px",
            }} 
-           // value = {name}
-           // setValue = {setName}
+           value = {channelName}
+           setValue = {setChannelName}
        />
        <Label 
            labelStyle = {{
@@ -57,8 +76,8 @@ const Modal = ({handleClose, show, children }) => {
              resize: "none"
 
            }} 
-           // value = {email}
-           // setValue = {setEmail}
+           value = {channelDescription}
+           setValue = {setChannelDescription}
        />
      <Label 
            labelStyle = {{
@@ -87,9 +106,13 @@ const Modal = ({handleClose, show, children }) => {
         </div>
 
          <label className="cyberpunk-checkbox-label">
-            <input type="checkbox" className="cyberpunk-checkbox" />
-               
-            </label>
+            <input 
+                type="checkbox" 
+                className="cyberpunk-checkbox"
+                checked={isChecked}
+                onChange={() => setIsChecked(!isChecked)}
+                 />
+        </label>
      </div>
        
        <div className='flex justify-end gap-2 w-[100%]'>
