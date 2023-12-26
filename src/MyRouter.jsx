@@ -44,8 +44,6 @@ import modalContext from './contexts/modalContext';
 import modalReducer from './reducers/modalReducer';
 
 
-
-
 const MyRouter = () => {
   
 
@@ -53,8 +51,11 @@ const MyRouter = () => {
   const [toggle, setToggle] = useState(storage.getToggle())
   console.log("top initial toggle state:",toggle)
 
-  const [toggleState, dispatchToggle] = useReducer(toggleReducer, {isOpen: toggle})
-
+  const [toggleState, dispatchToggle] = useReducer(toggleReducer, {
+     isOpen: toggle,
+     component: ""
+    })
+ 
   const [modalState, dispatchModal] = useReducer(modalReducer,{isOpen: false});
 
   const [newIncoming, setNewIncoming] = useState([])
@@ -104,6 +105,10 @@ const MyRouter = () => {
     }  
     return 0;
   }
+
+  useEffect(() => {
+    console.log("toggle", toggleState)
+  },[toggleState])
 
  
   useEffect(() => {
@@ -216,7 +221,7 @@ const MyRouter = () => {
               }
              }
           >
-            <RouterProvider router={router} /> 
+              <RouterProvider router={router} /> 
           </modalContext.Provider>
         </toggleContext.Provider>
     </GoogleOAuthProvider>

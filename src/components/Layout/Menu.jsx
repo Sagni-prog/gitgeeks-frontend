@@ -14,11 +14,13 @@ const Menu = () => {
 
   const initialToggle = storage.getToggle();
   const [toggle, setToggle] = useState(storage.getToggle())
-
   const { toggleState, dispatchToggle } = useContext(toggleContext);
 
   const handleToggle =  () => {
-    dispatchToggle({type: 'TOGGLE'})
+    dispatchToggle({
+      type: 'TOGGLE',
+      payload: "profile"
+    })
     storage.setToggle(toggleState.isOpen);
   }
 
@@ -54,6 +56,7 @@ const Menu = () => {
        chatContent.classList.remove("w-[73%]")
       }
     },[toggleState])
+
 
 
   const navigate = useNavigate();

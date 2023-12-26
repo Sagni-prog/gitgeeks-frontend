@@ -6,11 +6,13 @@ import Chat from './Layout/Chat';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectSingleChannel, setSingleChannel } from '../features/channel/channelSlice';
-import storage from '../utils/storage';
 import { getCookie } from '../utils/cookieStorage';
 import Modal from './Elements/Modals/Modal';
 import modalContext from '../contexts/modalContext';
 import EditChannelModal from './Elements/Modals/EditChannelModal';
+import ProfileDetail from './Layout/ProfileDetail';
+import toggleContext from '../contexts/toggleContext';
+import MembersList from './Layout/MembersList';
 
 const ChannelMessage = () => {
 
@@ -20,16 +22,7 @@ const ChannelMessage = () => {
   const [isOpen, setIdOpen] = useState(getCookie("isOpen"))
 
   const { modalState, dispatchModal } = useContext(modalContext);
-
-
-  // useEffect(() => {
-  //   dispatch(
-  //     setSingleChannel({
-  //       id: id
-  //     })
-  //   )
-
-  // },[]);
+  const { toggleState, dispatchToggle } = useContext(toggleContext);
 
   const handleClose = () => {
      dispatchModal({type: "CLOSE"})
@@ -49,8 +42,20 @@ const ChannelMessage = () => {
             />
             <Menu />
             <LeftSideBar type = "channel" />
-            <Chat />    
-            <RightSideBar />
+            <Chat />  
+            {
+               toggleState.component === "profile" ? (
+                  <RightSideBar >
+                     <ProfileDetail />
+                  </RightSideBar>
+               ):
+               (
+                <RightSideBar>
+                   <MembersList />
+                </RightSideBar>
+               )
+            }
+           
           </div>
        </>
     </>

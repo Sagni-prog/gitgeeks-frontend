@@ -1,4 +1,4 @@
-import {React, useEffect, useState, useRef } from 'react'
+import {React, useEffect, useState, useContext, useRef } from 'react'
 import TextEditor from '../Elements/TextEditor'
 import ChatBuble from './ChatBuble';
 import { getNextPageMessages } from '../../api/messages/getMessages';
@@ -16,6 +16,7 @@ import {
 import { selectSingleChannel, selectLoad, selectChannel } from '../../features/channel/channelSlice';
 import { debounce } from '../../utils/helper';
 import { FaHashtag } from "react-icons/fa6";
+import toggleContext from '../../contexts/toggleContext';
 
 
 
@@ -34,6 +35,15 @@ const Chat = () => {
 
   const [loadingNextMessage, setLoadingNextMessage] = useState(false);
   const chatContainerRef = useRef(null);
+
+  const { toggleState, dispatchToggle } = useContext(toggleContext);
+
+  const handleClick = () => {
+    dispatchToggle({
+      type: 'TOGGLE',
+      payload: "member"
+    })
+  }
 
   const getNextMessages = async(url) => {
     if(!loadingNextMessage){
@@ -92,7 +102,6 @@ const Chat = () => {
     <div
         className='chat-content relative flex flex-col justify-start   ml-[27%] w-[73%]  border-r mb-2' id = "chat-content">
         <div className='absolute flex justify-between items-center content-center top-0 left-0 h-[7%] w-[100%] px-[4%] btn-bg'>
-
        {
          channel &&
            <div className='flex items-center content-center gap-5 channel-info'>
@@ -106,7 +115,7 @@ const Chat = () => {
            </div>
        }
 
-           <div className='flex channel-memebers'>
+           <div className='flex channel-memebers' onClick={handleClick}>
             {
               channel?.users.map((user,index) => (
                 index <= 3 && (
