@@ -14,7 +14,7 @@ const RightSideBar = ({children}) => {
 
 
   return (
-    <div className="fixed h-screen w-[25%] ml-[75%] bg-secondry scrollable" id = "right-side-bar">
+    <div className="fixed h-screen w-[25%] ml-[75%] bg-secondry" id = "right-side-bar">
        {children}
     </div>
   )

@@ -1,20 +1,37 @@
-import React from 'react';
-import { FaAngleDown } from "react-icons/fa6";
-import { FaHashtag } from "react-icons/fa6";
-import { RiSettings5Fill } from "react-icons/ri";
-import { FaUserPlus } from "react-icons/fa";
+import React, {useContext} from 'react';
+import { FaTimes } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { selectSingleChannel, selectChannel } from '../../features/channel/channelSlice';
+import toggleContext from '../../contexts/toggleContext';
 
 const MembersList = () => {
 
     const channelId = useSelector(selectSingleChannel)
     const channel = useSelector((state) => selectChannel(state, channelId));
+    const { toggleState, dispatchToggle } = useContext(toggleContext);  
+    
+    const close = () => {
+      console.log("close")
+      dispatchToggle({type: "OPEN"});
+      storage.setToggle(toggleState.isOpen);
+    }
+  
 
   return (
     <>
-      <div className='flex flex-col mt-1 w-[100%] h-[100%] color-secondary'>
+      <div className='absolute top-0 left-0 flex justify-between items-center content-center w-[100%] btn-bg h-[7%] my-0 mx-auto z-[100] px-[5%]'>
+            <div className='cursor-pointer'>
+              <FaUsers size={22} />
+            </div>
+            <p>34 MEMBERS</p>
+            <div className='cursor-pointer close'>
+              <FaTimes  onClick={close}/>
+            </div>
+          </div>
+      <div className='relative flex flex-col mt-[10%] w-[100%] h-[100%] color-secondary scrollable'>
+      
         {
           channel?.users.map((user,index) =>
             <div className='cursor-pointer channel'>
