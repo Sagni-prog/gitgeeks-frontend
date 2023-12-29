@@ -160,7 +160,7 @@ const MyRouter = () => {
 
   const router = createBrowserRouter([
     {
-      path: '/',
+      path: '/@me',
       element: <App />,
     },
     {
