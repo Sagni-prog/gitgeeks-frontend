@@ -1,5 +1,6 @@
 import {React, useState, useEffect, useContext} from 'react'
 import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
 import { useSelector, useDispatch } from 'react-redux';
 import { 
@@ -27,6 +28,8 @@ const ChannelList = (props) => {
   const channels = useSelector(selectAllChannels);
   const channelState = useSelector(selectChannelState)
   const user = storage.getUser();
+
+  const [isOpen, setIsOpen] = useState(true)
 
   const messages = useSelector(selectMessages)
     const dispatch = useDispatch()
@@ -60,6 +63,10 @@ const ChannelList = (props) => {
    
   }
 
+  const hanleChannelList = () => {
+    setIsOpen(!isOpen);
+  }
+
   const handleEditChannel = (channel) => {
 
       dispatch(
@@ -78,12 +85,15 @@ const ChannelList = (props) => {
 
   return (
     <div className='relative flex flex-col justify-start items-start content-center w-[100%] mt-6 '>
-      <div className='flex items-center gap-1 content-center px-[6%]'>
-        <FaAngleDown className='text-sm' />
+      <div className='flex items-center gap-1 content-center px-[6%] cursor-pointer' onClick = {hanleChannelList} >
+        {
+          isOpen ?  <FaAngleDown className='text-sm' /> : <FaAngleRight className='text-sm' />
+        }
+       
         <h1 className=''>CHANNELS</h1>
       </div>
      
-      <div className='flex flex-col mt-1 w-[100%] h-[100%] color-secondary'>
+      <div className={`${!isOpen ? 'none' : ''} flex flex-col mt-1 w-[100%] h-[100%] color-secondary`}>
         {
           channelState.isLoaded == true ? (
          

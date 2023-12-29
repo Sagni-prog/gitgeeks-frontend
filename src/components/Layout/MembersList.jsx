@@ -11,7 +11,7 @@ const MembersList = () => {
     const channelId = useSelector(selectSingleChannel)
     const channel = useSelector((state) => selectChannel(state, channelId));
     const { toggleState, dispatchToggle } = useContext(toggleContext);  
-    
+
     const close = () => {
       console.log("close")
       dispatchToggle({type: "OPEN"});
@@ -30,14 +30,14 @@ const MembersList = () => {
               <FaTimes  onClick={close}/>
             </div>
           </div>
-      <div className='relative flex flex-col mt-[10%] w-[100%] h-[100%] color-secondary scrollable'>
+      <div className='relative flex flex-col mt-[14%] w-[100%] h-[100%] color-secondary scrollable'>
       
         {
           channel?.users.map((user,index) =>
             <div className='cursor-pointer channel'>
                <div className='ml-2 flex items-center gap-2 pl-[8%] py-2'>
              
-                    <div className='profile cursor-pointer'>  
+                    <div className='member-profile profile cursor-pointer'>  
                      <img src = "https://avatars.githubusercontent.com/u/98890510?s=400&u=5bb16356e20b68aea2928951d56cda9347d5c77c&v=4" className='rounded-full border' />
                      </div> 
                 

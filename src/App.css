@@ -126,11 +126,16 @@ body{
   width: 25px;
   height: 25px;
 }
+
+.member-profile{
+  width: 30px;
+  height: 30px;
+}
 .memebers-profile{
   width: 25px;
   height: 25px;
- 
 }
+
 .overlap{
   margin-left: -13px;
   /* transform: translateX(-13px); */

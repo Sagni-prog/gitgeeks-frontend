@@ -5,7 +5,7 @@ import RightSideBar from './Layout/RightSideBar';
 import Chat from './Layout/Chat';
 import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectSingleChannel, setSingleChannel } from '../features/channel/channelSlice';
+import { selectSingleChannel, setSingleChannel, setSelectedChannel, selectedChannel, selectChannel } from '../features/channel/channelSlice';
 import { getCookie } from '../utils/cookieStorage';
 import Modal from './Elements/Modals/Modal';
 import modalContext from '../contexts/modalContext';
@@ -18,8 +18,12 @@ const ChannelMessage = () => {
 
   const dispatch = useDispatch();
   const channelId = useSelector(selectSingleChannel);
+  const thisChannel = useSelector(selectedChannel);
+  const channel = useSelector((state) => selectChannel(state, 9));
+
   const { id } = useParams();
   const [isOpen, setIdOpen] = useState(getCookie("isOpen"))
+  const [thisChannlId, setThisChannlId] = useState("")
 
   const { modalState, dispatchModal } = useContext(modalContext);
   const { toggleState, dispatchToggle } = useContext(toggleContext);
@@ -27,9 +31,22 @@ const ChannelMessage = () => {
   const handleClose = () => {
      dispatchModal({type: "CLOSE"})
   }
+ 
+
   useEffect(() => {
-   console.log("show modal:", modalState)
-  },[modalState])
+   setThisChannlId(id);
+  },[])
+
+  useEffect(() => {
+       dispatch(setSelectedChannel({
+         channelId: 9
+       }))
+
+  },[thisChannlId])
+
+  useEffect(() => {
+   console.log(" this is the selected one:",thisChannel)
+  },[thisChannel])
 
   return (
     <>

@@ -1,5 +1,6 @@
 import {React, useState, useEffect} from 'react'
 import { FaAngleDown } from "react-icons/fa6";
+import { FaAngleRight } from "react-icons/fa6";
 import { FaHashtag } from "react-icons/fa6";
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllChannels,selectChannelState, updateChannel } from '../../features/channel/channelSlice';
@@ -12,15 +13,22 @@ const DMList= () => {
   const dispatch = useDispatch();
   const channels = useSelector(selectAllChannels);
   const channelState = useSelector(selectChannelState)
+  const [isOpen, setIsOpen] = useState(true)
+
+  const hanleChannelList = () => {
+    setIsOpen(!isOpen);
+  }
 
   return (
     <div className='flex flex-col justify-start items-start content-center w-[100%] mt-6'>
-      <div className='flex items-center gap-1 content-center px-[6%]'>
-        <FaAngleDown className='text-sm' />
+      <div className='flex items-center gap-1 content-center px-[6%] cursor-pointer' onClick={hanleChannelList}>
+        {
+          isOpen ?  <FaAngleDown className='text-sm' /> : <FaAngleRight className='text-sm' />
+        }
       <h1 className=''>DIRECT MESSAGES</h1>
       </div>
 
-      <div className='flex flex-col mt-1 w-[100%] h-[100%] color-secondary'>
+      <div className={`${!isOpen ? 'none': ''} flex flex-col mt-1 w-[100%] h-[100%] color-secondary`}>
         {
           channelState.isLoaded == true ? (
          
