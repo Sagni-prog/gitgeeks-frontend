@@ -59,12 +59,12 @@ const Modal = ({handleClose, show, id }) => {
      
      <div className='flex flex-col justify-center content-center items-center gap-3  px-2 p-3 pt-0 w-[90%]'>
      <div className='flex self-start color-primary'>
-       <p className='text-xl mb-2'>Update Channel</p>
+       <p className='text-size-4 mb-2'>Update Channel</p>
      </div>
      <Label 
            labelStyle = {{
              color: "#adbac7",
-             fontSize: "16px",
+             fontSize: "1.8rem",
              fontWeight: "500",
              alignSelf: "flex-start",
            }}
@@ -74,8 +74,9 @@ const Modal = ({handleClose, show, id }) => {
        <Input 
            inputStyle = {{
              width: "100%",
-             height: "40px",
-             paddingLeft: "20px",
+             height: "4rem",
+             paddingLeft: "2rem",
+             fontSize: "1.6rem"
            }} 
            value = {channelName}
            setValue = {setChannelName}
@@ -83,7 +84,7 @@ const Modal = ({handleClose, show, id }) => {
        <Label 
            labelStyle = {{
              color: "#adbac7",
-             fontSize: "16px",
+             fontSize: "1.8rem",
              fontWeight: "500",
              alignSelf: "flex-start",
            }}
@@ -93,10 +94,10 @@ const Modal = ({handleClose, show, id }) => {
        <TextArea 
            inputStyle = {{
              width: "100%",
-             height: "100px",
-             paddingLeft: "20px",
-             resize: "none"
-
+             height: "10rem",
+             paddingLeft: "2rem",
+             resize: "none",
+             fontSize: "1.6rem"
            }} 
            value = {channelDescription}
            setValue = {setChannelDescription}
@@ -104,7 +105,7 @@ const Modal = ({handleClose, show, id }) => {
      <Label 
            labelStyle = {{
              color: "#adbac7",
-             fontSize: "16px",
+             fontSize: "1.8rem",
              fontWeight: "500",
              alignSelf: "flex-start",
            }}
@@ -114,23 +115,23 @@ const Modal = ({handleClose, show, id }) => {
      <div
        style={{
         backgroundColor: "#373e47",
-        height: "60px",
+        height: "6rem",
         width: '100%',
         borderRadius: "4px"
        }}
       className='flex items-center justify-between p-3'>
         <div className='flex flex-col justify-center gap-1 text-left'>
           <div className='flex items-center gap-1'>
-            <p>Private Channel</p>
+            <p className='text-size-3'>Private Channel</p>
              <IoIosLock/>
           </div>
-         <p className='text-xs'>By making a channel private. only invited member can view the channel</p>
+         <p className='text-size-2'>By making a channel private. only invited member can view the channel</p>
         </div>
 
          <label className="cyberpunk-checkbox-label">
             <input 
                 type="checkbox" 
-                className="cyberpunk-checkbox"
+                className="cyberpunk-checkbox text-size-3"
                 checked={isChecked}
                 onChange={() => setIsChecked(!isChecked)}
                  />
@@ -142,7 +143,8 @@ const Modal = ({handleClose, show, id }) => {
            buttStyle = {{
                width: "40%",
                height: "52px",
-               color: "#fff"
+               color: "#fff",
+               fontSize: "1.8rem"
            }}
            title = "Cancel" 
            onClick = {handleClose}
@@ -151,8 +153,9 @@ const Modal = ({handleClose, show, id }) => {
            buttStyle = {{
                width: "40%",
                height: "52px",
-               color: "#fff",
-               backgroundColor: "#22d3ee"
+               color: "#22d3ee",
+              //  backgroundColor: "#22d3ee",
+               fontSize: "1.8rem"
            }}
            title = "Update" 
            onClick = {handleUpdate}

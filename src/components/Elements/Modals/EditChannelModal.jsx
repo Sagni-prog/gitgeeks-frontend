@@ -17,12 +17,12 @@ const EditChannelModal = () => {
           }}
         className='w-[100%] h-[90%] flex flex-col justify-center content-center items-center gap-3  px-2 p-3 pt-0'>
        <div className='flex self-start color-primary'>
-          <p className='text-xl mb-2'>Create Account</p>
+          <p className='text-size-4 mb-2'>Create Account</p>
         </div>
         <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -32,8 +32,9 @@ const EditChannelModal = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
+                fontSize: "1.6rem"
               }} 
               // value = {name}
               // setValue = {setName}
@@ -41,7 +42,7 @@ const EditChannelModal = () => {
           <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -51,8 +52,9 @@ const EditChannelModal = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
+                fontSize: "1.6rem"
               }} 
               // value = {email}
               // setValue = {setEmail}
@@ -60,7 +62,7 @@ const EditChannelModal = () => {
         <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -70,8 +72,9 @@ const EditChannelModal = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
+                fontSize: "1.6rem"
               }} 
               // value = {password}
               // setValue = {setPassword}
@@ -79,7 +82,7 @@ const EditChannelModal = () => {
           <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -89,9 +92,10 @@ const EditChannelModal = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
-                marginBottom: "20px"
+                height: "4rem",
+                paddingLeft: "2rem",
+                marginBottom: "2rem",
+                fontSize: "1.6rem"
               }} 
               // value = {confirmPassword}
               // setValue = {setConfirmPassword}
@@ -100,8 +104,9 @@ const EditChannelModal = () => {
             <Button
               buttStyle = {{
                   width: "100%",
-                  height: "55px",
-                  color: "#fff"
+                  height: "5.5rem",
+                  color: "#fff",
+                  fontSize: "1.8rem"
               }}
               title = "Sign up" 
               // onClick = {handleSignup}
