@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectSingleChannel, setSingleChannel } from '../features/channel/channelSlice';
 import storage from '../utils/storage';
 import toggleContext from '../contexts/toggleContext';
+import ChatContent from './Layout/ChatContent';
 
 const Channel = () => {
 

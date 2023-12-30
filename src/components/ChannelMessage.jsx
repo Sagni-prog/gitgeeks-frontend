@@ -13,6 +13,7 @@ import EditChannelModal from './Elements/Modals/EditChannelModal';
 import ProfileDetail from './Layout/ProfileDetail';
 import toggleContext from '../contexts/toggleContext';
 import MembersList from './Layout/MembersList';
+import ChatContent from './Layout/ChatContent';
 
 const ChannelMessage = () => {
 
@@ -59,7 +60,9 @@ const ChannelMessage = () => {
             />
             <Menu />
             <LeftSideBar type = "channel" />
-            <Chat />  
+            <Chat>
+               <ChatContent />
+            </Chat>
             {
                toggleState.component === "profile" ? (
                   <RightSideBar >
