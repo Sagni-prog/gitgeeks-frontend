@@ -44,12 +44,12 @@ const Signup = () => {
     <div className='flex justify-center items-center content-center h-screen'>
        <div className='w-[40%] h-[90%] flex flex-col justify-center content-center items-center gap-3  px-2 p-3 pt-0'>
        <div className='flex self-start color-primary'>
-          <p className='text-xl mb-2'>Create Account</p>
+          <p className='text-size-5 mb-2'>Create Account</p>
         </div>
         <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -59,8 +59,8 @@ const Signup = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
               }} 
               value = {name}
               setValue = {setName}
@@ -68,7 +68,7 @@ const Signup = () => {
           <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -78,8 +78,8 @@ const Signup = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
               }} 
               value = {email}
               setValue = {setEmail}
@@ -87,7 +87,7 @@ const Signup = () => {
         <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -97,8 +97,8 @@ const Signup = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
               }} 
               value = {password}
               setValue = {setPassword}
@@ -106,7 +106,7 @@ const Signup = () => {
           <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -116,9 +116,9 @@ const Signup = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
-                marginBottom: "20px"
+                height: "4rem",
+                paddingLeft: "2rem",
+                marginBottom: "2rem"
               }} 
               value = {confirmPassword}
               setValue = {setConfirmPassword}
@@ -127,8 +127,9 @@ const Signup = () => {
             <Button
               buttStyle = {{
                   width: "100%",
-                  height: "55px",
-                  color: "#fff"
+                  height: "5.5rem",
+                  color: "#fff",
+                  fontSize: "1.8rem"
               }}
               title = "Sign up" 
               onClick = {handleSignup}

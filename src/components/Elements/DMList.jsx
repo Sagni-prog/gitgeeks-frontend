@@ -23,9 +23,9 @@ const DMList= () => {
     <div className='flex flex-col justify-start items-start content-center w-[100%] mt-6'>
       <div className='flex items-center gap-1 content-center px-[6%] cursor-pointer' onClick={hanleChannelList}>
         {
-          isOpen ?  <FaAngleDown className='text-sm' /> : <FaAngleRight className='text-sm' />
+          isOpen ?  <FaAngleDown className='text-size-2' /> : <FaAngleRight className='text-size-2' />
         }
-      <h1 className=''>DIRECT MESSAGES</h1>
+      <h1 className='text-size-3'>DIRECT MESSAGES</h1>
       </div>
 
       <div className={`${!isOpen ? 'none': ''} flex flex-col mt-1 w-[100%] h-[100%] color-secondary`}>
@@ -43,13 +43,13 @@ const DMList= () => {
                      </div> 
                   ): (
                  <div className='flex justify-center items-center content-center'>   
-                   <FaHashtag  />  
+                   <FaHashtag className='text-size-2' />  
                    </div>
                   )
                 }
                
               <div>
-                <p onClick={() => changeName(data)}>{data.channel_name.substr(0, 19)}</p>
+                <p className='text-size-3' onClick={() => changeName(data)}>{data.channel_name.substr(0, 19)}</p>
               </div> 
             </div>  
           </div>

@@ -105,11 +105,11 @@ const ChatContent = () => {
          channel &&
            <div className='flex items-center content-center gap-5 channel-info'>
               <div className='flex items-center content-center gap-1 channel-name'>
-                 <FaHashtag />
-                 <p>{channel?.channel_name.substr(0, 10)}</p>
+                 <FaHashtag className='text-size-2' />
+                 <p className='text-size-3'>{channel?.channel_name.substr(0, 10)}</p>
               </div>
               <div className='flex items-center channel-description color-secondary '>
-                  <p className='text-sm'>{channel?.description.substr(0, 50)}...</p>
+                  <p className='text-size-2'>{channel?.description.substr(0, 50)}...</p>
               </div>
            </div>
        }

@@ -23,11 +23,11 @@ const MembersList = () => {
     <>
       <div className='absolute top-0 left-0 flex justify-between items-center content-center w-[100%] btn-bg h-[7%] my-0 mx-auto z-[100] px-[5%]'>
             <div className='cursor-pointer'>
-              <FaUsers size={22} />
+              <FaUsers className='text-size-5' />
             </div>
-            <p>34 MEMBERS</p>
+            <p className='text-size-3'>34 MEMBERS</p>
             <div className='cursor-pointer close'>
-              <FaTimes  onClick={close}/>
+              <FaTimes className = 'text-size-5' onClick={close}/>
             </div>
           </div>
       <div className='relative flex flex-col mt-[14%] w-[100%] h-[100%] color-secondary scrollable'>
@@ -43,7 +43,7 @@ const MembersList = () => {
                 
               <div className='w-[85%]'>
                 <Link className='flex items-center justify-between' onClick={() => changeName()}>
-                 <p>{user.name}</p> 
+                 <p className='text-size-3'>{user.name}</p> 
                </Link>
 
               </div> 

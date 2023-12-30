@@ -1,8 +1,4 @@
 #root {
-  /* max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center; */
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -16,6 +12,35 @@ body{
   background-color: #22272e;
   overflow-x: hidden;
   overflow-y: hidden;
+}
+html{
+  font-size: 10px;
+}
+
+.text-size-1{
+  font-size: 1.2rem;
+}
+
+.text-size-2{
+  font-size: 1.4rem;
+}
+
+.text-size-3{
+  font-size: 1.6rem;
+}
+
+.text-size-4{
+  font-size: 1.8rem;
+}
+
+.text-size-5{
+  font-size: 2rem;
+}
+.text-size-6{
+  font-size: 2.4rem;
+}
+.text-size-xl{
+  font-size: 3.2rem;
 }
 
 
@@ -110,12 +135,12 @@ body{
   background-color: #373e47;
 }
 .bottom-profile{
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
 }
 .bubble-img{
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
 }
 .bubble-img img{
   height: 100%;
@@ -123,27 +148,27 @@ body{
   object-fit: cover;
 }
 .profile{
-  width: 25px;
-  height: 25px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .member-profile{
-  width: 30px;
-  height: 30px;
+  width: 3rem;
+  height: 3rem;
 }
 .memebers-profile{
-  width: 25px;
-  height: 25px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .overlap{
-  margin-left: -13px;
+  margin-left: -1.3rem;
   /* transform: translateX(-13px); */
 }
 
 .timeline{
   position: relative;
-  /* margin: 20px 0; */
+  /* margin: 2rem 0; */
 }
 .timeline::before{
   position: absolute;
@@ -166,8 +191,8 @@ body{
 }
 
 .img-container{
-  height: 300px;
-  width: 300px; 
+  height: 30rem;
+  width: 30rem; 
   overflow: hidden;
 }
 
@@ -238,8 +263,8 @@ body{
   color: #adbac7 !important;
   }
 .ql-snow.ql-toolbar button, .ql-snow .ql-toolbar button{
-   width: 20px !important;
-   height: 20px !important;
+   width: 2rem !important;
+   height: 2rem !important;
 }
 
 .ql-toolbar.ql-snow .ql-formats {
@@ -306,7 +331,7 @@ body{
 }
 
 .line{
-  margin-top: 20px;
+  margin-top: 2rem;
   background-color: #414c57;
   height: 1px; 
 }
@@ -320,8 +345,8 @@ body{
 
 .cyberpunk-checkbox {
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 2rem;
+  height: 2rem;
   border: 2px solid #22d3ee;
   border-radius: 5px;
   background-color: transparent;
@@ -362,8 +387,8 @@ body{
 /* spinner */
 
 .spinner {
-  width: 40px;
-  height: 40px;
+  width: 4rem;
+  height: 4rem;
   border-radius: 100%;
   background-color: aqua;
   display: grid;
@@ -382,12 +407,12 @@ body{
  @keyframes zoomin {
   0% {
    transform: scale(1);
-   box-shadow: 0 0 100px 20px rgb(16, 71, 71);
+   box-shadow: 0 0 100px 2rem rgb(16, 71, 71);
   }
  
   100% {
    transform: scale(1.5);
-   box-shadow: 0 0 100px 20px #000;
+   box-shadow: 0 0 100px 2rem #000;
   }
  }
 
@@ -398,14 +423,14 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  /* margin-bottom: 30px; */
-   margin-top: 30px;
+  /* margin-bottom: 3rem; */
+   margin-top: 3rem;
  }
 
  .card{
   max-width: 95%;
   width: 100%;
-  /* padding: 0 30px; */
+  /* padding: 0 3rem; */
   border-radius: 10px;
 }
 .card .header{
@@ -423,8 +448,8 @@ body{
 }
 
 .header .channel-img{
-  height: 30px;
-  width: 30px;
+  height: 3rem;
+  width: 3rem;
   background: #373e47;
   border-radius: 50%;
   position: relative;
@@ -460,7 +485,7 @@ body{
   width: 20%;
 }
 .card .description{
-  /* margin: 20px 0; */
+  /* margin: 2rem 0; */
 }
 .description{
  
@@ -486,7 +511,7 @@ body{
   height: 45px;
   width: 100%;
   background: #373e47;
-  border-radius: 25px;
+  border-radius: 2.5rem;
   position: relative;
   overflow: hidden;
 }

@@ -87,10 +87,10 @@ const ChannelList = (props) => {
     <div className='relative flex flex-col justify-start items-start content-center w-[100%] mt-6 '>
       <div className='flex items-center gap-1 content-center px-[6%] cursor-pointer' onClick = {hanleChannelList} >
         {
-          isOpen ?  <FaAngleDown className='text-sm' /> : <FaAngleRight className='text-sm' />
+          isOpen ?  <FaAngleDown className='text-size-2' /> : <FaAngleRight className='text-size-2' />
         }
        
-        <h1 className=''>CHANNELS</h1>
+        <h1 className='text-size-3'>CHANNELS</h1>
       </div>
      
       <div className={`${!isOpen ? 'none' : ''} flex flex-col mt-1 w-[100%] h-[100%] color-secondary`}>
@@ -108,13 +108,13 @@ const ChannelList = (props) => {
                      </div> 
                   ): (
                  <div className='flex justify-center items-center content-center'>   
-                   <FaHashtag  />  
+                   <FaHashtag className='text-size-2'  />  
                    </div>
                   )
                 }
                
               <div className='w-[85%]'>
-                <Link className='flex items-center justify-between' onClick={() => changeName(data)}>
+                <Link className='flex items-center justify-between text-size-3' onClick={() => changeName(data)}>
                  <p>{data.channel_name.substr(0, 19)}</p> 
                  {
                   data.owner_id === user.id ?  

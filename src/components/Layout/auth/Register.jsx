@@ -26,34 +26,37 @@ const Register = () => {
            <Button
                 buttStyle = {{
                   width: "100%",
-                  height: "45px"
+                  height: "4.5rem",
+                  fontSize: "1.6rem"
                 }}
                 title = "Sign up with GitHub" 
-                icons = {<FaGithub size= '25px' className='ml-3' />}
+                icons = {<FaGithub className='ml-3 text-size-6' />}
            />
            <Button
                 buttStyle = {{
                   width: "100%",
-                  height: "45px",
+                  height: "4.5rem",
+                  fontSize: "1.6rem"
                 }}
                 title = "Sign up with Google" 
-                icons = {<FcGoogle size= '25px' className='ml-3' />}
+                icons = {<FcGoogle className='ml-3 text-size-6' />}
            />
            <Button
                 buttStyle = {{
                   width: "100%",
-                  height: "45px",
-                  marginBottom: "20px"
+                  height: "4.5rem",
+                  marginBottom: "2rem",
+                  fontSize: "1.6rem"
                 }}
                 onClick = { navigateSignUp}
                 title = "Sign up with Email" 
-                icons = {<MdEmail size= '25px' className='ml-3' />}
+                icons = {<MdEmail className='ml-3 text-size-6' />}
            />
           <div className='line w-[100%]'></div>
           <div>
-             <p className='color-primary font-medium'>
+             <p className='color-primary font-medium text-size-3'>
               Already have an account ? 
-              <a  href = '/auth/login' className='login text-cyan-400'>
+              <a  href = '/auth/login' className='login text-cyan-400 text-size-4'>
                 Log in
               </a>.
             </p>

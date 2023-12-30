@@ -73,34 +73,36 @@ const Login = () => {
            <Button
                 buttStyle = {{
                   width: "100%",
-                  height: "45px"
+                  height: "4.5rem",
+                  fontSize: "1.6rem"
                 }}
                 title = "Continue with GitHub" 
-                icons = {<FaGithub size= '25px' className='ml-3' />}
+                icons = {<FaGithub className='ml-3 text-size-6' />}
                 onClick = {redirectToGithub}
            />
            <Button
                 buttStyle = {{
                   width: "100%",
-                  height: "45px",
-                  marginBottom: "20px"
+                  height: "4.5rem",
+                  marginBottom: "2rem",
+                  fontSize: "1.6rem"
                 }}
                 title = "Continue with Google" 
-                icons = {<FcGoogle size= '25px' className='ml-3' />}
+                icons = {<FcGoogle className='ml-3 text-size-6' />}
                 onClick = {() => {
                   setIsLoading(true)
                   processGoogleLogin()
                 }}
            />
 
-           <div className='orLabel color-primary'>
+           <div className='orLabel color-primary text-size-3'>
               OR
            </div>
 
           <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -110,8 +112,9 @@ const Login = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
+                fontSize: "1.6rem",
               }} 
               value={email} 
               setValue={setEmail}
@@ -119,7 +122,7 @@ const Login = () => {
           <Label 
               labelStyle = {{
                 color: "#adbac7",
-                fontSize: "16px",
+                fontSize: "1.8rem",
                 fontWeight: "500",
                 alignSelf: "flex-start",
               }}
@@ -129,8 +132,8 @@ const Login = () => {
           <Input 
               inputStyle = {{
                 width: "100%",
-                height: "40px",
-                paddingLeft: "20px",
+                height: "4rem",
+                paddingLeft: "2rem",
               }} 
               value = {password}
               setValue = {setPassword}
@@ -139,27 +142,28 @@ const Login = () => {
           <div className='flex justify-between items-center content-center w-[100%]'> 
             <div className='flex justify-between items-center'>
              <label className="cyberpunk-checkbox-label">
-                <input type="checkbox" className="cyberpunk-checkbox" />
+                <input type="checkbox" className="cyberpunk-checkbox text-size-3" />
                 Remember me
               </label>
              </div>
-             <a  href = '#' className='login text-cyan-400'>Forgot Password ?</a>
+             <a  href = '#' className='login text-cyan-400 text-size-3'>Forgot Password ?</a>
           </div>
 
           <Button
               buttStyle = {{
                   width: "100%",
-                  height: "55px",
-                  color: "#fff"
+                  height: "5.5rem",
+                  color: "#fff",
+                  fontSize: "1.8rem"
               }}
               title = "Log in" 
               onClick = {handleLogin}
           />
           <div className='line w-[100%]'></div>
           <div>
-             <p className='color-primary font-medium'>
+             <p className='color-primary font-medium text-size-3'>
                 New to GeekHub Community ?
-                <a  href = '/auth/register' className='login text-cyan-400'>
+                <a  href = '/auth/register' className='login text-cyan-400 text-size-3'>
                   Create Account
                 </a>.
               </p>

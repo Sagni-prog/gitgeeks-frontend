@@ -71,34 +71,34 @@ const Menu = () => {
   return (
     <div className='menu-bar rounded-t-md	 flex flex-col justify-center items-center content-center h-screen w-[6%]  fixed'>
     <div className='flex justify-center content-center items-center mt-6 mb-12 cursor-pointer'>
-        <MdDeviceHub className='text-3xl' />
+        <MdDeviceHub className='text-size-xl' />
     </div>
 
     <div className='flex flex-col items-center justify-between h-[100%] w-[100%] border-r'>
       <div className='flex flex-col	justify-center content-center items-center gap-[18px]  w-[100%]'>
         <div className='flex flex-col justify-center items-center border-active-r w-[100%]'>
-            <BiSolidHomeAlt2 className = "color-primary text-3xl mb-1" />
-            <p className='color-secondary text-xs text-center'>Home</p>
+            <BiSolidHomeAlt2 className = "color-primary text-size-xl mb-1" />
+            <p className='color-secondary text-size-1 text-center'>Home</p>
         </div>
 
         <div className='flex flex-col justify-center items-center  w-[100%] cursor-pointer' onClick={navigateDM}>
-            <IoIosChatbubbles className = "color-primary text-3xl	mb-1" />
-            <p className='color-secondary text-xs'>DM</p>
+            <IoIosChatbubbles className = "color-primary text-size-xl	mb-1" />
+            <p className='color-secondary text-size-1'>DM</p>
         </div>
 
         <div className='flex flex-col justify-center items-center  w-[100%] cursor-pointer' onClick={navigateChannel}>
-            <HiSpeakerphone className = "color-primary text-3xl	mb-1" />
-            <p className='color-secondary text-xs'>Channel</p>
+            <HiSpeakerphone className = "color-primary text-size-xl	mb-1" />
+            <p className='color-secondary text-size-1'>Channel</p>
         </div>
 
         <div className='flex flex-col justify-center items-center w-[100%] cursor-pointer'>
-            <IoMdFolder className = "color-primary text-3xl	mb-1" />
-            <p className='color-secondary text-xs'>Workspace</p>
+            <IoMdFolder className = "color-primary text-size-xl	mb-1" />
+            <p className='color-secondary text-size-1'>Workspace</p>
         </div>
 
         <div className='flex flex-col justify-center items-center w-[100%] cursor-pointer'>
-            <RiSettings5Fill className = "color-primary text-3xl	mb-1" />
-            <p className='color-secondary text-xs'>Settings</p>
+            <RiSettings5Fill className = "color-primary text-size-xl	mb-1" />
+            <p className='color-secondary text-size-1'>Settings</p>
         </div>
       </div>  
  

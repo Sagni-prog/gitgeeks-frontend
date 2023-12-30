@@ -26,13 +26,13 @@ const ChatBuble = () => {
                         </div>  
                    <div className='w-[91%] flex flex-col text-left'>
                         <div className='flex'>
-                            <div className='user-name mr-1'>{data.user.name}</div>
-                            <div className='date flex items-center color-secondary text-xs gap-1'>
+                            <div className='user-name mr-1 text-size-3'>{data.user.name}</div>
+                            <div className='date flex items-center color-secondary text-size-1 gap-1'>
                                 <p>{data.sent_at}</p>
                             </div>
                         </div>
                      <div className='message-content'>
-                    <div className='break-all'>{htmlParser.parse(data.message_body)}</div>
+                    <div className='break-all text-size-3'>{htmlParser.parse(data.message_body)}</div>
                   </div>
             </div>
         </div>
