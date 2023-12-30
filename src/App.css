@@ -43,6 +43,11 @@ html{
   font-size: 3.2rem;
 }
 
+.search{
+  position: absolute;
+  left: 80%;
+  top: calc(50% - 1.2rem);
+}
 
 .none{
   display: none;

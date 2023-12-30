@@ -21,10 +21,10 @@ const ProfileDetail = () => {
        <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'>
           <div className='flex justify-between items-center content-center h-[100%] w-[90%] my-0 mx-auto'>
             <div className='cursor-pointer'>
-              <p>Profile</p>
+              <p className='text-size-3 font-medium'>Profile</p>
             </div>
             <div className='cursor-pointer close'>
-              <FaTimes  onClick={close}/>
+              <FaTimes className = 'text-size-5'  onClick={close}/>
             </div>
           </div>
         </div>
@@ -36,15 +36,15 @@ const ProfileDetail = () => {
         </div>
 
         <div className='mb-2'>
-          <p className='text-2xl font-medium'>Sagni Alemayehu</p>
+          <p className='font-medium text-size-6'>Sagni Alemayehu</p>
         </div>
 
         <div className='flex items-center justify-center gap-2'>
-          <LuClock3 className= "text-lg" />
-          <p>11:34</p>
-          <p>PM</p>
-          <p>(yesterday)</p>
-          <p>local time</p>
+          <LuClock3 className= "text-lg text-size-3" />
+          <p className='text-size-3'>11:34</p>
+          <p className='text-size-3'>PM</p>
+          <p className='text-size-3'>(yesterday)</p>
+          <p className='text-size-3'>local time</p>
         </div>
 
         <div className='flex justify-center gap-3 mt-5'>
@@ -52,18 +52,20 @@ const ProfileDetail = () => {
             buttStyle = {{
               paddingTop: "6px",
               paddingBottom: "6px",
-              paddingLeft: "36px",
-              paddingRight: '36px'
+              paddingLeft: "3.6rem",
+              paddingRight: '3.6rem',
+              fontSize: "1.6rem"
             }}
             title = "Message" 
-            icons = {<FiMessageCircle />}
+            icons = {<FiMessageCircle className='text-size-3' />}
           />
           <Button 
             buttStyle = {{
               paddingTop: "6px",
               paddingBottom: "6px",
-              paddingLeft: "36px",
-              paddingRight: '36px'
+              paddingLeft: "3.6rem",
+              paddingRight: '3.6rem',
+              fontSize: "1.6rem"
             }}
             title = "Request DM"
           />
