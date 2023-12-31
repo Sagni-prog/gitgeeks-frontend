@@ -18,7 +18,6 @@ const MembersList = () => {
       storage.setToggle(toggleState.isOpen);
     }
   
-
   return (
     <>
       <div className='absolute top-0 left-0 flex justify-between items-center content-center w-[100%] btn-bg h-[7%] my-0 mx-auto z-[100] px-[5%]'>

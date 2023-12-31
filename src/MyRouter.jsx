@@ -21,9 +21,7 @@ import {
   setChannelState, 
   selectSingleChannel,
   selectAllChannels,
-  selectedChannel,
   setSelectedChannel,
-  selectChannel
 } from './features/channel/channelSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import './App.css'
@@ -33,7 +31,6 @@ import {
   setMessages, 
   selectMessages, 
   selectNextLink, 
-  addMessages, 
   addNewMessages  
 } from './features/message/messageSlice';
 import ChannelMessage from './components/ChannelMessage';
@@ -48,23 +45,18 @@ import modalReducer from './reducers/modalReducer';
 
 const MyRouter = () => {
   
-
-  const initialToggle = storage.getToggle();
   const [toggle, setToggle] = useState(storage.getToggle())
-
   const [toggleState, dispatchToggle] = useReducer(toggleReducer, {
      isOpen: toggle,
      component: ""
-    })
+    });
  
   const [modalState, dispatchModal] = useReducer(modalReducer,{isOpen: false});
-
   const [newIncoming, setNewIncoming] = useState([])
 
   const dispatch = useDispatch();
   const channelState = useSelector(selectChannelState);
   const messages = useSelector(selectMessages);
-  const nextLinkState = useSelector(selectNextLink)
   const channelId = useSelector(selectSingleChannel);
   const channels = useSelector(selectAllChannels);
 
