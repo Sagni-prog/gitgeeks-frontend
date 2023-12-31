@@ -106,7 +106,6 @@ const MyRouter = () => {
     inboundMessage();  
  },[newIncoming])
 
-
     // channel subscription
     const subscribeToChannel = (id) => {
       const user = JSON.parse(localStorage.getItem('user'));
