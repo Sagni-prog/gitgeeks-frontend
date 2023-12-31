@@ -32,7 +32,7 @@ const channelSlice = createSlice({
          }
       },
       setSelectedChannel: (state, action) => {
-         const { channelId } = action.payload;
+         const { channelId } = action.payload.channelId;
          const channel = state.data.find(channel => channel.id === channelId);
          console.log("this is channel from slice:", channel);
        
@@ -40,8 +40,8 @@ const channelSlice = createSlice({
            ...state,
            channel: {
              ...state.channel, 
-             title: "this is title",
-             description: "this is test"
+             channelName: channel?.channel_name,
+             description: "test desctiption"
            }
          };
        }

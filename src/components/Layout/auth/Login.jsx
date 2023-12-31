@@ -38,7 +38,7 @@ const Login = () => {
     if(response.data.statusCode == 200){
       storage.setUser(response.data.user);
       storage.setToken(response.data.token);
-      navigate('/');  
+      navigate('/@me');  
     }
   }
 
@@ -51,7 +51,7 @@ const Login = () => {
       console.log("loggedin with google:",response)
       storage.setUser(response.data.data);
       storage.setToken(response.data.token);
-      navigate('/');
+      navigate('/@me');
       setIsLoading(false)  
     }
   } 

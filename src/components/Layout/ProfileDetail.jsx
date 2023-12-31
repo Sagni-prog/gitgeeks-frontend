@@ -21,10 +21,10 @@ const ProfileDetail = () => {
        <div className='absolute top-0 left-0 h-[7%] w-[100%] btn-bg'>
           <div className='flex justify-between items-center content-center h-[100%] w-[90%] my-0 mx-auto'>
             <div className='cursor-pointer'>
-              <p className='text-size-3 font-medium'>Profile</p>
+              <p className='text-size-3'>Profile</p>
             </div>
             <div className='cursor-pointer close'>
-              <FaTimes className = 'text-size-5'  onClick={close}/>
+              <FaTimes className = 'text-size-3'  onClick={close}/>
             </div>
           </div>
         </div>

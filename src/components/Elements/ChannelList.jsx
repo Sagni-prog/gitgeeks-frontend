@@ -90,7 +90,7 @@ const ChannelList = (props) => {
           isOpen ?  <FaAngleDown className='text-size-2' /> : <FaAngleRight className='text-size-2' />
         }
        
-        <h1 className='text-size-3'>CHANNELS</h1>
+        <h1 className='text-size-2'>CHANNELS</h1>
       </div>
      
       <div className={`${!isOpen ? 'none' : ''} flex flex-col mt-1 w-[100%] h-[100%] color-secondary`}>

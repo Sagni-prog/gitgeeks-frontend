@@ -83,8 +83,12 @@ const ChatContent = () => {
   useEffect(() => {
       const scrollableElement = chatContainerRef.current;
       scrollableElement.scrollTop = scrollableElement.scrollHeight;
-      console.log("hello initial load")
   }, [initialLoad]);
+
+  useEffect(() => {
+   console.log(" this is the from chat content:",channel)
+   console.log(" this is the from chat content but null:")
+  },[channel])
 
 
   useEffect(() => {

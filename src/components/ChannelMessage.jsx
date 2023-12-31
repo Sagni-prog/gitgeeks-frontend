@@ -15,16 +15,17 @@ import toggleContext from '../contexts/toggleContext';
 import MembersList from './Layout/MembersList';
 import ChatContent from './Layout/ChatContent';
 
+
 const ChannelMessage = () => {
 
+  const { id } = useParams();
   const dispatch = useDispatch();
   const channelId = useSelector(selectSingleChannel);
   const thisChannel = useSelector(selectedChannel);
-  const channel = useSelector((state) => selectChannel(state, 9));
+  const channel = useSelector((state) => selectChannel(state, id));
 
-  const { id } = useParams();
+  
   const [isOpen, setIdOpen] = useState(getCookie("isOpen"))
-  const [thisChannlId, setThisChannlId] = useState("")
 
   const { modalState, dispatchModal } = useContext(modalContext);
   const { toggleState, dispatchToggle } = useContext(toggleContext);
@@ -32,22 +33,16 @@ const ChannelMessage = () => {
   const handleClose = () => {
      dispatchModal({type: "CLOSE"})
   }
- 
+
 
   useEffect(() => {
-   setThisChannlId(id);
+   dispatch(
+      setSingleChannel({
+        id: id
+      })
+    )
   },[])
 
-  useEffect(() => {
-       dispatch(setSelectedChannel({
-         channelId: 9
-       }))
-
-  },[thisChannlId])
-
-  useEffect(() => {
-   console.log(" this is the selected one:",thisChannel)
-  },[thisChannel])
 
   return (
     <>

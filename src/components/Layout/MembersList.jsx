@@ -23,9 +23,9 @@ const MembersList = () => {
     <>
       <div className='absolute top-0 left-0 flex justify-between items-center content-center w-[100%] btn-bg h-[7%] my-0 mx-auto z-[100] px-[5%]'>
             <div className='cursor-pointer'>
-              <FaUsers className='text-size-5' />
+              <FaUsers className='text-size-3' />
             </div>
-            <p className='text-size-3'>34 MEMBERS</p>
+            <p className='text-size-2'>34 MEMBERS</p>
             <div className='cursor-pointer close'>
               <FaTimes className = 'text-size-5' onClick={close}/>
             </div>

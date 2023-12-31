@@ -21,6 +21,8 @@ import {
   setChannelState, 
   selectSingleChannel,
   selectAllChannels,
+  selectedChannel,
+  setSelectedChannel,
   selectChannel
 } from './features/channel/channelSlice';
 import { useSelector, useDispatch } from 'react-redux';
@@ -49,7 +51,6 @@ const MyRouter = () => {
 
   const initialToggle = storage.getToggle();
   const [toggle, setToggle] = useState(storage.getToggle())
-  console.log("top initial toggle state:",toggle)
 
   const [toggleState, dispatchToggle] = useReducer(toggleReducer, {
      isOpen: toggle,
@@ -71,7 +72,7 @@ const MyRouter = () => {
     const id = storage.getUser().id;
     const response = await getAllChannels(id);
     if(response.status != 200){
-      console.log("something went wrong");
+  
     }
 
     dispatch(
@@ -79,7 +80,6 @@ const MyRouter = () => {
         data: response.data.data,
         isLoaded: true
       }));
-      console.log("channels:",response.data.data)
   }
 
   const getMessage = async(id) => {
@@ -105,11 +105,6 @@ const MyRouter = () => {
     }  
     return 0;
   }
-
-  useEffect(() => {
-    console.log("toggle", toggleState)
-  },[toggleState])
-
  
   useEffect(() => {
     getChannel();
@@ -142,8 +137,7 @@ const MyRouter = () => {
       channel.bind('channel.message', function (data) {
   
         const newMessages = [data.message];
-        setNewIncoming(newMessages)
-
+          setNewIncoming(newMessages)
       });
     }
 
@@ -155,6 +149,11 @@ const MyRouter = () => {
 
   useEffect(() => {
     getMessage(channelId);
+    dispatch(
+      setSelectedChannel({
+        channelId: channelId
+      })
+    )
   },[channelId]);
 
 
