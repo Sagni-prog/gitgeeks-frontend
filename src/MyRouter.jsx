@@ -147,7 +147,6 @@ const MyRouter = () => {
     )
   },[channelId]);
 
-
   const router = createBrowserRouter([
     {
       path: '/@me',
